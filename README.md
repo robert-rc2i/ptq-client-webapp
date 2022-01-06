@@ -22,6 +22,13 @@ This will try to open your default browser to localhost:3000.  To access it remo
 
     http://your.ip.address:3000
 
+That being said, you need to have Pianoteq launched with the proper flag and port like so.
+
+* On Mac - `/Applications/Pianoteq\ 7/Pianoteq\ 7.app/Contents/MacOS/Pianoteq\ 7 --serve 8081`
+* On PC - `C:\Program Files\Modartt\Pianoteq 7>"Pianoteq 7.exe" --serve 8081`
+
+If you want a different port, simply change it on the command line to launch Pianoteq and the package.json file in the proxy param.
+
 ## Final note
 I am not affiliated with Modartt.  All references to Modartt are governed by their trademark and licences
 
