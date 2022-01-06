@@ -6,7 +6,7 @@ function Footer(props) {
     const [ctx, setCtx] = useState({show: false, instrName:"Instruments", classes:[]});
     const toggleShow = () => setCtx({...ctx, show: !ctx.show});
     return (
-        <div className="d-flex justify-content-around fixed-bottom w-100 bg-light">
+        <div className="d-flex justify-content-around fixed-bottom w-100 bg-light pb-3 px-1">
             <Button variant='primary' onClick={(event) => {event.preventDefault(); event.stopPropagation(); setCtx({show: true, instrName:"Acoustic pianos", classes:["Acoustic Piano","Piano Predecessor","Historical Piano"]})}}>Accoustic<br/>Pianos</Button>
             <Button variant='primary' onClick={(event) => {event.preventDefault(); event.stopPropagation(); setCtx({show: true, instrName:"Electric pianos", classes:["Electric Piano"]})}}>Electric<br/>Pianos</Button>
             <Button variant='primary' onClick={(event) => {event.preventDefault(); event.stopPropagation(); setCtx({show: true, instrName:"Chromatic percusion", classes:["Chromatic Percussion"]})}}>Chromatic<br/>Percusions</Button>
