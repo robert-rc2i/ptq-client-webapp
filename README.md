@@ -20,6 +20,6 @@ Well, I do not need to deploy this app anywhere, so you simply start it using th
 This will try to open your default browser to localhost:3000.  To access it remotely, you'll need to be aware of the ip address of your device.  I suggest that you make that adresss permanent in your router so it does not change every day!
 
 ## Final note
-I am note affiliated with Modartt.  All reference to Modartt are governed by their trademark and licences
+I am not affiliated with Modartt.  All references to Modartt are governed by their trademark and licences
 
 Hope it helps in your Pianoteq setup and happy playing!
