@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import { getInstrumentByName } from '../domain/presets';
+import { factoryPresets, getInstrumentByName } from '../domain/presets';
 
 /**
  * 
@@ -9,11 +9,11 @@ import { getInstrumentByName } from '../domain/presets';
  * @param {*} info 
  * @returns 
  */
-export const factoryInitialState = ({presets = [], currPreset={}, currParams=[], info={}}) => {
+export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, currParams=[], info={}}) => {
     return {
         allInstruments: presets,
         currentPreset: currPreset,
-        currentParameters: currParams,
+        currentParameters: currParams ? currParams : [],
         ptqInfo: info
     }
 }
@@ -33,12 +33,29 @@ const defaultReducer = (currentState, action) => {
                 currentPreset: action.value
             }
         case "initContext":
-            return factoryInitialState({presets: action.presets, currPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), action.presets.presets), info: action.ptqInfo});
+            return factoryInitialState({
+                presets: action.presets, 
+                currPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), action.presets.presets), 
+                info: action.ptqInfo, 
+                currParams: action.params});
+        case "refresh":
+            return {
+                ...currentState,
+                ptqInfo: action.ptqInfo,
+                currentPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), currentState.allInstruments.presets),
+                currentParameters: action.params
+            }
         case "info":
             return {
                 ...currentState,
                 ptqInfo: action.ptqInfo,
-                currentPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), currentState.allInstruments.presets)
+                currentPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), currentState.allInstruments.presets),
+
+            }
+        case "loadParameters":
+            return {
+                ...currentState,
+                currentParameters: action.params,
             }
         default:
             break;
