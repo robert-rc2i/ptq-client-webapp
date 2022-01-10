@@ -13,8 +13,24 @@ This is the first version, which is limited to the following:
 
 Node has to be installed on your computer for this to work, as I make use of it to serve the single page application.  Also note that node will proxy the JsonRPC to Pianoteq, otherwise CORS issue will arise without it.
 
+### How to install node on Mac / Windows
+Visit the node webpage [here](https://nodejs.dev) 
+
+### How to install node on Raspberry PI
+Visit the [git repo](https://github.com/nodesource/distributions) of nodesource for the latest release, but as of this writing, you may use the following command for version 16.x
+
+    # Using Ubuntu
+    curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+
+    # Using Debian, as root
+    curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+    apt-get install -y nodejs
+
+
+
 ### How to start
-Well, I do not need to deploy this app anywhere, so you simply start it using the standard npm comand for that.
+Well, I do not need to deploy this app anywhere, so you simply start it using the standard npm comand for that.  Before running the command, make sure that you are at the root folder of this project.
 
     npm start
 
