@@ -40,7 +40,7 @@ const DynamicsRangeView = ({ dynamics, dispatch }) => {
     return (
         <div>
             <Form.Label>Dynamics ({dyn}db)</Form.Label>
-            <InputRange name="volume" value={dyn} min={0} max={100} step={1} onChange={setDynamics} onSetRangeValue={(v) => { pqtApi.setDynamics(v, dispatch) }} />
+            <InputRange name="dynamics" value={dyn} min={0} max={100} step={1} onChange={setDynamics} onSetRangeValue={(v) => { pqtApi.setDynamics(v, dispatch) }} />
         </div>
     )
 }
