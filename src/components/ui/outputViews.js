@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import * as pqtApi from '../api/pqtApi';
 import { getParameterValueAsText } from "../domain/parameters";
 import { useInstrumentContext } from "../utils/instrumentContext";
+import { InputRange } from "./inputs";
 
 export const OutputCardView = () => {
-    const [ctx, dispatch] = useInstrumentContext();
+    const [ctx, reducer] = useInstrumentContext();
+
+    const [dyn, setDynamics] = useState();
+
     const volume = ctx.currentParameters && getParameterValueAsText("Volume", ctx.currentParameters);
     const dynamics = ctx.currentParameters && getParameterValueAsText("Dynamics", ctx.currentParameters);
 
@@ -13,10 +17,30 @@ export const OutputCardView = () => {
 
     return (
         <div>
-            <Form.Label>Volume ({volume}db)</Form.Label>
-            <Form.Range name="volume" defaultValue={volume} min={-96} max={12} step={0.5} onTouchEnd={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.setVolume(event.target.value, dispatch)}} onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.setVolume(event.target.value, dispatch)}}/>
-            <Form.Label>Dynamics ({dynamics} db)</Form.Label>
-            <Form.Range name="dynamics" defaultValue={dynamics}  min={0} max={100} step={1} onClick={(event) => {event.preventDefault(); event.stopPropagation(); pqtApi.setDynamics(event.target.value, dispatch)}}/>
+            <VolumeRangeView volume={volume} dispatch={reducer} />
+            <DynamicsRangeView dynamics={dynamics} dispatch={reducer} />
         </div>
     );
+}
+
+const VolumeRangeView = ({ volume, dispatch }) => {
+    const [vol, setVolume] = useState(volume);
+
+    return (
+        <>
+            <Form.Label>Volume ({vol}db)</Form.Label>
+            <InputRange name="volume" value={vol} min={-96} max={12} step={0.5} onChange={setVolume} onSetRangeValue={(v) => { pqtApi.setVolume(v, dispatch) }} />
+        </>
+    );
+}
+
+const DynamicsRangeView = ({ dynamics, dispatch }) => {
+    const [dyn, setDynamics] = useState(dynamics);
+
+    return (
+        <div>
+            <Form.Label>Dynamics ({dyn}db)</Form.Label>
+            <InputRange name="volume" value={dyn} min={0} max={100} step={1} onChange={setDynamics} onSetRangeValue={(v) => { pqtApi.setDynamics(v, dispatch) }} />
+        </div>
+    )
 }
