@@ -80,6 +80,36 @@ export async function setDynamics(value, dispatch) {
     return getParams(dispatch);
 }
 
+export async function setFxGain(value, dispatch) {
+    await postCommand("setParameters", {"list": [{"id":"Post Effect Gain","text":value}]});
+    return getParams(dispatch);
+}
+
+export async function setDelayEffectSwitch(value, dispatch) {
+    console.log("Delay value", value);
+    const textVal = value ? "On" : "Off";
+    await postCommand("setParameters", {"list": [{"id":"Effect[1].Switch","text":textVal}]});
+    return getParams(dispatch);
+}
+
+export async function setEq1EffectSwitch(value, dispatch) {
+    const textVal = value ? "On" : "Off";
+    await postCommand("setParameters", {"list": [{"id":"Effect[2].Switch","text":textVal}]});
+    return getParams(dispatch);
+}
+
+export async function setEq2EffectSwitch(value, dispatch) {
+    const textVal = value ? "On" : "Off";
+    await postCommand("setParameters", {"list": [{"id":"Effect[3].Switch","text":textVal}]});
+    return getParams(dispatch);
+}
+
+export async function setReverb(value, dispatch) {
+    const textVal = value ? "On" : "Off";
+    await postCommand("setParameters", {"list": [{"id":"Reverb Switch","text":textVal}]});
+    return getParams(dispatch);
+}
+
 export async function recordMidi() {
     return postCommand("midiRecord");
 }

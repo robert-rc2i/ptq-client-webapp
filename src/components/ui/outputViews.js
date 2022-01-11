@@ -8,12 +8,8 @@ import { InputRange } from "./inputs";
 export const OutputCardView = () => {
     const [ctx, reducer] = useInstrumentContext();
 
-    const [dyn, setDynamics] = useState();
-
     const volume = ctx.currentParameters && getParameterValueAsText("Volume", ctx.currentParameters);
     const dynamics = ctx.currentParameters && getParameterValueAsText("Dynamics", ctx.currentParameters);
-
-    console.log("[OutputCardView] Volume, Dynamics", volume, dynamics)
 
     return (
         <div>
