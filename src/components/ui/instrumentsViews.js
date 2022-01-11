@@ -54,8 +54,7 @@ const ListOfPresets = ({ name, presets, onSelected }) => {
     );
 }
 
-export const InstrumentCardView = ({ instrument }) => {
-    const [, reducer] = useInstrumentContext();
+export const InstrumentCardView = ({ instrument, dispatch }) => {
     
     console.log("[InstrumentCardView] Instrument:", instrument);
     if (instrument) {
@@ -63,7 +62,7 @@ export const InstrumentCardView = ({ instrument }) => {
             <Card>
                 <div className="d-flex justify-content-between">
                 <div><h2>Current instrument</h2></div>
-                <div><Button onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.switchAB(reducer); }}>A/B Switch</Button></div>
+                <div><Button onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.switchAB(dispatch); }}>A/B Switch</Button></div>
                 </div>
                 
                 <Card.Body>

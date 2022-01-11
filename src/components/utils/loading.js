@@ -5,8 +5,8 @@ import { factoryPresets } from '../domain/presets';
 export default class Loading extends React.Component {
 
     render() {
-        const isLoading = this.props.context.allInstruments.length > 0;
-
+        const isLoading = this.props.context.allInstruments.presets.length === 0;
+        console.log("[Loading] isLoading:", isLoading, this.props.context)
         return (
             <>
                 {isLoading && <Initializing />}
@@ -30,8 +30,11 @@ export default class Loading extends React.Component {
             console.log("Error loading presets", err);
             return Promise.reject(err);
         });
+        
+        const params = await pqtApi.getParams();
 
-        this.props.dispatch({type: "initContext", presets: presets, ptqInfo: ptqInfo});
+        console.log("[Loading] Init ctx", presets, ptqInfo, params);
+        this.props.dispatch({type: "initContext", presets: presets, ptqInfo: ptqInfo, params: params});
     }
 }
 

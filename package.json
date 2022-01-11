@@ -6,7 +6,6 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
-    "hookrouter": "^1.2.5",
     "i18next": "^21.6.4",
     "i18next-xhr-backend": "^3.2.2",
     "react": "16.14",
