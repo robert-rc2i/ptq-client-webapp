@@ -31,10 +31,10 @@ const ControlMenu = (props) => {
                 <OutputCardView/>
             </Tab>
             <Tab eventKey="voicing" title="Voicing" >
-                <p>Voicing controls here</p>
+                <p>Voicing controls here (Not implemented yet)</p>
             </Tab>
             <Tab eventKey="effects" title="Effects" >
-                <p>Effects controls here</p>
+                <p>Effects controls here (Not implemented yet)</p>
             </Tab>
         </Tabs>
     );
