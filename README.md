@@ -27,10 +27,17 @@ Visit the [git repo](https://github.com/nodesource/distributions) of nodesource 
     curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
     apt-get install -y nodejs
 
+## How to install this project
+In the folder of your choice, launch the following command from a terminal window.
 
+    git clone https://robert-rc2i@bitbucket.org/robert-rc2i/ptq-client-webapp.git
 
-### How to start
-First, you need to make sure that the project's dependencies are installed.  You onnly need to do this once.  Before running the command, make sure that you are at the root folder of this project.
+This will create a new folder named `ptq-client-webapp`.  Before going any further, make sure to change to that newly created folder.
+
+    cd ptq-client-webapp
+
+## How to start
+First, you need to make sure that the project's dependencies are installed.  You onnly need to do this once.  Before running the command, make sure that you are at the root folder of this project as described above
 
     npm install
 
