@@ -42,10 +42,34 @@ export function listInstrumentsForClass(presets = [], className = null) {
     return Array.from(instrumetns);
 }
 
+export function listPresetsForBank(presets = [], bank = "") {
+    const instrumetns = new Set();
+
+    presets.forEach( element => (element.bank === bank) ? instrumetns.add(element) : null);
+
+    return Array.from(instrumetns);
+}
+
 export function listPresetsForInstruments(presets = [], instrName = null) {
     var instrPresets = new Set();
 
     presets.forEach( element => (element.instr === instrName) ? instrPresets.add(element) : null);
 
     return Array.from(instrPresets);
+}
+
+export function getAcousticPianoClasses() {
+    return ["Acoustic Piano","Piano Predecessor","Historical Piano"];
+}
+
+export function getElectricPianoClasses() {
+    return ["Electric Piano"];
+}
+
+export function getChromaticPercussionClasses() {
+    return ["Chromatic Percussion"];
+}
+
+export function getDrumClasses() {
+    return ["Steelpan"];
 }

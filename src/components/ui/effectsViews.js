@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Container, Form, Row } from "react-bootstrap";
+import { Card, Container, Form } from "react-bootstrap";
 import * as Parameters from "../domain/parameters";
 import { useInstrumentContext } from "../utils/instrumentContext";
 import { InputRange, InputSwitch } from "./inputs";
