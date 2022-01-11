@@ -17,7 +17,7 @@ export const MidiControlCardView = () => {
 export const MidiControlPannel = () => {
     return (
         <>
-            <p>No feedback is provided by Pianoteq.  So, it is impossible ot know if a recording is on or not.</p>
+            <p>No feedback is provided by Pianoteq.  So, it is impossible to know if a recording is on or not.</p>
             <div className="p-3 d-flex justify-content-around">
                 <Button onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.recordMidi(); }}>Record</Button>
                 <Button onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.stopMidiRecord(); }}>Stop</Button>
