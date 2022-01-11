@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
+import { useInstrumentContext } from '../utils/instrumentContext';
 import { InstrumentSelectionPaneView } from './instrumentsViews';
+import * as PtqApi from '../api/pqtApi';
 
-function Footer(props) {
-    const [ctx, setCtx] = useState({show: false, instrName:"Instruments", classes:[]});
-    const toggleShow = () => setCtx({...ctx, show: !ctx.show});
+function TopMenu(props) {
+    const [, reducer] = useInstrumentContext();
+    const [ctx, setCtx] = useState({ show: false, instrName: "Instruments", classes: [] });
+    const toggleShow = () => setCtx({ ...ctx, show: !ctx.show });
     return (
-        <div className="d-flex justify-content-around fixed-bottom w-100 bg-light pb-3 px-1">
-            <Button variant='primary' onClick={(event) => {event.preventDefault(); event.stopPropagation(); setCtx({show: true, instrName:"Acoustic pianos", classes:["Acoustic Piano","Piano Predecessor","Historical Piano"]})}}>Accoustic<br/>Pianos</Button>
-            <Button variant='primary' onClick={(event) => {event.preventDefault(); event.stopPropagation(); setCtx({show: true, instrName:"Electric pianos", classes:["Electric Piano"]})}}>Electric<br/>Pianos</Button>
-            <Button variant='primary' onClick={(event) => {event.preventDefault(); event.stopPropagation(); setCtx({show: true, instrName:"Chromatic percusion", classes:["Chromatic Percussion"]})}}>Chromatic<br/>Percusions</Button>
-            <Button variant='primary' onClick={(event) => {event.preventDefault(); event.stopPropagation(); setCtx({show: true, instrName:"Drums", classes:["Steelpan"]})}}>Drums</Button>
-            <InstrumentSelectionPaneView toggleFunction={toggleShow} show={ctx.show} instrumentName={ctx.instrName} classes={ctx.classes}/>
+        <div className="bg-primary text-white d-flex justify-content-between sticky-top w-100 mb-2">
+            <Button onClick={toggleShow}>Menu</Button>
+            <Button onClick={(event) => { event.stopPropagation(); PtqApi.switchAB(reducer); }}>A/B Switch</Button>
+            <InstrumentSelectionPaneView toggleFunction={toggleShow} show={ctx.show} instrumentName={ctx.instrName} classes={ctx.classes} />
         </div>
     );
 }
@@ -43,10 +44,10 @@ export function PageLayout1Column(props) {
 
     return (
         <div className="d-flex flex-column h-100 w-100 px-3">
-            <Row className="mb-5 pb-5">
+            <TopMenu />
+            <Row>
                 {props.children}
             </Row>
-            <Footer />
         </div>
     );
 }
