@@ -4,6 +4,7 @@ import { InstrumentCardView } from '../ui/instrumentsViews';
 import { useInstrumentContext } from '../utils/instrumentContext';
 import { MidiControlCardView } from '../ui/midiControlViews';
 import { OutputCardView } from '../ui/outputViews';
+import {EffectsTabView} from '../ui/effectsViews';
 
 export const CurrentInstrumentPage = () => {
     const [ctx, reducer] = useInstrumentContext();
@@ -13,9 +14,6 @@ export const CurrentInstrumentPage = () => {
             <Row>
                 <InstrumentCardView instrument={ctx.currentPreset} dispatch={reducer}/>
                 <ControlMenu />
-            </Row>
-            <Row>
-
             </Row>
         </Container>
     );
@@ -34,7 +32,7 @@ const ControlMenu = (props) => {
                 <p>Voicing controls here (Not implemented yet)</p>
             </Tab>
             <Tab eventKey="effects" title="Effects" >
-                <p>Effects controls here (Not implemented yet)</p>
+                <EffectsTabView/>
             </Tab>
         </Tabs>
     );

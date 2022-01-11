@@ -30,7 +30,11 @@ Visit the [git repo](https://github.com/nodesource/distributions) of nodesource 
 
 
 ### How to start
-Well, I do not need to deploy this app anywhere, so you simply start it using the standard npm comand for that.  Before running the command, make sure that you are at the root folder of this project.
+First, you need to make sure that the project's dependencies are installed.  You onnly need to do this once.  Before running the command, make sure that you are at the root folder of this project.
+
+    npm install
+
+Once done and from now on, you simply start it using the standard npm start comand.  Again, before running the command, make sure that you are at the root folder of this project.
 
     npm start
 

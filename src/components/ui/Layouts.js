@@ -43,7 +43,7 @@ export function PageLayout1Column(props) {
 
     return (
         <div className="d-flex flex-column h-100 w-100 px-3">
-            <Row>
+            <Row className="mb-5 pb-5">
                 {props.children}
             </Row>
             <Footer />
