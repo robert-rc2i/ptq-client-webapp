@@ -57,6 +57,14 @@ const defaultReducer = (currentState, action) => {
                 ...currentState,
                 currentParameters: action.params,
             }
+        case "setParameter":
+            const newState = {
+                ...currentState
+            }
+            //Assign new value to the desired param
+            newState.currentParameters[action.index].text = action.value;
+
+            return newState;
         default:
             break;
     }

@@ -5,6 +5,7 @@ import { useInstrumentContext } from '../utils/instrumentContext';
 import { MidiControlCardView } from '../ui/midiControlViews';
 import { OutputCardView } from '../ui/outputViews';
 import { EffectsTabView } from '../ui/effectsViews';
+import { VoicingTabView } from '../ui/voicing';
 
 export const CurrentInstrumentPage = () => {
     const [ctx, reducer] = useInstrumentContext();
@@ -14,14 +15,14 @@ export const CurrentInstrumentPage = () => {
             <Row>
                 <InstrumentCardView instrument={ctx.currentPreset} dispatch={reducer} />
             </Row>
-            <Row>
+            <Row className="mt-2"> 
                 <ControlMenu />
             </Row>
         </>
     );
 }
 
-const ControlMenu = (props) => {
+const ControlMenu = () => {
     return (
         <Tabs defaultActiveKey="midi" id="uncontrolled-tab-example" className="mb-3">
             <Tab eventKey="midi" title="Midi">
@@ -31,7 +32,7 @@ const ControlMenu = (props) => {
                 <OutputCardView />
             </Tab>
             <Tab eventKey="voicing" title="Voicing" >
-                <p>Voicing controls here (Not implemented yet)</p>
+                <VoicingTabView />
             </Tab>
             <Tab eventKey="effects" title="Effects" >
                 <EffectsTabView />

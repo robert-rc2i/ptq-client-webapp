@@ -8,7 +8,6 @@ export function getParameterValueAsText(id="", params=[]) {
 
 export function getSwitchToBooleanValue(switchValue) {
     const v = switchValue && switchValue === "On" ? true : false;
-    console.log("Switch value:", switchValue, v);
     return v;
 }
 
@@ -29,4 +28,26 @@ export function getEq2(params=[]) {
 
 export function getReverb(params=[]) {
     return getSwitchToBooleanValue(getParameterValueAsText("Reverb Switch", params));
+}
+
+export function getHammerHardnessPiano(params=[]) {
+    return getParameterValueAsText("Hammer Hardness Piano", params);
+}
+export function getHammerHardnessMezzo(params=[]) {
+    return getParameterValueAsText("Hammer Hardness Mezzo", params);
+}
+export function getHammerHardnessForte(params=[]) {
+    return getParameterValueAsText("Hammer Hardness Forte", params);
+}
+
+export function getHammerNoise(params=[]) {
+    return getParameterValueAsText("Hammer Noise", params );
+}
+
+export function getStrikePoint(params=[]) {
+    return getParameterValueAsText("Strike Point", params );
+}
+
+export function getSoftPedalSmoothing(params=[]) {
+    return getParameterValueAsText("Soft Level", params);
 }

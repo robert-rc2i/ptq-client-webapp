@@ -72,7 +72,6 @@ class FetchHelperComponent {
             mode: 'cors',
             credentials: 'same-origin'
         }).then(async (resp) => {
-            console.log("fetch - response:", resp);
             // const apiResponse = new ApiResponse(resp.status, resp.statusText, resp.url, await resp.json());
             if (resp.ok) { // HTTP code in rage between 200 to 299
                 return Promise.resolve(new ApiResponse(resp.status, resp.statusText, resp.url, await resp.json()));

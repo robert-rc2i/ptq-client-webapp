@@ -85,6 +85,31 @@ export async function setFxGain(value, dispatch) {
     return getParams(dispatch);
 }
 
+export async function setHardnessForPiano(value, dispatch) {
+    await postCommand("setParameters", {"list": [{"id":"Hammer Hardness Piano","text":value}]});
+    return getParams(dispatch);
+}
+
+export async function setHardnessForMezzo(value, dispatch) {
+    await postCommand("setParameters", {"list": [{"id":"Hammer Hardness Mezzo","text":value}]});
+    return getParams(dispatch);
+}
+
+export async function setHardnessForForte(value, dispatch) {
+    await postCommand("setParameters", {"list": [{"id":"Hammer Hardness Forte","text":value}]});
+    return getParams(dispatch);
+}
+
+export async function setHammerNoise(value, dispatch) {
+    await postCommand("setParameters", {"list": [{"id":"Hammer Noise","text":value}]});
+    return getParams(dispatch);
+}
+
+export async function setSoftPedalSmoothing(value, dispatch) {
+    await postCommand("setParameters", {"list": [{"id":"Soft Level","text":value}]});
+    return getParams(dispatch);
+}
+
 export async function setDelayEffectSwitch(value, dispatch) {
     console.log("Delay value", value);
     const textVal = value ? "On" : "Off";
