@@ -1,15 +1,15 @@
 import { ApiHelper } from './RestHelper';
 
-function factoryCommand(cmd="list", params=[], jsonrpc="2.0", id="1") {
+function factoryCommand(cmd="list", params=[], jsonrpc="2.0") {
     return {
         "method": cmd,
         "params": params,
         "jsonrpc": jsonrpc,
-        "id": id
+        "id": Date.now()
     }
 }
-export async function postCommand(cmd = "list", params=[], jsonrpc="2.0", id="1" ) {
-    return ApiHelper.post("", factoryCommand(cmd, params, jsonrpc, id)).then((apiResp) => {
+export async function postCommand(cmd = "list", params=[], jsonrpc="2.0" ) {
+    return ApiHelper.post("", factoryCommand(cmd, params, jsonrpc)).then((apiResp) => {
         if (apiResp.status < 400) {
             return Promise.resolve(apiResp.dataObject);
         }
