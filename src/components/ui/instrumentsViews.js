@@ -109,14 +109,13 @@ const ListOfPresetsView = ({ presets, onSelected }) => {
 
 export const InstrumentCardView = ({ instrument, dispatch }) => {
 
-    console.log("[InstrumentCardView] Instrument:", instrument);
     if (instrument) {
         return (
             <Card>
                 <Card.Header>
                     <div className="d-flex justify-content-between">
                         <div>Current instrument</div>
-                        <Button onClick={(e) => {e.preventDefault(); pqtApi.refreshContext(dispatch)}}>Reload</Button>
+                        <Button onClick={(e) => {e.preventDefault(); e.stopPropagation(); pqtApi.refreshContext(dispatch)}}>Reload</Button>
                     </div>
                 </Card.Header>
                 <Card.Body>

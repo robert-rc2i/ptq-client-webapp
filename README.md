@@ -19,15 +19,13 @@ Visit the node webpage [here](https://nodejs.dev)
 ### How to install node on Raspberry PI
 Visit the [git repo](https://github.com/nodesource/distributions) of nodesource for the latest release, but as of this writing, you may use the following command for version 16.x
 
-    # Using Ubuntu
+    # From the terminal
     curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
     sudo apt-get install -y nodejs
 
-    # Using Debian, as root
-    curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
-    apt-get install -y nodejs
-
 ## How to install this project
+
+### First install
 In the folder of your choice, launch the following command from a terminal window.
 
     git clone https://robert-rc2i@bitbucket.org/robert-rc2i/ptq-client-webapp.git
@@ -35,6 +33,14 @@ In the folder of your choice, launch the following command from a terminal windo
 This will create a new folder named `ptq-client-webapp`.  Before going any further, make sure to change to that newly created folder.
 
     cd ptq-client-webapp
+
+### Upgrade to latest version
+Launch the following commands in the project folder
+
+     git pull origin master
+     npm install
+
+This will replace your current project with the latest changes from the git repo and install any new dependencies that the project may have added
 
 ## How to start
 First, you need to make sure that the project's dependencies are installed.  You onnly need to do this once.  Before running the command, make sure that you are at the root folder of this project as described above

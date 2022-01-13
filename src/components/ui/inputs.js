@@ -1,4 +1,5 @@
 import React from 'react';
+import { Form } from 'react-bootstrap';
 
 /**
  * 
@@ -15,8 +16,17 @@ export const InputRange = ({ onChange, onSetRangeValue, ...others }) => {
 export const InputSwitch = ({ name="none", label, isChecked=false, onClick}) => {
     return (
         <div className="form-check form-switch">
-            <input className="form-check-input" type="checkbox" role="switch" id={name} defaultChecked={isChecked} onClick={(e) => { onClick(e.target.checked)}}/>
+            <input className="form-check-input" type="checkbox" role="switch" id={name} checked={isChecked} onClick={(e) => { onClick(e.target.checked)}} onChange={() =>  {}}/>
             <label className="form-check-label" htmlFor={name}>{label}</label>
         </div>
     )
+}
+
+export const RangeViewController = ({ value, dispatch, label="none", apiCallback, min=0, max=10, step=0.1, name="None set", paramIdx}) => {
+    return (
+        <>
+            <Form.Label>{`${label} (${value})`}</Form.Label>
+            <InputRange name={name} value={value} min={min} max={max} step={step} onChange={(v) => {dispatch({type:"setParameter", index: paramIdx, value:v})}} onSetRangeValue={(v) => { apiCallback(v, dispatch); }} />
+        </>
+    );
 }

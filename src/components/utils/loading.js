@@ -6,7 +6,6 @@ export default class Loading extends React.Component {
 
     render() {
         const isLoading = this.props.context.allInstruments.presets.length === 0;
-        console.log("[Loading] isLoading:", isLoading, this.props.context)
         return (
             <>
                 {isLoading && <Initializing />}
@@ -16,7 +15,6 @@ export default class Loading extends React.Component {
     }
 
     async componentDidMount() {
-        console.log("Loading...");
         const presets = await pqtApi.postCommand("getListOfPresets").then((response) => {
             return Promise.resolve(factoryPresets(response.result));
         }).catch((err) => {
