@@ -10,8 +10,8 @@ function TopMenu(props) {
     const toggleShow = () => setCtx({ ...ctx, show: !ctx.show });
     return (
         <div className="pt-2 bg-secondary text-white d-flex justify-content-between sticky-top w-100 mb-2">
-            <Button className="m-1" onClick={toggleShow}><strong><i class="bi bi-list"/></strong> Menu</Button>
-            <Button className="m-1" onClick={(event) => { event.stopPropagation(); PtqApi.switchAB(reducer); }}>A/B Switch</Button>
+            <Button className="m-2" onClick={toggleShow}><strong><i class="bi bi-list"/></strong> Menu</Button>
+            <Button className="m-2" onClick={(event) => { event.stopPropagation(); PtqApi.switchAB(reducer); }}>A/B Switch</Button>
             <InstrumentSelectionPaneView toggleFunction={toggleShow} show={ctx.show} instrumentName={ctx.instrName} classes={ctx.classes} />
         </div>
     );
@@ -43,9 +43,11 @@ export function SmallBar({ children }) {
 export function PageLayout1Column(props) {
 
     return (
-        <div className="d-flex flex-column h-100 w-100 px-3">
+        <div className="h-100 w-100">
             <TopMenu />
+            <div className="mx-2">
             {props.children}
+            </div>
         </div>
     );
 }
