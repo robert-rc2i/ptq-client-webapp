@@ -45,9 +45,7 @@ export function PageLayout1Column(props) {
     return (
         <div className="d-flex flex-column h-100 w-100 px-3">
             <TopMenu />
-            <Row>
-                {props.children}
-            </Row>
+            {props.children}
         </div>
     );
 }

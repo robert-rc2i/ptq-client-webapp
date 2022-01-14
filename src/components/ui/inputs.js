@@ -16,7 +16,7 @@ export const InputRange = ({ onChange, onSetRangeValue, ...others }) => {
 export const InputSwitch = ({ name="none", label, isChecked=false, onClick}) => {
     return (
         <div className="form-check form-switch">
-            <input className="form-check-input" type="checkbox" role="switch" id={name} checked={isChecked} onClick={(e) => { onClick(e.target.checked)}} onChange={() =>  {}}/>
+            <input className="form-check-input" type="checkbox" role="switch" id={name} checked={isChecked} onChange={(e) => {onClick(e.target.checked)}}/>
             <label className="form-check-label" htmlFor={name}>{label}</label>
         </div>
     )

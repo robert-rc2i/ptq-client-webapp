@@ -15,12 +15,12 @@ export const EffectsTabView = () => {
     const reverb = Parameters.getReverb(ctx.currentParameters);
 
     return (
-        <Container>
-            <div>
+        <div>
+            <div className="mb-2">
                 <FxGainView fxGain={fxGain} dispatch={reducer} />
             </div>
             <Card>
-                <Card.Header>Toggel effects</Card.Header>
+                <Card.Header>Toggle effects</Card.Header>
                 <Card.Body>
                     <div className="d-flex flex-row justify-content-evenly">
                         <DelayEffectView delayState={delayState} dispatch={reducer} />
@@ -32,13 +32,13 @@ export const EffectsTabView = () => {
                     </div>
                 </Card.Body>
             </Card>
-        </Container>
+        </div>
     )
 }
 
 export const FxGainView = ({ fxGain, dispatch }) => {
     return (
-        <RangeViewController label="Post Effect Gain" name="fxGain" min={-12} max={12} step={0.2} value={fxGain} paramIdx={22} dispatch={dispatch} apiCallback={PtqApi.setFxGain}/>
+        <RangeViewController label="Post Effect Gain" name="fxGain" min={-12} max={12} step={0.2} value={Number.parseFloat(fxGain)} paramIdx={22} dispatch={dispatch} apiCallback={PtqApi.setFxGain}/>
     );
 }
 

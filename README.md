@@ -30,9 +30,14 @@ In the folder of your choice, launch the following command from a terminal windo
 
     git clone https://robert-rc2i@bitbucket.org/robert-rc2i/ptq-client-webapp.git
 
+
 This will create a new folder named `ptq-client-webapp`.  Before going any further, make sure to change to that newly created folder.
 
     cd ptq-client-webapp
+
+Now, you need to make sure that the project's dependencies are installed. Before running the command, make sure that you are at the root folder of this project as described above
+
+    npm install
 
 ### Upgrade to latest version
 Launch the following commands in the project folder
@@ -43,11 +48,8 @@ Launch the following commands in the project folder
 This will replace your current project with the latest changes from the git repo and install any new dependencies that the project may have added
 
 ## How to start
-First, you need to make sure that the project's dependencies are installed.  You onnly need to do this once.  Before running the command, make sure that you are at the root folder of this project as described above
 
-    npm install
-
-Once done and from now on, you simply start it using the standard npm start comand.  Again, before running the command, make sure that you are at the root folder of this project.
+Again, before running the command below, make sure that you are at the root folder of this project.
 
     npm start
 

@@ -12,12 +12,8 @@ export const CurrentInstrumentPage = () => {
     console.log("[CurrentInstrumentPage] Ctx:", ctx);
     return (
         <>
-            <Row>
-                <InstrumentCardView instrument={ctx.currentPreset} dispatch={reducer} />
-            </Row>
-            <Row className="mt-2"> 
+                <InstrumentCardView isPresetModified={ctx.isPresetModified} instrument={ctx.currentPreset} dispatch={reducer} />
                 <ControlMenu />
-            </Row>
         </>
     );
 }
