@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Col, Button } from 'react-bootstrap';
 import { useInstrumentContext } from '../utils/instrumentContext';
 import { InstrumentSelectionPaneView } from './instrumentsViews';
 import * as PtqApi from '../api/pqtApi';
@@ -9,9 +9,9 @@ function TopMenu(props) {
     const [ctx, setCtx] = useState({ show: false, instrName: "Instruments", classes: [] });
     const toggleShow = () => setCtx({ ...ctx, show: !ctx.show });
     return (
-        <div className="bg-primary text-white d-flex justify-content-between sticky-top w-100 mb-2">
-            <Button onClick={toggleShow}>Menu</Button>
-            <Button onClick={(event) => { event.stopPropagation(); PtqApi.switchAB(reducer); }}>A/B Switch</Button>
+        <div className="pt-2 bg-secondary text-white d-flex justify-content-between sticky-top w-100 mb-2">
+            <Button className="m-1" onClick={toggleShow}><strong><i class="bi bi-list"/></strong> Menu</Button>
+            <Button className="m-1" onClick={(event) => { event.stopPropagation(); PtqApi.switchAB(reducer); }}>A/B Switch</Button>
             <InstrumentSelectionPaneView toggleFunction={toggleShow} show={ctx.show} instrumentName={ctx.instrName} classes={ctx.classes} />
         </div>
     );

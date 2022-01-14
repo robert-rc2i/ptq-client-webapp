@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Container } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import * as Parameters from "../domain/parameters";
 import { useInstrumentContext } from "../utils/instrumentContext";
 import { InputSwitch, RangeViewController } from "./inputs";

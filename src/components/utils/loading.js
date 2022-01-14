@@ -1,6 +1,5 @@
 import React from 'react';
 import * as pqtApi from '../api/pqtApi';
-import { factoryPresets } from '../domain/presets';
 
 export default class Loading extends React.Component {
 

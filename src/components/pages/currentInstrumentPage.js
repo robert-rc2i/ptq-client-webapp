@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Tab, Tabs } from 'react-bootstrap';
+import { Tab, Tabs } from 'react-bootstrap';
 import { InstrumentCardView } from '../ui/instrumentsViews';
 import { useInstrumentContext } from '../utils/instrumentContext';
 import { MidiControlCardView } from '../ui/midiControlViews';

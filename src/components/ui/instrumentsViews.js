@@ -117,7 +117,7 @@ export const InstrumentCardView = ({ instrument, dispatch, isPresetModified = fa
                         <div>Current instrument</div>
                         <div className="d-flex justify-content-between">
                             <SavePresetController />
-                            <Button onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.reloadInstrumentAndItsParameters(dispatch) }}>Reload</Button>
+                            <Button onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.reloadInstrumentAndItsParameters(dispatch) }}><strong><i class="lead bi bi-arrow-clockwise"/></strong></Button>
                         </div>
                     </div>
                 </Card.Header>
