@@ -1,5 +1,5 @@
-import React from "react";
-import { Accordion, Button, Card, ListGroup, Offcanvas } from "react-bootstrap";
+import React, { useState } from "react";
+import { Accordion, Button, Card, Form, ListGroup, Modal, Offcanvas } from "react-bootstrap";
 import { getAcousticPianoClasses, getChromaticPercussionClasses, getDrumClasses, getElectricPianoClasses, listPresetsForBank, listInstrumentsForClass, listPresetsForInstruments } from "../domain/presets";
 import { useInstrumentContext } from "../utils/instrumentContext";
 import * as pqtApi from '../api/pqtApi';
@@ -107,15 +107,18 @@ const ListOfPresetsView = ({ presets, onSelected }) => {
     );
 }
 
-export const InstrumentCardView = ({ instrument, dispatch }) => {
+export const InstrumentCardView = ({ instrument, dispatch, isPresetModified = false }) => {
 
     if (instrument) {
         return (
-            <Card>
+            <Card className="mb-2">
                 <Card.Header>
                     <div className="d-flex justify-content-between">
                         <div>Current instrument</div>
-                        <Button onClick={(e) => {e.preventDefault(); e.stopPropagation(); pqtApi.refreshContext(dispatch)}}>Reload</Button>
+                        <div className="d-flex justify-content-between">
+                            <SavePresetController />
+                            <Button onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.reloadInstrumentAndItsParameters(dispatch) }}><strong><i class="lead bi bi-arrow-clockwise"/></strong></Button>
+                        </div>
                     </div>
                 </Card.Header>
                 <Card.Body>
@@ -135,9 +138,55 @@ export const InstrumentRegistrationView = ({ instrument }) => {
         const status = instrument.license_status === "ok" ? "Registered" : "Demo"
         return (
             <>
-                <span><strong>{status}</strong> instrument   , </span>
+                <span><strong>{status}</strong> instrument, </span>
                 <span><strong>Author: </strong>{instrument.author}</span>
             </>
         )
     }
+}
+
+export const SavePresetController = () => {
+    const [ctx, reducer] = useInstrumentContext();
+
+    return ctx.isPresetModified && (<SavePresetControlView preset={ctx.currentPreset} reducer={reducer} />);
+}
+
+export const SavePresetControlView = ({ preset = {}, reducer }) => {
+    const [hasClicked, setHasClicked] = useState(false);
+
+    const onSave = (name) => { setHasClicked(false); pqtApi.savePreset({ name: name, dispatch: reducer }) }
+
+    return (
+        <>
+            {!hasClicked && (<Button className="me-2" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setHasClicked(true); }}>Save</Button>)}
+            {hasClicked && (<ModalSaveView presetName={preset.name} show={hasClicked} handleClose={() => setHasClicked(false)} handleSave={onSave} />)}
+        </>
+
+    );
+}
+
+export const ModalSaveView = ({ show, handleClose, handleSave, presetName = "Not set" }) => {
+    const [pn, setPresetName] = useState(presetName)
+    return (
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <Modal.Title>Save current preset</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <Form.Group className="mb-3" controlId="pnId1">
+                    <Form.Label>Preset name</Form.Label>
+                    <Form.Control type="text" value={pn} placeholder={presetName} onChange={(e) => setPresetName(e.target.value)}/>
+                </Form.Group>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                    Close
+                </Button>
+                <Button variant="primary" onClick={() => handleSave(pn)}>
+                    Save Changes
+                </Button>
+            </Modal.Footer>
+        </Modal>
+    );
+
 }

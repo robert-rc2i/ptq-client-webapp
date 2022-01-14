@@ -1,5 +1,5 @@
 import React from 'react';
-import { Row, Tab, Tabs } from 'react-bootstrap';
+import { Tab, Tabs } from 'react-bootstrap';
 import { InstrumentCardView } from '../ui/instrumentsViews';
 import { useInstrumentContext } from '../utils/instrumentContext';
 import { MidiControlCardView } from '../ui/midiControlViews';
@@ -12,12 +12,8 @@ export const CurrentInstrumentPage = () => {
     console.log("[CurrentInstrumentPage] Ctx:", ctx);
     return (
         <>
-            <Row>
-                <InstrumentCardView instrument={ctx.currentPreset} dispatch={reducer} />
-            </Row>
-            <Row className="mt-2"> 
+                <InstrumentCardView isPresetModified={ctx.isPresetModified} instrument={ctx.currentPreset} dispatch={reducer} />
                 <ControlMenu />
-            </Row>
         </>
     );
 }

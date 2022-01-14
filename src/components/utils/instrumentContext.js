@@ -9,12 +9,13 @@ import { factoryPresets, getInstrumentByName } from '../domain/presets';
  * @param {*} info 
  * @returns 
  */
-export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, currParams=[], info={}}) => {
+export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, currParams=[], info={}, isPresetModified=false}) => {
     return {
         allInstruments: presets,
         currentPreset: currPreset,
-        currentParameters: currParams ? currParams : [],
-        ptqInfo: info
+        currentParameters: currParams,
+        ptqInfo: info,
+        isPresetModified: isPresetModified
     }
 }
 
@@ -27,17 +28,30 @@ export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, 
 const defaultReducer = (currentState, action) => {
     console.log("Reducder command:", action);
     switch (action.type) {
-        case "loadedInstrument":
+        case "loadInstrument":
             return {
                 ...currentState,
-                currentPreset: action.value
+                ptqInfo: action.ptqInfo,
+                currentPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), currentState.allInstruments.presets),
+                currentParameters: action.params,
+                isPresetModified: false
+            }
+        case "savedPreset":
+            return {
+                ...currentState,
+                allInstruments: action.presets,
+                ptqInfo: action.ptqInfo,
+                currentPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), currentState.allInstruments.presets),
+                currentParameters: action.params,
+                isPresetModified: false
             }
         case "initContext":
             return factoryInitialState({
                 presets: action.presets, 
                 currPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), action.presets.presets), 
                 info: action.ptqInfo, 
-                currParams: action.params});
+                currParams: action.params
+            });
         case "refresh":
             return {
                 ...currentState,
@@ -56,10 +70,12 @@ const defaultReducer = (currentState, action) => {
             return {
                 ...currentState,
                 currentParameters: action.params,
+                isPresetModified: action.presetModified
             }
         case "setParameter":
             const newState = {
-                ...currentState
+                ...currentState,
+                isPresetModified: true
             }
             //Assign new value to the desired param
             newState.currentParameters[action.index].text = action.value;
