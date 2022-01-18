@@ -4,7 +4,7 @@ import { getAcousticPianoClasses, getChromaticPercussionClasses, getDrumClasses,
 import { useInstrumentContext } from "../utils/instrumentContext";
 import * as pqtApi from '../api/pqtApi';
 
-export const InstrumentSelectionPaneView = ({ show, classes, toggleFunction }) => {
+export const InstrumentSelectionPaneView = ({ show, toggleFunction }) => {
     const [ctx] = useInstrumentContext();
 
     return (
@@ -98,7 +98,6 @@ const ListOfPresetsView = ({ presets, onSelected }) => {
     return (
         <ListGroup>
             {presets.map((preset, idx) => {
-                console.log("My Preset:", preset);
                 return (
                     <ListGroup.Item key={idx} onClick={(event) => { event.preventDefault(); event.stopPropagation(); onSelected(); pqtApi.loadPreset({ name: preset.name, bank: preset.bank, dispatch: dispatch }); }}>{preset.name}</ListGroup.Item>
                 )
@@ -117,7 +116,7 @@ export const InstrumentCardView = ({ instrument, dispatch, isPresetModified = fa
                         <div>Current instrument</div>
                         <div className="d-flex justify-content-between">
                             <SavePresetController />
-                            <Button onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.reloadInstrumentAndItsParameters(dispatch) }}><strong><i class="lead bi bi-arrow-clockwise"/></strong></Button>
+                            <Button onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.reloadInstrumentAndItsParameters(dispatch) }}><strong><i className="bi bi-arrow-counterclockwise"></i></strong></Button>
                         </div>
                     </div>
                 </Card.Header>

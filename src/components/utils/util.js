@@ -4,6 +4,5 @@
  */
 export function convertToNumber(numToConvert) {
     const value = Number.parseInt(numToConvert);
-    console.log("status value", value);
     return Number.isNaN(value) ? 400 : value;
 }

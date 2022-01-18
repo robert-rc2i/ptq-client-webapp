@@ -12,27 +12,21 @@ export const CurrentInstrumentPage = () => {
     console.log("[CurrentInstrumentPage] Ctx:", ctx);
     return (
         <>
-                <InstrumentCardView isPresetModified={ctx.isPresetModified} instrument={ctx.currentPreset} dispatch={reducer} />
-                <ControlMenu />
+            <InstrumentCardView isPresetModified={ctx.isPresetModified} instrument={ctx.currentPreset} dispatch={reducer} />
+            <Tabs defaultActiveKey="midi" id="uncontrolled-tab-example" className="mb-3">
+                <Tab eventKey="midi" title="Midi">
+                    <MidiControlCardView />
+                </Tab>
+                <Tab eventKey="output" title="Output">
+                    <OutputCardView />
+                </Tab>
+                <Tab eventKey="voicing" title="Voicing" >
+                    <VoicingTabView />
+                </Tab>
+                <Tab eventKey="effects" title="Effects" >
+                    <EffectsTabView />
+                </Tab>
+            </Tabs>
         </>
-    );
-}
-
-const ControlMenu = () => {
-    return (
-        <Tabs defaultActiveKey="midi" id="uncontrolled-tab-example" className="mb-3">
-            <Tab eventKey="midi" title="Midi">
-                <MidiControlCardView />
-            </Tab>
-            <Tab eventKey="output" title="Output">
-                <OutputCardView />
-            </Tab>
-            <Tab eventKey="voicing" title="Voicing" >
-                <VoicingTabView />
-            </Tab>
-            <Tab eventKey="effects" title="Effects" >
-                <EffectsTabView />
-            </Tab>
-        </Tabs>
     );
 }

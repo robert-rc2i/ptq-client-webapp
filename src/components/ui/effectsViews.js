@@ -36,31 +36,31 @@ export const EffectsTabView = () => {
     )
 }
 
-export const FxGainView = ({ fxGain, dispatch }) => {
+const FxGainView = ({ fxGain, dispatch }) => {
     return (
-        <RangeViewController label="Post Effect Gain" name="fxGain" min={-12} max={12} step={0.2} value={Number.parseFloat(fxGain)} paramIdx={22} dispatch={dispatch} apiCallback={PtqApi.setFxGain}/>
+        <RangeViewController label="Post Effect Gain" name="fxGain" min={-12} max={12} step={0.2} value={Number.parseFloat(fxGain)} paramIdx={22} dispatch={dispatch} apiCallback={PtqApi.setFxGain} />
     );
 }
 
-export const DelayEffectView = ({ delayState, dispatch }) => {
+const DelayEffectView = ({ delayState, dispatch }) => {
     return (
-        <InputSwitch name="delay" label="Delay" isChecked={delayState} onClick={(v) => {PtqApi.setDelayEffectSwitch(v, dispatch) }} />
+        <InputSwitch name="delay" label="Delay" isChecked={delayState} onClick={(v) => { PtqApi.setDelayEffectSwitch(v, dispatch) }} />
     );
 }
 
-export const Eq31EffectView = ({ eqState, dispatch }) => {
+const Eq31EffectView = ({ eqState, dispatch }) => {
     return (
         <InputSwitch name="eq1" label="EQ #1" isChecked={eqState} onClick={(v) => { PtqApi.setEq1EffectSwitch(v, dispatch) }} />
     );
 }
 
-export const Eq32EffectView = ({ eqState, dispatch }) => {
+const Eq32EffectView = ({ eqState, dispatch }) => {
     return (
         <InputSwitch name="eq2" label="EQ #2" isChecked={eqState} onClick={(v) => { PtqApi.setEq2EffectSwitch(v, dispatch) }} />
     );
 }
 
-export const ReverbEffectView = ({ reverbState, dispatch }) => {
+const ReverbEffectView = ({ reverbState, dispatch }) => {
     return (
         <InputSwitch name="reverb" label="Reverb" isChecked={reverbState} onClick={(v) => { PtqApi.setReverb(v, dispatch) }} />
     );
