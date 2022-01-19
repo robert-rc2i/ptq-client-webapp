@@ -12,7 +12,7 @@ export const CurrentInstrumentPage = () => {
     console.log("[CurrentInstrumentPage] Ctx:", ctx);
     return (
         <>
-            <InstrumentCardView isPresetModified={ctx.isPresetModified} instrument={ctx.currentPreset} dispatch={reducer} />
+            <InstrumentCardView instrument={ctx.currentPreset} dispatch={reducer} />
             <Tabs defaultActiveKey="midi" id="uncontrolled-tab-example" className="mb-3">
                 <Tab eventKey="midi" title="Midi">
                     <MidiControlCardView />

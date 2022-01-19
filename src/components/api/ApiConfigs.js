@@ -12,7 +12,8 @@ if (process.env.REACT_APP_Environnement === "PROD") {
     pianoteqUrl = "/jsonrpc";
 }
 
-export const apiBaseUrl = pianoteqUrl;
+// Expose the URL stored locally first, otherwise take the default one from above
+export const apiBaseUrl = window.localStorage.getItem("ptqUrl") ? window.localStorage.getItem("ptqUrl") : pianoteqUrl;
 
 console.log("Environement: ", process.env.REACT_APP_Environnement);
 console.log("ApiConfigs - Private & public base url:", apiBaseUrl);

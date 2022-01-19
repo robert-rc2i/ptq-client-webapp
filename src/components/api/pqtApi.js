@@ -1,5 +1,5 @@
 import { factoryPresets } from '../domain/presets';
-import { ApiHelper } from './RestHelper';
+import { ApiHelper, NetworkError } from './RestHelper';
 
 function factoryCommand(cmd="list", params=[], jsonrpc="2.0") {
     return {
@@ -14,14 +14,19 @@ export async function postCommand(cmd = "list", params=[], jsonrpc="2.0" ) {
         if (apiResp.status < 400) {
             return Promise.resolve(apiResp.dataObject);
         }
+        console.log("API: Error", apiResp, apiResp.dataObject);
         return Promise.reject(apiResp.dataObject);
     }).catch((error) => {
-        if (error.dataObject) {
+        if (error.dataObject && error.dataObject.error) {
             //Api Error
-            return Promise.reject(error.dataObject);
+            const apiError = new NetworkError(error.dataObject.error.code, error.dataObject.error.message);
+            console.log("API: Error", apiError);
+            return Promise.reject(apiError);
         }
         //Network error
-        return Promise.reject(error);
+        const netError = new NetworkError(-1, error.toString());
+        console.log("Network: Error", netError);
+        return Promise.reject(netError);
     });
 }
 
@@ -31,9 +36,10 @@ export async function getAllPresets(dispatch) {
                 dispatch({type:"loadedAllPresets", presets: factoryPresets(response.result)});
             }
             return Promise.resolve(factoryPresets(response.result));
-        }).catch((err) => {
-            console.log("Error loading presets", err);
-            return Promise.reject(err);
+        }).catch(error => {
+            const netError = new NetworkError(-1, error.toString());
+            console.log("Error", netError);
+            return Promise.reject(netError);
         });
 }
 
@@ -68,12 +74,25 @@ export async function savePreset({name="My new preset", bank="My Presets", dispa
  * This method should be called on initial app start or after saving a preset.
  */
 export async function refreshCurrentContext( dispatch ) {
-    const info = await getInfo();
-    const params = await getParams();
-    const allPresets = await getAllPresets();
+    let params = [], allPresets = [], apiError = null;
+    const info = await getInfo().then( async (i) => {
+        return Promise.resolve(i);
+    }).catch((e) => {
+        apiError = e;
+    });
+
+    if (info) {
+        console.log("Info", info);
+        params = await getParams();
+        allPresets = await getAllPresets();
+    }
 
     if (dispatch) {
-        dispatch({type: "initContext", presets: allPresets, ptqInfo: info, params: params});
+        if (apiError) {
+            dispatch({type: "apiError", error: apiError});
+            return {info, params, allPresets};
+        }
+        dispatch({type: "initContext", presets: allPresets, ptqInfo: info, params: params, error: null});
     }
 
     return {info, params, allPresets};
@@ -85,8 +104,11 @@ export async function getInfo(dispatch) {
             dispatch({type: "info", ptqInfo: response.result[0]});
         }
         return Promise.resolve(response.result[0]);
+    }).catch(error => {
+        return Promise.reject(error);
     });
 }
+
 export async function switchAB(dispatch = null) {
     await postCommand("abSwitch");
     return reloadInstrumentAndItsParameters(dispatch);
@@ -98,7 +120,11 @@ export async function getParams(dispatch = null, isModified=false) {
             dispatch({type: "loadParameters", params: response.result, presetModified: isModified});
         }
         return Promise.resolve(response.result);
-    })
+    }).catch(error => {
+        const netError = new NetworkError(-1, error.toString());
+        console.log("Error", netError);
+        return Promise.reject(netError);
+    });
 }
 
 export async function reloadInstrumentAndItsParameters(dispatch = null) {

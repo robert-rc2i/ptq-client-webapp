@@ -99,7 +99,7 @@ const ListOfPresetsView = ({ presets, onSelected }) => {
     );
 }
 
-export const InstrumentCardView = ({ instrument, dispatch, isPresetModified = false }) => {
+export const InstrumentCardView = ({ instrument, dispatch }) => {
 
     if (instrument) {
         return (
@@ -109,7 +109,7 @@ export const InstrumentCardView = ({ instrument, dispatch, isPresetModified = fa
                         <div>Current instrument</div>
                         <div className="d-flex justify-content-between">
                             <SavePresetController />
-                            <Button onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.reloadInstrumentAndItsParameters(dispatch) }}><strong><i className="bi bi-arrow-counterclockwise"></i></strong></Button>
+                            <Button onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.reloadInstrumentAndItsParameters(dispatch) }}><strong><i className="lead bi bi-arrow-counterclockwise"/></strong></Button>
                         </div>
                     </div>
                 </Card.Header>

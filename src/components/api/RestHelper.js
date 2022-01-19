@@ -17,6 +17,14 @@ class FetchHelperComponent {
     auth0Client = null;
 
     /**
+     * 
+     * @param {URL} urlValue of the running Pianoteq instance of their API
+     */
+    setApiBaseUrl(urlValue) {
+        this.apiBaseUrl = urlValue;
+    }
+
+    /**
      * Utility method to make a GET API request
      * @param {String} url is the API URL. This URL will be appended to the baseUrl define in this instance
      */
@@ -120,6 +128,14 @@ export class ApiResponse {
      */
     isOk() {
         return this.status >= HTTPStatusCode.SUCCESS_OK && this.status < HTTPStatusCode.REDIRECT_MultipleChoice;
+    }
+}
+
+export class NetworkError  {
+    constructor(errorCode, errorMessage) {
+        this.code = errorCode;
+        this.message = errorMessage;
+        this.time = Date.now();
     }
 }
 
