@@ -72,22 +72,32 @@ class FetchHelperComponent {
             "Accept": "application/json",
             ...headersValue
         }
+        
+        //Controller to user to timeout the request if it exceed a defined timelapse
+        const controller = new AbortController();
+        const id = setTimeout(() => controller.abort(), 3000); //Timeout after 3sec (3000 ms)
 
         return fetch(urlValue, {
             body: bodyObj ? JSON.stringify(bodyObj) : null,
             method: methodValue,
             headers: aggregatedHeaders,
-            mode: 'cors'
+            mode: 'cors',
+            signal: controller.signal
             //credentials: 'same-origin'
         }).then(async (resp) => {
-            // const apiResponse = new ApiResponse(resp.status, resp.statusText, resp.url, await resp.json());
+            //Clear the timeout, as we got the response in time.
+            clearTimeout(id);
+
+            //Process response or API error
             if (resp.ok) { // HTTP code in rage between 200 to 299
                 return Promise.resolve(new ApiResponse(resp.status, resp.statusText, resp.url, await resp.json()));
             } if (resp.status === 401) {
                 return Promise.reject(new ApiResponse(resp.status, resp.statusText, resp.url));
             }
+
             return Promise.reject(new ApiResponse(resp.status, resp.statusText, resp.url, await resp.json()));
         }).catch((error) => {
+            clearTimeout(id);
             return Promise.reject(error);
         });
     }

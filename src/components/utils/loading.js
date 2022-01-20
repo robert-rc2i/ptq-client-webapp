@@ -39,7 +39,7 @@ export function ErrorMessage() {
 
 export function Initializing() {
     return (
-        <div class="d-flex justify-content-center">
+        <div className="d-flex justify-content-center">
             <span>Loading... <Spinner animation="border" role="status" /></span>
         </div>
     );
