@@ -1,52 +1,45 @@
 import React, { useState } from "react";
-import { Accordion, Button, Card, Form, ListGroup, Modal, Offcanvas } from "react-bootstrap";
+import { Accordion, Button, Card, Form, ListGroup, Modal } from "react-bootstrap";
 import { getAcousticPianoClasses, getChromaticPercussionClasses, getDrumClasses, getElectricPianoClasses, listPresetsForBank, listInstrumentsForClass, listPresetsForInstruments } from "../domain/presets";
 import { useInstrumentContext } from "../utils/instrumentContext";
 import * as pqtApi from '../api/pqtApi';
 
-export const InstrumentSelectionPaneView = ({ show, classes, toggleFunction }) => {
+export const InstrumentSelectionPaneView = ({toggleFunction }) => {
     const [ctx] = useInstrumentContext();
 
     return (
-        <Offcanvas show={show} onHide={toggleFunction}>
-            <Offcanvas.Header closeButton>
-                <Offcanvas.Title>Instrument selection</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-                <Accordion>
-                    <Accordion.Item eventKey="0">
-                        <Accordion.Header>My presets</Accordion.Header>
-                        <Accordion.Body>
-                            <AccordionInstrumentsForBank presets={ctx.allInstruments.presets} toggleView={toggleFunction} />
-                        </Accordion.Body>
-                    </Accordion.Item>
-                    <Accordion.Item eventKey="1">
-                        <Accordion.Header>Acoustic pianos</Accordion.Header>
-                        <Accordion.Body>
-                            <AccordionInstrumentsForClasses classNames={getAcousticPianoClasses()} presets={ctx.allInstruments.presets} toggleView={toggleFunction} />
-                        </Accordion.Body>
-                    </Accordion.Item>
-                    <Accordion.Item eventKey="2">
-                        <Accordion.Header>Electric pianos</Accordion.Header>
-                        <Accordion.Body>
-                            <AccordionInstrumentsForClasses classNames={getElectricPianoClasses()} presets={ctx.allInstruments.presets} toggleView={toggleFunction} />
-                        </Accordion.Body>
-                    </Accordion.Item>
-                    <Accordion.Item eventKey="3">
-                        <Accordion.Header>Chromatic percussions</Accordion.Header>
-                        <Accordion.Body>
-                            <AccordionInstrumentsForClasses classNames={getChromaticPercussionClasses()} presets={ctx.allInstruments.presets} toggleView={toggleFunction} />
-                        </Accordion.Body>
-                    </Accordion.Item>
-                    <Accordion.Item eventKey="4">
-                        <Accordion.Header>Drums</Accordion.Header>
-                        <Accordion.Body>
-                            <AccordionInstrumentsForClasses classNames={getDrumClasses()} presets={ctx.allInstruments.presets} toggleView={toggleFunction} />
-                        </Accordion.Body>
-                    </Accordion.Item>
-                </Accordion>
-            </Offcanvas.Body>
-        </Offcanvas>
+        <Accordion>
+            <Accordion.Item eventKey="0">
+                <Accordion.Header>My presets</Accordion.Header>
+                <Accordion.Body>
+                    <AccordionInstrumentsForBank presets={ctx.allInstruments.presets} toggleView={toggleFunction} />
+                </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="1">
+                <Accordion.Header>Acoustic pianos</Accordion.Header>
+                <Accordion.Body>
+                    <AccordionInstrumentsForClasses classNames={getAcousticPianoClasses()} presets={ctx.allInstruments.presets} toggleView={toggleFunction} />
+                </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="2">
+                <Accordion.Header>Electric pianos</Accordion.Header>
+                <Accordion.Body>
+                    <AccordionInstrumentsForClasses classNames={getElectricPianoClasses()} presets={ctx.allInstruments.presets} toggleView={toggleFunction} />
+                </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="3">
+                <Accordion.Header>Chromatic percussions</Accordion.Header>
+                <Accordion.Body>
+                    <AccordionInstrumentsForClasses classNames={getChromaticPercussionClasses()} presets={ctx.allInstruments.presets} toggleView={toggleFunction} />
+                </Accordion.Body>
+            </Accordion.Item>
+            <Accordion.Item eventKey="4">
+                <Accordion.Header>Drums</Accordion.Header>
+                <Accordion.Body>
+                    <AccordionInstrumentsForClasses classNames={getDrumClasses()} presets={ctx.allInstruments.presets} toggleView={toggleFunction} />
+                </Accordion.Body>
+            </Accordion.Item>
+        </Accordion>
     );
 }
 
@@ -98,7 +91,6 @@ const ListOfPresetsView = ({ presets, onSelected }) => {
     return (
         <ListGroup>
             {presets.map((preset, idx) => {
-                console.log("My Preset:", preset);
                 return (
                     <ListGroup.Item key={idx} onClick={(event) => { event.preventDefault(); event.stopPropagation(); onSelected(); pqtApi.loadPreset({ name: preset.name, bank: preset.bank, dispatch: dispatch }); }}>{preset.name}</ListGroup.Item>
                 )
@@ -107,7 +99,7 @@ const ListOfPresetsView = ({ presets, onSelected }) => {
     );
 }
 
-export const InstrumentCardView = ({ instrument, dispatch, isPresetModified = false }) => {
+export const InstrumentCardView = ({ instrument, dispatch }) => {
 
     if (instrument) {
         return (
@@ -117,7 +109,7 @@ export const InstrumentCardView = ({ instrument, dispatch, isPresetModified = fa
                         <div>Current instrument</div>
                         <div className="d-flex justify-content-between">
                             <SavePresetController />
-                            <Button onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.reloadInstrumentAndItsParameters(dispatch) }}><strong><i class="lead bi bi-arrow-clockwise"/></strong></Button>
+                            <Button onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.reloadInstrumentAndItsParameters(dispatch) }}><strong><i className="lead bi bi-arrow-counterclockwise"/></strong></Button>
                         </div>
                     </div>
                 </Card.Header>
@@ -175,7 +167,7 @@ export const ModalSaveView = ({ show, handleClose, handleSave, presetName = "Not
             <Modal.Body>
                 <Form.Group className="mb-3" controlId="pnId1">
                     <Form.Label>Preset name</Form.Label>
-                    <Form.Control type="text" value={pn} placeholder={presetName} onChange={(e) => setPresetName(e.target.value)}/>
+                    <Form.Control type="text" value={pn} placeholder={presetName} onChange={(e) => setPresetName(e.target.value)} />
                 </Form.Group>
             </Modal.Body>
             <Modal.Footer>

@@ -52,6 +52,12 @@ const defaultReducer = (currentState, action) => {
                 info: action.ptqInfo, 
                 currParams: action.params
             });
+        case "apiError": {
+            return {
+                ...factoryInitialState({}),
+                error: action.error
+            } 
+        }
         case "refresh":
             return {
                 ...currentState,

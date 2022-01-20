@@ -13,17 +13,17 @@ export const MidiControlCardView = () => {
     );
 }
 
-export const MidiControlPannel = () => {
+const MidiControlPannel = () => {
     return (
         <>
             <p>No feedback is provided by Pianoteq.  So, it is impossible to know if a recording is on or not.</p>
             <div className="mb-5 d-flex justify-content-center">
-                <Button className="me-3" onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.stopMidiRecord(); }}><strong><i class="lead bi bi-stop-circle"/></strong> Stop</Button>
-                <Button className="me-3" onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.playMidi(); }}><strong><i class="lead bi bi-play-circle"/></strong> Play</Button>
-                <Button onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.rewindMidi(); }}><strong><i class="lead bi bi-skip-backward-circle"/></strong> Rewind</Button>
+                <Button className="me-3" onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.stopMidiRecord(); }}><strong><i className="lead bi bi-stop-fill"/></strong> Stop</Button>
+                <Button className="me-3" onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.playMidi(); }}><strong><i className="lead bi bi-play-fill"/></strong> Play</Button>
+                <Button onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.rewindMidi(); }}><strong><i className="lead bi bi-skip-backward-fill"/></strong> Rewind</Button>
             </div>
             <div className="d-flex justify-content-around">
-                <Button onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.recordMidi(); }}><strong><i class="lead bi bi-record-circle"/></strong> Record</Button>
+                <Button onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.recordMidi(); }}><strong><i className="lead bi bi-record-fill"/></strong> Record</Button>
             </div>
         </>
     )

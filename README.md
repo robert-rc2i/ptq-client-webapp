@@ -4,14 +4,24 @@ This project allows you to control your Pianoteq instance from any browser (Safa
 
 This is the first version, which is limited to the following:
 
-* Load any presets
-* Switch A/B presets
-* Control MIDI
-    * Record, stop, play and rewind.
+*  midi controls
+*  Volume and dynamics controls
+*  Voicing controls
+*  Effects controls
+*  Instrument loading
+*  Saving a modified preset
+*  Reloading an instrument (Useful, when you make changes to Pianoteq directly)
+*  A/B Switching
+
+### Some screenshots
+
+> ![Midi controls](https://i.imgur.com/WnOljWL.jpg?1) ![Voicing controls](https://i.imgur.com/veORPFI.jpg?1)  ![Output controls](https://i.imgur.com/sWXriNI.jpg?1)
+
 
 ## Requirements
 
-Node has to be installed on your computer for this to work, as I make use of it to serve the single page application.  Also note that node will proxy the JsonRPC to Pianoteq, otherwise CORS issue will arise without it.
+* Git - Usually git is install by default on most operating systems
+* Node - Node has to be installed on your computer for this to work, as I make use of it to serve the single page application.  Also note that node will proxy the JsonRPC to Pianoteq, otherwise CORS issue will arise without it.
 
 ### How to install node on Mac / Windows
 Visit the node webpage [here](https://nodejs.dev) 
@@ -40,7 +50,7 @@ Now, you need to make sure that the project's dependencies are installed. Before
     npm install
 
 ### Upgrade to latest version
-Launch the following commands in the project folder
+This is only necessary, when there is a new version of the app.  For this, you simply launch the following commands in the project folder
 
      git pull origin master
      npm install
@@ -61,6 +71,8 @@ That being said, you need to have Pianoteq launched with the proper flag and por
 
 * On Mac - `/Applications/Pianoteq\ 7/Pianoteq\ 7.app/Contents/MacOS/Pianoteq\ 7 --serve 8081`
 * On PC - `C:\Program Files\Modartt\Pianoteq 7>"Pianoteq 7.exe" --serve 8081`
+
+> *Note:* You need to replace the **ip.address.here** with the ip address of your device
 
 If you want a different port, simply change it on the command line to launch Pianoteq and the package.json file in the proxy param.
 
