@@ -22,6 +22,16 @@ This is the first version, which is limited to the following:
 
 * Git - Usually git is install by default on most operating systems
 * Node - Node has to be installed on your computer for this to work, as I make use of it to serve the single page application.  Also note that node will proxy the JsonRPC to Pianoteq, otherwise CORS issue will arise without it.
+* Pianoteq running on a reachable device
+
+### Running Pianoteq from the command line
+
+* On Mac - `/Applications/Pianoteq\ 7/Pianoteq\ 7.app/Contents/MacOS/Pianoteq\ 7 --serve ip.address.of.device:8081`
+* On PC - `C:\Program Files\Modartt\Pianoteq 7>"Pianoteq 7.exe" --serve ip.address.of.device:8081`
+
+> *Note:* You need to replace the **ip.address.of.device** with the ip address of your device.  We need to specify the ip address, otherwise it will cause CORS issues with the application.
+
+If you want a different port, simply change it on the command line to launch Pianoteq and change the proxy param accordingly in the package.json file.  This is only necessary if you start it in development mode
 
 ### How to install node on Mac / Windows
 Visit the node webpage [here](https://nodejs.dev) 
@@ -39,18 +49,13 @@ Visit the [git repo](https://github.com/nodesource/distributions) of nodesource 
 In the folder of your choice, launch the following command from a terminal window.
 
     git clone https://robert-rc2i@bitbucket.org/robert-rc2i/ptq-client-webapp.git
-
-
-This will create a new folder named `ptq-client-webapp`.  Before going any further, make sure to change to that newly created folder.
-
     cd ptq-client-webapp
-
-Now, you need to make sure that the project's dependencies are installed. Before running the command, make sure that you are at the root folder of this project as described above
-
     npm install
 
+This will create a new folder named `ptq-client-webapp` and will install all required dependencies of this projects.  
+
 ### Upgrade to latest version
-This is only necessary, when there is a new version of the app.  For this, you simply launch the following commands in the project folder
+This is only necessary, when there is a new version of the app.  For this, you simply launch the following commands in the project root folder
 
      git pull origin master
      npm install
@@ -58,6 +63,9 @@ This is only necessary, when there is a new version of the app.  For this, you s
 This will replace your current project with the latest changes from the git repo and install any new dependencies that the project may have added
 
 ## How to start
+You can run this software in two mode.  A self contained mode, which does not require any other software to run or deploy to a webserver of your choice
+
+### Self contain mode
 
 Again, before running the command below, make sure that you are at the root folder of this project.
 
@@ -67,14 +75,15 @@ This will try to open your default browser to localhost:3000.  To access it remo
 
     http://your.ip.address:3000
 
-That being said, you need to have Pianoteq launched with the proper flag and port like so.
+That being said, you need to have Pianoteq launched with the ip address of the device that it is on and proper flag and port as describe in the requirements section.
 
-* On Mac - `/Applications/Pianoteq\ 7/Pianoteq\ 7.app/Contents/MacOS/Pianoteq\ 7 --serve 8081`
-* On PC - `C:\Program Files\Modartt\Pianoteq 7>"Pianoteq 7.exe" --serve 8081`
+### Deploy to a web server
 
-> *Note:* You need to replace the **ip.address.here** with the ip address of your device
+Before you can deploy the app, you need to build a deplyable package.  For this, you simply run the following command from the root folder of this project
 
-If you want a different port, simply change it on the command line to launch Pianoteq and the package.json file in the proxy param.
+    npm run build
+
+Once done, you will have a folder call build.  You simply need to copy the content of this folder to your web server of choice.  See your webserve's documentation to kno w how.
 
 ## Final note
 I am not affiliated with Modartt.  All references to Modartt are governed by their trademark and licences
