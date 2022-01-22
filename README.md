@@ -48,7 +48,7 @@ Visit the [git repo](https://github.com/nodesource/distributions) of nodesource 
 ### First install
 In the folder of your choice, launch the following command from a terminal window.
 
-    git clone https://robert-rc2i@bitbucket.org/robert-rc2i/ptq-client-webapp.git
+    git clone https://github.com/robert-rc2i/ptq-client-webapp.git
     cd ptq-client-webapp
     npm install
 
@@ -57,7 +57,7 @@ This will create a new folder named `ptq-client-webapp` and will install all req
 ### Upgrade to latest version
 This is only necessary when there is a new version of the app.  For this, you simply launch the following commands in the project root folder
 
-     git pull origin master
+     git pull origin main
      npm install
 
 This will replace your current project with the latest changes from the git repo and install any new dependencies that the project may have added
