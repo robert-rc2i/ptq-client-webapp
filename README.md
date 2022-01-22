@@ -26,7 +26,7 @@ This is the first version, which is limited to the following:
 
 ### Running Pianoteq from the command line
 
-* On Mac - `/Applications/Pianoteq\ 7/Pianoteq\ 7.app/Contents/MacOS/Pianoteq\ 7 --serve ip.address.of.device:8081`
+* On Mac - `open /Applications/Pianoteq\ 7/Pianoteq\ 7.app --args --serve ip.address.of.device:8081`
 * On PC - `C:\Program Files\Modartt\Pianoteq 7>"Pianoteq 7.exe" --serve ip.address.of.device:8081`
 
 > *Note:* You need to replace the **ip.address.of.device** with the ip address of your device.  We need to specify the ip address, otherwise it will cause CORS issues with the application.
