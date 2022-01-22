@@ -57,7 +57,7 @@ This will create a new folder named `ptq-client-webapp` and will install all req
 ### Upgrade to latest version
 This is only necessary when there is a new version of the app.  For this, you simply launch the following commands in the project root folder
 
-     git pull origin master
+     git pull origin main
      npm install
 
 This will replace your current project with the latest changes from the git repo and install any new dependencies that the project may have added
