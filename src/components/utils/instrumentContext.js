@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
+import { factoryMetronomeObject } from '../domain/metronome';
 import { factoryPresets, getInstrumentByName } from '../domain/presets';
 
 /**
@@ -9,13 +10,14 @@ import { factoryPresets, getInstrumentByName } from '../domain/presets';
  * @param {*} info 
  * @returns 
  */
-export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, currParams=[], info={}, isPresetModified=false}) => {
+export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, currParams=[], info={}, isPresetModified=false, metronome=factoryMetronomeObject()}) => {
     return {
         allInstruments: presets,
         currentPreset: currPreset,
         currentParameters: currParams,
         ptqInfo: info,
-        isPresetModified: isPresetModified
+        isPresetModified: isPresetModified,
+        metronome: metronome
     }
 }
 
@@ -50,8 +52,14 @@ const defaultReducer = (currentState, action) => {
                 presets: action.presets, 
                 currPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), action.presets.presets), 
                 info: action.ptqInfo, 
-                currParams: action.params
+                currParams: action.params,
+                metronome: action.metronome
             });
+        case "setMetronome":
+            return {
+                ...currentState,
+                metronome: action.value
+            }
         case "apiError": {
             return {
                 ...factoryInitialState({}),

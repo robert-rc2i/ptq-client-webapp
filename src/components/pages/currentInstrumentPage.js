@@ -6,6 +6,7 @@ import { MidiControlCardView } from '../ui/midiControlViews';
 import { OutputCardView } from '../ui/outputViews';
 import { EffectsTabView } from '../ui/effectsViews';
 import { VoicingTabView } from '../ui/voicing';
+import { MetronomeTabView } from '../ui/metronomeViews';
 
 export const CurrentInstrumentPage = () => {
     const [ctx, reducer] = useInstrumentContext();
@@ -25,6 +26,9 @@ export const CurrentInstrumentPage = () => {
                 </Tab>
                 <Tab eventKey="effects" title="Effects" >
                     <EffectsTabView />
+                </Tab>
+                <Tab eventKey="metronome" title="Metronome" >
+                    <MetronomeTabView />
                 </Tab>
             </Tabs>
         </>
