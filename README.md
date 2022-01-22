@@ -48,7 +48,7 @@ Visit the [git repo](https://github.com/nodesource/distributions) of nodesource 
 ### First install
 In the folder of your choice, launch the following command from a terminal window.
 
-    git clone https://robert-rc2i@bitbucket.org/robert-rc2i/ptq-client-webapp.git
+    git clone https://github.com/robert-rc2i/ptq-client-webapp.git
     cd ptq-client-webapp
     npm install
 
