@@ -16,7 +16,7 @@ export const VoicingTabView = () => {
     const softPedal = Parameters.getSoftPedalSmoothing(ctx.currentParameters);
 
     return (
-        <div>
+        <>
             <Card className="mb-2">
                 <Card.Header>Hammer settings</Card.Header>
                 <Card.Body>
@@ -29,10 +29,9 @@ export const VoicingTabView = () => {
             <Card className="mb-2">
                 <Card.Header>Pedal settings</Card.Header>
                 <Card.Body>
-                   
                     <RangeViewController label="Soft pedal smoothing" name="softPedal" min={0} max={1} step={0.01} value={softPedal} paramIdx={42} dispatch={reducer} apiCallback={PtqApi.setSoftPedalSmoothing} />
                 </Card.Body>
             </Card>
-        </div>
+        </>
     )
 }

@@ -1,29 +1,39 @@
-import React from "react";
-import { Button, Card, Dropdown } from "react-bootstrap";
+import React, { useState } from "react";
+import { Button, Dropdown, Modal } from "react-bootstrap";
 import * as PtqApi from "../api/pqtApi";
 import { useInstrumentContext } from "../utils/instrumentContext";
 import { RenderBasedOnApiVersion } from "../utils/loading";
 import { InputSwitch, RangeViewController } from "./inputs";
 
-function isActive(expectedValue, value) {
-    return expectedValue === value;
+export const MetronomeControlerButtonView = () => {
+    const [hasClicked, setHasClicked] = useState(false);
+
+    const onClose = () => { setHasClicked(!hasClicked); }
+
+    return (
+        <>
+            <Button className="mx-2 mb-2 ps-2 pe-1 py-0" onTouchEnd={onClose} onClick={onClose}><img alt="metronome" src="/assets/metronome-white.png" /></Button>
+            {hasClicked && (<MetronomeModalView show={hasClicked} handleClose={onClose} />)}
+        </>
+
+    );
 }
 
-export const MetronomeTabView = () => {
+export const MetronomeModalView = ({ show = false, handleClose }) => {
     const [ctx, reducer] = useInstrumentContext();
 
     const metronomeState = ctx.metronome;
 
     return (
         <RenderBasedOnApiVersion requiredVersion="7.5.3" currentVersion={ctx.ptqInfo.version}>
-            <Card>
-                <Card.Header>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
                     <div className="d-flex flex-row justify-content-between">
+                    <InputSwitch name="metronome" label="" isChecked={metronomeState.enabled} onClick={(v) => { PtqApi.setMetronome({ ...metronomeState, enabled: v }, reducer) }} />
                         <div>Metronome</div>
-                        <InputSwitch name="metronome" label="" isChecked={metronomeState.enabled} onClick={(v) => { PtqApi.setMetronome({ ...metronomeState, enabled: v }, reducer) }} />
                     </div>
-                </Card.Header>
-                <Card.Body>
+                </Modal.Header>
+                <Modal.Body>
                     <div className="mb-2 d-flex flex-row justify-content-between">
                         <Dropdown onSelect={(ts) => { PtqApi.setMetronome({ ...metronomeState, timesig: ts }, reducer) }}>
                             <Dropdown.Toggle id="dropdown-basic">
@@ -53,8 +63,11 @@ export const MetronomeTabView = () => {
                         <RangeViewController disabled={true} label="Tempo" name="bpm" min={24} max={360} step={1} value={metronomeState.bpm} paramIdx={21} dispatch={reducer} onChange={(v) => reducer({ type: "setMetronome", value: { ...metronomeState, bpm: v } })} apiCallback={(v, r) => { PtqApi.setMetronome({ ...metronomeState, volume_db: v }, r) }} />
                     </div>
                     <p className="text-muted">Volume and tempo are disabled for now, as there is an issue with the current verison of Pianoteq's API.</p>
-                </Card.Body>
-            </Card>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>Close</Button>
+                </Modal.Footer>
+            </Modal>
         </RenderBasedOnApiVersion>
     )
 }

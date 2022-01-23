@@ -4,7 +4,7 @@ import { getAcousticPianoClasses, getChromaticPercussionClasses, getDrumClasses,
 import { useInstrumentContext } from "../utils/instrumentContext";
 import * as pqtApi from '../api/pqtApi';
 
-export const InstrumentSelectionPaneView = ({toggleFunction }) => {
+export const InstrumentSelectionPaneView = ({ toggleFunction }) => {
     const [ctx] = useInstrumentContext();
 
     return (
@@ -105,16 +105,16 @@ export const InstrumentCardView = ({ instrument, dispatch }) => {
         return (
             <Card className="mb-2">
                 <Card.Header>
-                    <div className="d-flex justify-content-between">
-                        <div>Current instrument</div>
+                    <>
                         <div className="d-flex justify-content-between">
-                            <SavePresetController />
-                            <Button onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.reloadInstrumentAndItsParameters(dispatch) }}><strong><i className="lead bi bi-arrow-counterclockwise"/></strong></Button>
+                            <div><Button className="m-2" onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.reloadInstrumentAndItsParameters(dispatch) }}><strong><i className="lead bi bi-arrow-counterclockwise" /></strong></Button> Current instrument</div>
+                            <Button className="m-2" onClick={(event) => { event.stopPropagation(); pqtApi.switchAB(dispatch); }}><strong><i className="bi bi-arrow-left-right"></i></strong> A/B</Button>
                         </div>
-                    </div>
+                        
+                    </>
                 </Card.Header>
                 <Card.Body>
-                    <Card.Title>{instrument.name}</Card.Title>
+                    <Card.Title><div className="d-flex justify-content-between"><div>{instrument.name}</div><SavePresetController /></div></Card.Title>
                     <Card.Subtitle>{instrument.collection}</Card.Subtitle>
                     <Card.Text>{instrument.comment}<br /><InstrumentRegistrationView instrument={instrument} /></Card.Text>
                 </Card.Body>
