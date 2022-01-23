@@ -3,6 +3,7 @@ import { Button, Dropdown, Modal } from "react-bootstrap";
 import * as PtqApi from "../api/pqtApi";
 import { useInstrumentContext } from "../utils/instrumentContext";
 import { RenderBasedOnApiVersion } from "../utils/loading";
+import { versionIsSupported } from "../utils/util";
 import { InputSwitch, RangeViewController } from "./inputs";
 
 export const MetronomeControlerButtonView = () => {
@@ -25,15 +26,15 @@ export const MetronomeModalView = ({ show = false, handleClose }) => {
     const metronomeState = ctx.metronome;
 
     return (
-        <RenderBasedOnApiVersion requiredVersion="7.5.3" currentVersion={ctx.ptqInfo.version}>
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <div className="d-flex flex-row justify-content-between">
-                    <InputSwitch name="metronome" label="" isChecked={metronomeState.enabled} onClick={(v) => { PtqApi.setMetronome({ ...metronomeState, enabled: v }, reducer) }} />
-                        <div>Metronome</div>
-                    </div>
-                </Modal.Header>
-                <Modal.Body>
+
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+                <div className="d-flex flex-row justify-content-between">
+                    <InputSwitch disabled={!versionIsSupported("7.5.3", ctx.ptqInfo.version)} name="metronome" label="Metronome" isChecked={metronomeState.enabled} onClick={(v) => { PtqApi.setMetronome({ ...metronomeState, enabled: v }, reducer) }} />
+                </div>
+            </Modal.Header>
+            <Modal.Body>
+                <RenderBasedOnApiVersion requiredVersion="7.5.3" currentVersion={ctx.ptqInfo.version}>
                     <div className="mb-2 d-flex flex-row justify-content-between">
                         <Dropdown onSelect={(ts) => { PtqApi.setMetronome({ ...metronomeState, timesig: ts }, reducer) }}>
                             <Dropdown.Toggle id="dropdown-basic">
@@ -63,11 +64,12 @@ export const MetronomeModalView = ({ show = false, handleClose }) => {
                         <RangeViewController disabled={true} label="Tempo" name="bpm" min={24} max={360} step={1} value={metronomeState.bpm} paramIdx={21} dispatch={reducer} onChange={(v) => reducer({ type: "setMetronome", value: { ...metronomeState, bpm: v } })} apiCallback={(v, r) => { PtqApi.setMetronome({ ...metronomeState, volume_db: v }, r) }} />
                     </div>
                     <p className="text-muted">Volume and tempo are disabled for now, as there is an issue with the current verison of Pianoteq's API.</p>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>Close</Button>
-                </Modal.Footer>
-            </Modal>
-        </RenderBasedOnApiVersion>
+                </RenderBasedOnApiVersion>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+
     )
 }
