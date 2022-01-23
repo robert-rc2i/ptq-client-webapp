@@ -1,6 +1,7 @@
 import { AccordionButton } from 'react-bootstrap';
 import { factoryMetronomeObject } from '../domain/metronome';
 import { factoryPresets } from '../domain/presets';
+import { versionIsSupported } from '../utils/util';
 import { ApiHelper, NetworkError } from './RestHelper';
 
 function factoryCommand(cmd = "list", params = [], jsonrpc = "2.0") {
@@ -95,7 +96,7 @@ export async function refreshCurrentContext(dispatch) {
     if (info) {
         params = await getParams();
         allPresets = await getAllPresets();
-        metronome = await getMetronomeState();
+        metronome = versionIsSupported("7.5.3", info.version) ? await getMetronomeState() : factoryMetronomeObject();
     }
 
     if (dispatch) {
@@ -154,10 +155,10 @@ export async function setMetronome(value, dispatch) {
     console.log("Metronome:", value);
     return await postCommand("setMetronome", {
         "accentuate": value.accentuate,
-        "bpm": Number.parseFloat(value.bpm),
+//        "bpm": Number.parseFloat(value.bpm),
         "enabled": value.enabled,
-        "timesig": value.timesig,
-        "volume_db": Number.parseFloat(value.volume_db)
+        "timesig": value.timesig
+ //       "volume_db": Number.parseFloat(value.volume_db)
     }).then((response) => {
         if (dispatch) {
             dispatch({ type: "setMetronome", value: value });

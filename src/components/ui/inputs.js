@@ -22,12 +22,12 @@ export const InputSwitch = ({ name="none", label, isChecked=false, onClick}) => 
     )
 }
 
-export const RangeViewController = ({ value, dispatch, label="none", apiCallback, min=0, max=10, step=0.1, name="None set", paramIdx, onChange=null}) => {
+export const RangeViewController = ({ value, dispatch, label="none", apiCallback, min=0, max=10, step=0.1, name="None set", paramIdx, onChange=null, ...others}) => {
     const handleChange = onChange ? onChange : (v) => {dispatch({type:"setParameter", index: paramIdx, value:v})};
     return (
         <>
             <Form.Label>{`${label} (${value})`}</Form.Label>
-            <InputRange name={name} value={value} min={min} max={max} step={step} onChange={(v) => handleChange(v)} onSetRangeValue={(v) => { apiCallback(v, dispatch); }} />
+            <InputRange {...others} name={name} value={value} min={min} max={max} step={step} onChange={(v) => handleChange(v)} onSetRangeValue={(v) => { apiCallback(v, dispatch); }} />
         </>
     );
 }
