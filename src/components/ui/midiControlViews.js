@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import * as pqtApi from '../api/pqtApi';
+import { factoryMidiSequencerObject } from "../domain/midiSequencer";
+import { useInstrumentContext } from "../utils/instrumentContext";
+import { RenderBasedOnApiVersion } from "../utils/loading";
+import { versionIsSupported } from "../utils/util";
 
 export const MidiControlerButtonView = () => {
     const [hasClicked, setHasClicked] = useState(false);
@@ -35,16 +39,20 @@ export const MidiControlCardView = ({show=false, handleClose}) => {
 }
 
 const MidiControlPannel = () => {
+    const [ctx, reducer] = useInstrumentContext(factoryMidiSequencerObject());
+
+    //Do not pass a reducer, if not supported by the API, The initial API version did not support midi sequencer state
+    const dispatch = versionIsSupported("7.5.3", ctx.ptqInfo.version) ? reducer : null;
     return (
         <>
-            <p>No feedback is provided by Pianoteq.  So, it is impossible to know if a recording is on or not.</p>
+            <RenderBasedOnApiVersion requiredVersion="7.5.3" currentVersion={ctx.ptqInfo.version} message={(<p>No feedback is provided by Pianoteq.  So, it is impossible to know if a recording is on or not.</p>)}/>
             <div className="mb-5 d-flex justify-content-center">
-                <Button className="me-3" onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.stopMidiRecord(); }}><strong><i className="lead bi bi-stop-fill" /></strong> Stop</Button>
-                <Button className="me-3" onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.playMidi(); }}><strong><i className="lead bi bi-play-fill" /></strong> Play</Button>
-                <Button onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.rewindMidi(); }}><strong><i className="lead bi bi-skip-backward-fill" /></strong> Rewind</Button>
+                <Button className="me-3" onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.stopMidiRecord(dispatch); }}><i className="lead bi bi-stop" /> Stop</Button>
+                <Button className="me-3" variant={ctx.midiState.is_playing ? "info" : "primary"} onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.playMidi(dispatch); }}><i className="lead bi bi-play px-0 mx-0" /><i className="mx-0 px-0 lead bi bi-pause" /> Play</Button>
+                <Button onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.rewindMidi(dispatch); }}><i className="lead bi bi-skip-backward" /> Rewind</Button>
             </div>
             <div className="d-flex justify-content-around">
-                <Button onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.recordMidi(); }}><strong><i className="lead bi bi-record-fill" /></strong> Record</Button>
+                <Button variant={ctx.midiState.is_recording ? "info" : "primary"}onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.recordMidi(dispatch); }}><i className="lead bi bi-record" /> Record</Button>
             </div>
         </>
     )

@@ -13,7 +13,7 @@ export const MetronomeControlerButtonView = () => {
 
     return (
         <>
-            <Button className="mx-2 mb-2 ps-2 pe-1 py-0" onTouchEnd={onClose} onClick={onClose}><img alt="metronome" src="/assets/metronome-white.png" /></Button>
+            <Button className="mx-2 mb-2 ps-2 pe-1 py-1" onTouchEnd={onClose} onClick={onClose}><img alt="metronome" src="/assets/metronome-white.png" /></Button>
             {hasClicked && (<MetronomeModalView show={hasClicked} handleClose={onClose} />)}
         </>
 
@@ -54,8 +54,7 @@ export const MetronomeModalView = ({ show = false, handleClose }) => {
                                 <Dropdown.Item eventKey="12/8" active={"12/8" === metronomeState.timesig}>12/8</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
-                        <InputSwitch name="accentuate" label="Accentuate first beat" isChecked={metronomeState.accentuate} onClick={(v) => { PtqApi.setMetronome({ ...metronomeState, accentuate: v }, reducer) }} />
-                        <div />
+                        <InputSwitch name="accentuate" label="Accentuatefirst beat" isChecked={metronomeState.accentuate} onClick={(v) => { PtqApi.setMetronome({ ...metronomeState, accentuate: v }, reducer) }} />
                     </div>
                     <div className="mb-2">
                         <RangeViewController disabled={true} label="Volume" name="volume" min={-35} max={20} step={1} value={metronomeState.volume_db} paramIdx={21} dispatch={reducer} onChange={(v) => reducer({ type: "setMetronome", value: { ...metronomeState, volume_db: v } })} apiCallback={(v, r) => { PtqApi.setMetronome({ ...metronomeState, bpm: v }, r) }} />

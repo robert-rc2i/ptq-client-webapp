@@ -1,5 +1,5 @@
-import { AccordionButton } from 'react-bootstrap';
 import { factoryMetronomeObject } from '../domain/metronome';
+import { factoryMidiSequencerObject } from '../domain/midiSequencer';
 import { factoryPresets } from '../domain/presets';
 import { versionIsSupported } from '../utils/util';
 import { ApiHelper, NetworkError } from './RestHelper';
@@ -86,7 +86,7 @@ export async function savePreset({ name = "My new preset", bank = "My Presets", 
  * This method should be called on initial app start or after saving a preset.
  */
 export async function refreshCurrentContext(dispatch) {
-    let params = [], allPresets = [], apiError = null, metronome = factoryMetronomeObject();
+    let params = [], allPresets = [], apiError = null, metronome, seqState;
     const info = await getInfo().then(async (i) => {
         return Promise.resolve(i);
     }).catch((e) => {
@@ -97,6 +97,7 @@ export async function refreshCurrentContext(dispatch) {
         params = await getParams();
         allPresets = await getAllPresets();
         metronome = versionIsSupported("7.5.3", info.version) ? await getMetronomeState() : factoryMetronomeObject();
+        seqState = versionIsSupported("7.5.3", info.version) ? await getMidiSequencerState() : factoryMidiSequencerObject();
     }
 
     if (dispatch) {
@@ -104,7 +105,7 @@ export async function refreshCurrentContext(dispatch) {
             dispatch({ type: "apiError", error: apiError });
             return { info, params, allPresets };
         }
-        dispatch({ type: "initContext", presets: allPresets, ptqInfo: info, params: params, error: null, metronome: metronome });
+        dispatch({ type: "initContext", presets: allPresets, ptqInfo: info, params: params, error: null, metronome: metronome, midiState: seqState });
     }
 
     return { info, params, allPresets };
@@ -240,22 +241,53 @@ export async function setReverb(value, dispatch) {
     return getParams(dispatch, true);
 }
 
-export async function recordMidi() {
-    return postCommand("midiRecord");
+export async function getMidiSequencerState(dispatch) {
+    return  await postCommand("getSequencerInfo").then((v) => {
+        if (dispatch) {
+            dispatch({type: "setSequencerState", value: v.result[0]})
+        }
+        return Promise.resolve(v.result[0]);
+    }).catch((err) => {
+        return err;
+    })
 }
 
-export async function stopMidiRecord() {
-    return postCommand("midiStop");
+export async function recordMidi(reducer) {
+    await postCommand("midiRecord");
+    if (reducer) {
+        return getMidiSequencerState(reducer);
+    }
+    return factoryMidiSequencerObject();
 }
 
-export async function playMidi() {
-    return postCommand("midiPlay");
+export async function stopMidiRecord(reducer) {
+    await postCommand("midiStop");
+    if (reducer) {
+        return getMidiSequencerState(reducer);
+    }
+    return factoryMidiSequencerObject();
 }
 
-export async function pauseMidi() {
-    return postCommand("midiPause");
+export async function playMidi(reducer) {
+    await postCommand("midiPlay");
+    if (reducer) {
+        return getMidiSequencerState(reducer);
+    }
+    return factoryMidiSequencerObject();
 }
 
-export async function rewindMidi() {
-    return postCommand("midiRewind");
+export async function pauseMidi(reducer) {
+    await postCommand("midiPause");
+    if (reducer) {
+        return getMidiSequencerState(reducer);
+    }
+    return factoryMidiSequencerObject();
+}
+
+export async function rewindMidi(reducer) {
+    await postCommand("midiRewind");
+    if (reducer) {
+        return getMidiSequencerState(reducer);
+    }
+    return factoryMidiSequencerObject();
 }

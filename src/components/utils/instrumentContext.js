@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { factoryMetronomeObject } from '../domain/metronome';
+import { factoryMidiSequencerObject } from '../domain/midiSequencer';
 import { factoryPresets, getInstrumentByName } from '../domain/presets';
 
 /**
@@ -10,14 +11,15 @@ import { factoryPresets, getInstrumentByName } from '../domain/presets';
  * @param {*} info 
  * @returns 
  */
-export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, currParams=[], info={}, isPresetModified=false, metronome=factoryMetronomeObject()}) => {
+export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, currParams=[], info={}, isPresetModified=false, metronome=factoryMetronomeObject(), midiState=factoryMidiSequencerObject()}) => {
     return {
         allInstruments: presets,
         currentPreset: currPreset,
         currentParameters: currParams,
         ptqInfo: info,
         isPresetModified: isPresetModified,
-        metronome: metronome
+        metronome: metronome,
+        midiState: midiState
     }
 }
 
@@ -53,7 +55,8 @@ const defaultReducer = (currentState, action) => {
                 currPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), action.presets.presets), 
                 info: action.ptqInfo, 
                 currParams: action.params,
-                metronome: action.metronome
+                metronome: action.metronome,
+                midiState: action.midiState
             });
         case "setMetronome":
             return {
@@ -74,6 +77,7 @@ const defaultReducer = (currentState, action) => {
                 currentParameters: action.params
             }
         case "info":
+            //The replace ("My Presets") is required for the old API 7.5.2
             return {
                 ...currentState,
                 ptqInfo: action.ptqInfo,
@@ -95,6 +99,12 @@ const defaultReducer = (currentState, action) => {
             newState.currentParameters[action.index].text = action.value;
 
             return newState;
+        case "setSequencerState": {
+            return {
+                ...currentState,
+                midiState: action.value
+            }
+        }
         default:
             break;
     }
