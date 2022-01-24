@@ -22,6 +22,9 @@ export const CurrentInstrumentPage = () => {
                 <Tab eventKey="effects" title="Effects" >
                     <EffectsTabView />
                 </Tab>
+                <Tab eventKey="design" title="Design" >
+                    <p>To come in a future release</p>
+                </Tab>
             </Tabs>
         </>
     );
