@@ -2,7 +2,6 @@ import React from 'react';
 import { Tab, Tabs } from 'react-bootstrap';
 import { InstrumentCardView } from '../ui/instrumentsViews';
 import { useInstrumentContext } from '../utils/instrumentContext';
-import { MidiControlCardView } from '../ui/midiControlViews';
 import { OutputCardView } from '../ui/outputViews';
 import { EffectsTabView } from '../ui/effectsViews';
 import { VoicingTabView } from '../ui/voicing';
@@ -13,10 +12,7 @@ export const CurrentInstrumentPage = () => {
     return (
         <>
             <InstrumentCardView instrument={ctx.currentPreset} dispatch={reducer} />
-            <Tabs defaultActiveKey="midi" id="uncontrolled-tab-example" className="mb-3">
-                <Tab eventKey="midi" title="Midi">
-                    <MidiControlCardView />
-                </Tab>
+            <Tabs defaultActiveKey="output" id="uncontrolled-tab-example" className="mb-3">
                 <Tab eventKey="output" title="Output">
                     <OutputCardView />
                 </Tab>
@@ -25,6 +21,9 @@ export const CurrentInstrumentPage = () => {
                 </Tab>
                 <Tab eventKey="effects" title="Effects" >
                     <EffectsTabView />
+                </Tab>
+                <Tab eventKey="design" title="Design" >
+                    <p>To come in a future release</p>
                 </Tab>
             </Tabs>
         </>

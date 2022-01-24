@@ -1,7 +1,10 @@
+import { factoryMetronomeObject } from '../domain/metronome';
+import { factoryMidiSequencerObject } from '../domain/midiSequencer';
 import { factoryPresets } from '../domain/presets';
+import { versionIsSupported } from '../utils/util';
 import { ApiHelper, NetworkError } from './RestHelper';
 
-function factoryCommand(cmd="list", params=[], jsonrpc="2.0") {
+function factoryCommand(cmd = "list", params = [], jsonrpc = "2.0") {
     return {
         "method": cmd,
         "params": params,
@@ -9,7 +12,7 @@ function factoryCommand(cmd="list", params=[], jsonrpc="2.0") {
         "id": Date.now()
     }
 }
-export async function postCommand(cmd = "list", params=[], jsonrpc="2.0" ) {
+export async function postCommand(cmd = "list", params = [], jsonrpc = "2.0") {
     return ApiHelper.post("", factoryCommand(cmd, params, jsonrpc)).then((apiResp) => {
         if (apiResp.status < 400) {
             return Promise.resolve(apiResp.dataObject);
@@ -30,37 +33,46 @@ export async function postCommand(cmd = "list", params=[], jsonrpc="2.0" ) {
     });
 }
 
-export async function getAllPresets(dispatch) {
-    return await postCommand("getListOfPresets").then((response) => {
-            if (dispatch) {
-                dispatch({type:"loadedAllPresets", presets: factoryPresets(response.result)});
-            }
-            return Promise.resolve(factoryPresets(response.result));
-        }).catch(error => {
-            const netError = new NetworkError(-1, error.toString());
-            console.log("Error", netError);
-            return Promise.reject(netError);
-        });
+export async function getMetronomeState(dispatch) {
+    return await postCommand("getMetronome").then((response) => {
+        if (dispatch) {
+            dispatch({ type: "loadMetronomeState", value: response.result[0] });
+        }
+        return Promise.resolve(response.result[0]);
+    }).catch(err => {
+        return err;
+    });
 }
 
-export async function loadPreset({name="", bank= "",dispatch=null}) {
-    const result = await postCommand("loadPreset", {name: name, bank: bank, preset_type: "full"});
+export async function getAllPresets(dispatch) {
+    return await postCommand("getListOfPresets").then((response) => {
+        if (dispatch) {
+            dispatch({ type: "loadedAllPresets", presets: factoryPresets(response.result) });
+        }
+        return Promise.resolve(factoryPresets(response.result));
+    }).catch(error => {
+        return error;
+    });
+}
 
-    if (dispatch) { 
+export async function loadPreset({ name = "", bank = "", dispatch = null }) {
+    const result = await postCommand("loadPreset", { name: name, bank: bank, preset_type: "full" });
+
+    if (dispatch) {
         const info = await getInfo();
         const params = await getParams();
 
         dispatch({
-            type: "loadInstrument", 
+            type: "loadInstrument",
             params: params,
             ptqInfo: info
         });
     }
     return result;
 }
-export async function savePreset({name="My new preset", bank="My Presets", dispatch=null}) {
-    const result = postCommand("savePreset", {name: name, bank: bank});
-    await loadPreset({name: name, bank: bank});
+export async function savePreset({ name = "My new preset", bank = "My Presets", dispatch = null }) {
+    const result = postCommand("savePreset", { name: name, bank: bank });
+    await loadPreset({ name: name, bank: bank });
 
     if (dispatch) {
         refreshCurrentContext(dispatch);
@@ -73,35 +85,36 @@ export async function savePreset({name="My new preset", bank="My Presets", dispa
  * This method reloads the full context of this apps by making multiple calls to Pianoteq.
  * This method should be called on initial app start or after saving a preset.
  */
-export async function refreshCurrentContext( dispatch ) {
-    let params = [], allPresets = [], apiError = null;
-    const info = await getInfo().then( async (i) => {
+export async function refreshCurrentContext(dispatch) {
+    let params = [], allPresets = [], apiError = null, metronome, seqState;
+    const info = await getInfo().then(async (i) => {
         return Promise.resolve(i);
     }).catch((e) => {
         apiError = e;
     });
 
     if (info) {
-        console.log("Info", info);
         params = await getParams();
         allPresets = await getAllPresets();
+        metronome = versionIsSupported("7.5.3", info.version) ? await getMetronomeState() : factoryMetronomeObject();
+        seqState = versionIsSupported("7.5.3", info.version) ? await getMidiSequencerState() : factoryMidiSequencerObject();
     }
 
     if (dispatch) {
         if (apiError) {
-            dispatch({type: "apiError", error: apiError});
-            return {info, params, allPresets};
+            dispatch({ type: "apiError", error: apiError });
+            return { info, params, allPresets };
         }
-        dispatch({type: "initContext", presets: allPresets, ptqInfo: info, params: params, error: null});
+        dispatch({ type: "initContext", presets: allPresets, ptqInfo: info, params: params, error: null, metronome: metronome, midiState: seqState });
     }
 
-    return {info, params, allPresets};
+    return { info, params, allPresets };
 }
 
 export async function getInfo(dispatch) {
-    return postCommand("getInfo").then( response => {
+    return postCommand("getInfo").then(response => {
         if (dispatch) {
-            dispatch({type: "info", ptqInfo: response.result[0]});
+            dispatch({ type: "info", ptqInfo: response.result[0] });
         }
         return Promise.resolve(response.result[0]);
     }).catch(error => {
@@ -114,10 +127,10 @@ export async function switchAB(dispatch = null) {
     return reloadInstrumentAndItsParameters(dispatch);
 }
 
-export async function getParams(dispatch = null, isModified=false) {
+export async function getParams(dispatch = null, isModified = false) {
     return postCommand("getParameters").then(response => {
         if (dispatch) {
-            dispatch({type: "loadParameters", params: response.result, presetModified: isModified});
+            dispatch({ type: "loadParameters", params: response.result, presetModified: isModified });
         }
         return Promise.resolve(response.result);
     }).catch(error => {
@@ -128,15 +141,33 @@ export async function getParams(dispatch = null, isModified=false) {
 }
 
 export async function reloadInstrumentAndItsParameters(dispatch = null) {
-    if (dispatch) { 
+    if (dispatch) {
         const info = await getInfo();
         const params = await getParams();
         dispatch({
-            type: "refresh", 
+            type: "refresh",
             params: params,
             ptqInfo: info
         })
     }
+}
+
+export async function setMetronome(value, dispatch) {
+    console.log("Metronome:", value);
+    return await postCommand("setMetronome", {
+        "accentuate": value.accentuate,
+//        "bpm": Number.parseFloat(value.bpm),
+        "enabled": value.enabled,
+        "timesig": value.timesig
+ //       "volume_db": Number.parseFloat(value.volume_db)
+    }).then((response) => {
+        if (dispatch) {
+            dispatch({ type: "setMetronome", value: value });
+        }
+        return Promise.resolve(value);
+    }).catch(err => {
+        return err;
+    });
 }
 
 /**
@@ -146,86 +177,117 @@ export async function reloadInstrumentAndItsParameters(dispatch = null) {
  * @returns 
  */
 export async function setVolume(value, dispatch) {
-    await postCommand("setParameters", {"list": [{"id":"Volume","text":value}]});
+    await postCommand("setParameters", { "list": [{ "id": "Volume", "text": value }] });
     return getParams(dispatch, true);
 }
 
 export async function setDynamics(value, dispatch) {
-    await postCommand("setParameters", {"list": [{"id":"Dynamics","text":value}]});
+    await postCommand("setParameters", { "list": [{ "id": "Dynamics", "text": value }] });
     return getParams(dispatch, true);
 }
 
 export async function setFxGain(value, dispatch) {
-    await postCommand("setParameters", {"list": [{"id":"Post Effect Gain","text":value}]});
+    await postCommand("setParameters", { "list": [{ "id": "Post Effect Gain", "text": value }] });
     return getParams(dispatch, true);
 }
 
 export async function setHardnessForPiano(value, dispatch) {
-    await postCommand("setParameters", {"list": [{"id":"Hammer Hardness Piano","text":value}]});
+    await postCommand("setParameters", { "list": [{ "id": "Hammer Hardness Piano", "text": value }] });
     return getParams(dispatch, true);
 }
 
 export async function setHardnessForMezzo(value, dispatch) {
-    await postCommand("setParameters", {"list": [{"id":"Hammer Hardness Mezzo","text":value}]});
+    await postCommand("setParameters", { "list": [{ "id": "Hammer Hardness Mezzo", "text": value }] });
     return getParams(dispatch, true);
 }
 
 export async function setHardnessForForte(value, dispatch) {
-    await postCommand("setParameters", {"list": [{"id":"Hammer Hardness Forte","text":value}]});
+    await postCommand("setParameters", { "list": [{ "id": "Hammer Hardness Forte", "text": value }] });
     return getParams(dispatch, true);
 }
 
 export async function setHammerNoise(value, dispatch) {
-    await postCommand("setParameters", {"list": [{"id":"Hammer Noise","text":value}]});
+    await postCommand("setParameters", { "list": [{ "id": "Hammer Noise", "text": value }] });
     return getParams(dispatch, true);
 }
 
 export async function setSoftPedalSmoothing(value, dispatch) {
-    await postCommand("setParameters", {"list": [{"id":"Soft Level","text":value}]});
+    await postCommand("setParameters", { "list": [{ "id": "Soft Level", "text": value }] });
     return getParams(dispatch, true);
 }
 
 export async function setDelayEffectSwitch(value, dispatch) {
     console.log("Delay value", value);
     const textVal = value ? "On" : "Off";
-    await postCommand("setParameters", {"list": [{"id":"Effect[1].Switch","text":textVal}]});
+    await postCommand("setParameters", { "list": [{ "id": "Effect[1].Switch", "text": textVal }] });
     return getParams(dispatch, true);
 }
 
 export async function setEq1EffectSwitch(value, dispatch) {
     const textVal = value ? "On" : "Off";
-    await postCommand("setParameters", {"list": [{"id":"Effect[2].Switch","text":textVal}]});
+    await postCommand("setParameters", { "list": [{ "id": "Effect[2].Switch", "text": textVal }] });
     return getParams(dispatch, true);
 }
 
 export async function setEq2EffectSwitch(value, dispatch) {
     const textVal = value ? "On" : "Off";
-    await postCommand("setParameters", {"list": [{"id":"Effect[3].Switch","text":textVal}]});
+    await postCommand("setParameters", { "list": [{ "id": "Effect[3].Switch", "text": textVal }] });
     return getParams(dispatch, true);
 }
 
 export async function setReverb(value, dispatch) {
     const textVal = value ? "On" : "Off";
-    await postCommand("setParameters", {"list": [{"id":"Reverb Switch","text":textVal}]});
+    await postCommand("setParameters", { "list": [{ "id": "Reverb Switch", "text": textVal }] });
     return getParams(dispatch, true);
 }
 
-export async function recordMidi() {
-    return postCommand("midiRecord");
+export async function getMidiSequencerState(dispatch) {
+    return  await postCommand("getSequencerInfo").then((v) => {
+        if (dispatch) {
+            dispatch({type: "setSequencerState", value: v.result[0]})
+        }
+        return Promise.resolve(v.result[0]);
+    }).catch((err) => {
+        return err;
+    })
 }
 
-export async function stopMidiRecord() {
-    return postCommand("midiStop");
+export async function recordMidi(reducer) {
+    await postCommand("midiRecord");
+    if (reducer) {
+        return getMidiSequencerState(reducer);
+    }
+    return factoryMidiSequencerObject();
 }
 
-export async function playMidi() {
-    return postCommand("midiPlay");
+export async function stopMidiRecord(reducer) {
+    await postCommand("midiStop");
+    if (reducer) {
+        return getMidiSequencerState(reducer);
+    }
+    return factoryMidiSequencerObject();
 }
 
-export async function pauseMidi() {
-    return postCommand("midiPause");
+export async function playMidi(reducer) {
+    await postCommand("midiPlay");
+    if (reducer) {
+        return getMidiSequencerState(reducer);
+    }
+    return factoryMidiSequencerObject();
 }
 
-export async function rewindMidi() {
-    return postCommand("midiRewind");
+export async function pauseMidi(reducer) {
+    await postCommand("midiPause");
+    if (reducer) {
+        return getMidiSequencerState(reducer);
+    }
+    return factoryMidiSequencerObject();
+}
+
+export async function rewindMidi(reducer) {
+    await postCommand("midiRewind");
+    if (reducer) {
+        return getMidiSequencerState(reducer);
+    }
+    return factoryMidiSequencerObject();
 }

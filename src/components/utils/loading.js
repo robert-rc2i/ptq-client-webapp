@@ -2,6 +2,7 @@ import React from 'react';
 import { Alert, Spinner } from 'react-bootstrap';
 import * as pqtApi from '../api/pqtApi';
 import { ApiHelper } from '../api/RestHelper';
+import { versionIsSupported} from './util';
 
 export default class Loading extends React.Component {
 
@@ -42,5 +43,28 @@ export function Initializing() {
         <div className="d-flex justify-content-center">
             <span>Loading... <Spinner animation="border" role="status" /></span>
         </div>
+    );
+}
+
+/**
+ * @returns the children components if the required version is met, otherwise a text message
+ */
+export function RenderBasedOnApiVersion({ requiredVersion = "7.5.2", currentVersion = "1.0.0", children, message=null}) {
+
+    if (versionIsSupported(requiredVersion, currentVersion)) {
+        return children ? children : null;
+    }
+
+    //Return the provided message if presetn
+    if (message) {
+        return message;
+    }
+
+    //Otherwise, return the default message
+    return (
+        <>
+            <p>This feature requires Pianoteq version {requiredVersion}, but the running instance of Pianoteq is version {currentVersion}</p>
+            <p>You need to upgrade your Pianote instance to make use of this feature</p>
+        </>
     );
 }
