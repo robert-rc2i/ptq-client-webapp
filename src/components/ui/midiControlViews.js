@@ -45,7 +45,7 @@ const MidiControlPannel = () => {
     const dispatch = versionIsSupported("7.5.3", ctx.ptqInfo.version) ? reducer : null;
     return (
         <>
-            <RenderBasedOnApiVersion requiredVersion="7.5.3" currentVersion={ctx.ptqInfo.version} message={(<p>No feedback is provided by Pianoteq.  So, it is impossible to know if a recording is on or not.</p>)}/>
+            <RenderBasedOnApiVersion requiredVersion="7.5.3" currentVersion={ctx.ptqInfo.version} message={(<p>No feedback is provided by this current version of Pianoteq.  So, it is impossible to know if a recording is on or not.</p>)}/>
             <div className="mb-5 d-flex justify-content-center">
                 <Button className="me-3" onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.stopMidiRecord(dispatch); }}><i className="lead bi bi-stop" /> Stop</Button>
                 <Button className="me-3" variant={ctx.midiState.is_playing ? "info" : "primary"} onClick={(event) => { event.preventDefault(); event.stopPropagation(); pqtApi.playMidi(dispatch); }}><i className="lead bi bi-play px-0 mx-0" /><i className="mx-0 px-0 lead bi bi-pause" /> Play</Button>
