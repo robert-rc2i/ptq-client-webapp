@@ -7,13 +7,15 @@ import { RenderBasedOnApiVersion } from "../utils/loading";
 import { versionIsSupported } from "../utils/util";
 
 export const MidiControlerButtonView = () => {
+    const [ctx] = useInstrumentContext(factoryMidiSequencerObject());
     const [hasClicked, setHasClicked] = useState(false);
 
     const onClose = (name) => { setHasClicked(!hasClicked); }
+    const buttonVariant = ctx.midiState.is_playing || ctx.midiState.is_recording ? "info" : "primary"
 
     return (
         <>
-            <Button className="mx-2 mb-2 px-2 py-0" onTouchEnd={onClose} onClick={onClose}><span><i className="fs-2 bi bi-music-player" /></span></Button>
+            <Button variant={buttonVariant} className="mx-2 mb-2 px-2 py-0" onTouchEnd={onClose} onClick={onClose}><span><i className="fs-2 bi bi-music-player" /></span></Button>
             {hasClicked && (<MidiControlCardView show={hasClicked} handleClose={onClose} />)}
         </>
 

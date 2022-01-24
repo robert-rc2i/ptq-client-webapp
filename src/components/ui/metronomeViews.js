@@ -7,21 +7,21 @@ import { versionIsSupported } from "../utils/util";
 import { InputSwitch, RangeViewController } from "./inputs";
 
 export const MetronomeControlerButtonView = () => {
+    const [ctx, reducer] = useInstrumentContext();
     const [hasClicked, setHasClicked] = useState(false);
 
     const onClose = () => { setHasClicked(!hasClicked); }
-
+    const buttonVariant = ctx.metronome.enabled ? "info" : "primary"
     return (
         <>
-            <Button className="mx-2 mb-2 ps-2 pe-1 py-1" onTouchEnd={onClose} onClick={onClose}><img alt="metronome" src="/assets/metronome-white.png" /></Button>
-            {hasClicked && (<MetronomeModalView show={hasClicked} handleClose={onClose} />)}
+            <Button variant={buttonVariant} className="mx-2 mb-2 ps-2 pe-1 py-1" onTouchEnd={onClose} onClick={onClose}><img alt="metronome" src="/assets/metronome-white.png" /></Button>
+            {hasClicked && (<MetronomeModalView show={hasClicked} handleClose={onClose} ctx={ctx} reducer={reducer}/>)}
         </>
 
     );
 }
 
-export const MetronomeModalView = ({ show = false, handleClose }) => {
-    const [ctx, reducer] = useInstrumentContext();
+export const MetronomeModalView = ({ show = false, handleClose, ctx, reducer }) => {
 
     const metronomeState = ctx.metronome;
 
