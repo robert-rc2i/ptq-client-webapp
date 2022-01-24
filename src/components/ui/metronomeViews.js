@@ -14,7 +14,7 @@ export const MetronomeControlerButtonView = () => {
     const buttonVariant = ctx.metronome.enabled ? "info" : "primary"
     return (
         <>
-            <Button variant={buttonVariant} className="mx-2 mb-2 ps-2 pe-1 py-1" onTouchEnd={onClose} onClick={onClose}><img alt="metronome" src="/assets/metronome-white.png" /></Button>
+            <Button variant={buttonVariant} className="mb-2 me-2 px-1 py-1" onTouchEnd={onClose} onClick={onClose}><img alt="metronome" src="/assets/metronome-tick.png" /></Button>
             {hasClicked && (<MetronomeModalView show={hasClicked} handleClose={onClose} ctx={ctx} reducer={reducer}/>)}
         </>
 
