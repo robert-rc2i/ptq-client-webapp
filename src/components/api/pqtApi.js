@@ -4,6 +4,15 @@ import { factoryPresets } from '../domain/presets';
 import { versionIsSupported } from '../utils/util';
 import { ApiHelper, NetworkError } from './RestHelper';
 
+/**
+ * 
+ * @param {Object} response object from the API
+ * @returns true if the response api is OK, otherwise false.
+ */
+function isResponseOk(resp) {
+    return !resp.error;
+}
+
 function factoryCommand(cmd = "list", params = [], jsonrpc = "2.0") {
     return {
         "method": cmd,
@@ -31,6 +40,36 @@ export async function postCommand(cmd = "list", params = [], jsonrpc = "2.0") {
         console.log("Network: Error", netError);
         return Promise.reject(netError);
     });
+}
+
+/**
+ * Load the next preset from Pianoteq
+ * @param {*} dispatch 
+ * @returns the reponse from the API call
+ */
+export async function loadNextPreset(dispatch) {
+    const response = await postCommand("nextPreset");
+
+    if (isResponseOk(response) && dispatch) {
+        dispatch({type: "cancelSave"});
+        reloadInstrumentAndItsParameters(dispatch);
+    } 
+    return response;
+}
+
+/**
+ * Load the previous preset from Pianoteq
+ * @param {} dispatch 
+ * @returns the response from the api call
+ */
+export async function loadPreviousPreset(dispatch) {
+    const response = await postCommand("prevPreset");
+
+    if (isResponseOk(response) && dispatch) {
+        dispatch({type: "cancelSave"});
+        reloadInstrumentAndItsParameters(dispatch);
+    } 
+    return response;
 }
 
 export async function getMetronomeState(dispatch) {
@@ -140,6 +179,10 @@ export async function getParams(dispatch = null, isModified = false) {
     });
 }
 
+/**
+ * Get the current instrument in Pianoteq UI.  Usefull when things has changed on the Pianoteq side
+ * @param {*} dispatch 
+ */
 export async function reloadInstrumentAndItsParameters(dispatch = null) {
     if (dispatch) {
         const info = await getInfo();

@@ -105,6 +105,12 @@ const defaultReducer = (currentState, action) => {
                 midiState: action.value
             }
         }
+        case "cancelSave": {
+            return {
+                ...currentState,
+                isPresetModified: false
+            }
+        }
         default:
             break;
     }

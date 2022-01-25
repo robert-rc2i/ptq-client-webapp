@@ -14,7 +14,7 @@ function TopMenu() {
     return (
         <>
             <div className="pt-2 bg-secondary text-white d-flex justify-content-between sticky-top w-100 mb-2">
-                <Button className="mx-2 mb-2 px-2 py-0" onTouchEnd={toggleMenu} onClick={toggleMenu}><strong><i className="bi bi-list" /></strong> Menu</Button>
+                <Button title="Menu" className="mx-2 mb-2 px-2 py-0" onTouchEnd={toggleMenu} onClick={toggleMenu}><strong><i className="bi bi-list" /></strong> Menu</Button>
                 <div>
                     <MidiControlerButtonView />
                     <MetronomeControlerButtonView />
