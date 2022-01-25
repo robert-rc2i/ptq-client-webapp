@@ -51,6 +51,7 @@ export async function loadNextPreset(dispatch) {
     const response = await postCommand("nextPreset");
 
     if (isResponseOk(response) && dispatch) {
+        dispatch({type: "cancelSave"});
         reloadInstrumentAndItsParameters(dispatch);
     } 
     return response;
@@ -65,6 +66,7 @@ export async function loadPreviousPreset(dispatch) {
     const response = await postCommand("prevPreset");
 
     if (isResponseOk(response) && dispatch) {
+        dispatch({type: "cancelSave"});
         reloadInstrumentAndItsParameters(dispatch);
     } 
     return response;

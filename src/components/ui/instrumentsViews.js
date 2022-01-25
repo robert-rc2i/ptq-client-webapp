@@ -125,14 +125,13 @@ export const InstrumentCardView = ({ instrument, dispatch }) => {
 export const InstrumentNavigationsControlView = ({ reducer }) => {
     return (
         <>  
-            
+            <div className="m-0 text-center"><small>Presets navigation</small></div>
             <div className="d-flex justify-content-between">
                 <div>
                     <Button title="Load previous preset" className="m-1" onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.loadPreviousPreset(reducer) }}><i className="bi bi-chevron-double-left" /></Button>
                     <Button title="Reload current preset" className="m-1" onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.reloadInstrumentAndItsParameters(reducer) }}><i className="bi bi-arrow-counterclockwise" /></Button>
                     <Button title="Load next preset" className="m-1" onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.loadNextPreset(reducer) }}><i className="bi bi-chevron-double-right" /></Button>
                 </div>
-                <div className="m-0"><small>Presets navigation</small></div>
                 <Button title="Switch A/B preset" className="m-1" onClick={(event) => { event.stopPropagation(); pqtApi.switchAB(reducer); }}><i className="bi bi-arrow-left-right"></i> A/B</Button>
             </div>
         </>
