@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Accordion, Button, Card, Form, ListGroup, Modal } from "react-bootstrap";
+import { Accordion, Button, Card, Collapse, Form, ListGroup, Modal } from "react-bootstrap";
 import { getAcousticPianoClasses, getChromaticPercussionClasses, getDrumClasses, getElectricPianoClasses, listPresetsForBank, listInstrumentsForClass, listPresetsForInstruments } from "../domain/presets";
 import { useInstrumentContext } from "../utils/instrumentContext";
 import * as pqtApi from '../api/pqtApi';
@@ -100,29 +100,43 @@ const ListOfPresetsView = ({ presets, onSelected }) => {
 }
 
 export const InstrumentCardView = ({ instrument, dispatch }) => {
-
+    const [show, setShow] = useState(false);
+    const iconClassName = show ? "text-primary bi bi-chevron-double-up" : "text-primary bi bi-chevron-double-down";
     if (instrument) {
         return (
             <Card className="mb-2">
                 <Card.Header>
-                    <>
-                        <div className="d-flex justify-content-between">
-                            <div><Button className="m-2" onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.reloadInstrumentAndItsParameters(dispatch) }}><strong><i className="lead bi bi-arrow-counterclockwise" /></strong></Button> Current instrument</div>
-                            <Button className="m-2" onClick={(event) => { event.stopPropagation(); pqtApi.switchAB(dispatch); }}><strong><i className="bi bi-arrow-left-right"></i></strong> A/B</Button>
-                        </div>
-                        
-                    </>
+                    <InstrumentNavigationsControlView reducer={dispatch} />
                 </Card.Header>
                 <Card.Body>
                     <Card.Title><div className="d-flex justify-content-between"><div>{instrument.name}</div><SavePresetController /></div></Card.Title>
-                    <Card.Subtitle>{instrument.collection}</Card.Subtitle>
+                    <Card.Subtitle>{instrument.collection} <i onClick={(e) => {e.preventDefault(); e.stopPropagation(); setShow(!show)}} className={iconClassName}/></Card.Subtitle>
+                    <Collapse in={show}>
                     <Card.Text>{instrument.comment}<br /><InstrumentRegistrationView instrument={instrument} /></Card.Text>
+                    </Collapse>
                 </Card.Body>
             </Card>
         );
     }
 
     return null;
+}
+
+export const InstrumentNavigationsControlView = ({ reducer }) => {
+    return (
+        <>  
+            
+            <div className="d-flex justify-content-between">
+                <div>
+                    <Button title="Load previous preset" className="m-1" onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.loadPreviousPreset(reducer) }}><i className="bi bi-chevron-double-left" /></Button>
+                    <Button title="Reload current preset" className="m-1" onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.reloadInstrumentAndItsParameters(reducer) }}><i className="bi bi-arrow-counterclockwise" /></Button>
+                    <Button title="Load next preset" className="m-1" onClick={(e) => { e.preventDefault(); e.stopPropagation(); pqtApi.loadNextPreset(reducer) }}><i className="bi bi-chevron-double-right" /></Button>
+                </div>
+                <div className="m-0"><small>Presets navigation</small></div>
+                <Button title="Switch A/B preset" className="m-1" onClick={(event) => { event.stopPropagation(); pqtApi.switchAB(reducer); }}><i className="bi bi-arrow-left-right"></i> A/B</Button>
+            </div>
+        </>
+    );
 }
 
 export const InstrumentRegistrationView = ({ instrument }) => {
