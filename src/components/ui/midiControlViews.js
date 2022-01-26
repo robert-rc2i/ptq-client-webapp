@@ -15,7 +15,7 @@ export const MidiControlerButtonView = () => {
 
     return (
         <>
-            <Button title="Midi player" variant={buttonVariant} className="mx-2 mb-2 px-2 py-0" onTouchEnd={onClose} onClick={onClose}><span><img alt="midi" src="/assets/midi.png" /></span></Button>
+            <Button title="Midi player" variant={buttonVariant} className="mx-2 mb-2 px-2 py-0" onClick={onClose}><span><img alt="midi" src="/assets/midi.png" /></span></Button>
             {hasClicked && (<MidiControlCardView show={hasClicked} handleClose={onClose} />)}
         </>
 
