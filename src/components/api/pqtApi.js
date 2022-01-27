@@ -51,9 +51,9 @@ export async function loadNextPreset(dispatch) {
     const response = await postCommand("nextPreset");
 
     if (isResponseOk(response) && dispatch) {
-        dispatch({type: "cancelSave"});
+        dispatch({ type: "cancelSave" });
         reloadInstrumentAndItsParameters(dispatch);
-    } 
+    }
     return response;
 }
 
@@ -66,9 +66,9 @@ export async function loadPreviousPreset(dispatch) {
     const response = await postCommand("prevPreset");
 
     if (isResponseOk(response) && dispatch) {
-        dispatch({type: "cancelSave"});
+        dispatch({ type: "cancelSave" });
         reloadInstrumentAndItsParameters(dispatch);
-    } 
+    }
     return response;
 }
 
@@ -199,10 +199,10 @@ export async function setMetronome(value, dispatch) {
     console.log("Metronome:", value);
     return await postCommand("setMetronome", {
         "accentuate": value.accentuate,
-//        "bpm": Number.parseFloat(value.bpm),
+        //        "bpm": Number.parseFloat(value.bpm),
         "enabled": value.enabled,
         "timesig": value.timesig
- //       "volume_db": Number.parseFloat(value.volume_db)
+        //       "volume_db": Number.parseFloat(value.volume_db)
     }).then((response) => {
         if (dispatch) {
             dispatch({ type: "setMetronome", value: value });
@@ -215,79 +215,32 @@ export async function setMetronome(value, dispatch) {
 
 /**
  * 
- * @param {*} value A number between -96 and 12
- * @param {*} dispatch dispatcher to update context with new state
- * @returns 
+ * @param {Boolean} value to convert as text
+ * @param {*} param the parameter to set the value to 
+ * @param {*} dispatch 
+ * @returns the result of the api call
  */
-export async function setVolume(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Volume", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setDynamics(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Dynamics", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setFxGain(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Post Effect Gain", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setHardnessForPiano(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Hammer Hardness Piano", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setHardnessForMezzo(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Hammer Hardness Mezzo", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setHardnessForForte(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Hammer Hardness Forte", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setHammerNoise(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Hammer Noise", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setSoftPedalSmoothing(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Soft Level", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setDelayEffectSwitch(value, dispatch) {
-    console.log("Delay value", value);
+export async function setParameterSwitchValue(value, param={}, dispatch) {
     const textVal = value ? "On" : "Off";
-    await postCommand("setParameters", { "list": [{ "id": "Effect[1].Switch", "text": textVal }] });
-    return getParams(dispatch, true);
+    return setParameterAsText(textVal, param, dispatch);
 }
 
-export async function setEq1EffectSwitch(value, dispatch) {
-    const textVal = value ? "On" : "Off";
-    await postCommand("setParameters", { "list": [{ "id": "Effect[2].Switch", "text": textVal }] });
-    return getParams(dispatch, true);
-}
-
-export async function setEq2EffectSwitch(value, dispatch) {
-    const textVal = value ? "On" : "Off";
-    await postCommand("setParameters", { "list": [{ "id": "Effect[3].Switch", "text": textVal }] });
-    return getParams(dispatch, true);
-}
-
-export async function setReverb(value, dispatch) {
-    const textVal = value ? "On" : "Off";
-    await postCommand("setParameters", { "list": [{ "id": "Reverb Switch", "text": textVal }] });
+/**
+ * 
+ * @param {*} value to set
+ * @param {*} param to update
+ * @param {*} dispatch 
+ * @returns the updated parameters
+ */
+export async function setParameterAsText(value, param = {}, dispatch) {
+    await postCommand("setParameters", { "list": [{ "id": param.id, "text": value }] });
     return getParams(dispatch, true);
 }
 
 export async function getMidiSequencerState(dispatch) {
-    return  await postCommand("getSequencerInfo").then((v) => {
+    return await postCommand("getSequencerInfo").then((v) => {
         if (dispatch) {
-            dispatch({type: "setSequencerState", value: v.result[0]})
+            dispatch({ type: "setSequencerState", value: v.result[0] })
         }
         return Promise.resolve(v.result[0]);
     }).catch((err) => {

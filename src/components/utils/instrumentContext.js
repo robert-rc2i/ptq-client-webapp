@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useReducer } from 'react';
 import { factoryMetronomeObject } from '../domain/metronome';
 import { factoryMidiSequencerObject } from '../domain/midiSequencer';
+import { InstrumentParameters } from '../domain/parameters';
 import { factoryPresets, getInstrumentByName } from '../domain/presets';
 
 /**
@@ -16,6 +17,7 @@ export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, 
         allInstruments: presets,
         currentPreset: currPreset,
         currentParameters: currParams,
+        instrumentParameters: new InstrumentParameters(currParams),
         ptqInfo: info,
         isPresetModified: isPresetModified,
         metronome: metronome,
@@ -38,6 +40,7 @@ const defaultReducer = (currentState, action) => {
                 ptqInfo: action.ptqInfo,
                 currentPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), currentState.allInstruments.presets),
                 currentParameters: action.params,
+                instrumentParameters: new InstrumentParameters(action.params),
                 isPresetModified: false
             }
         case "savedPreset":
@@ -47,6 +50,7 @@ const defaultReducer = (currentState, action) => {
                 ptqInfo: action.ptqInfo,
                 currentPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), currentState.allInstruments.presets),
                 currentParameters: action.params,
+                instrumentParameters: new InstrumentParameters(action.params),
                 isPresetModified: false
             }
         case "initContext":
@@ -74,7 +78,8 @@ const defaultReducer = (currentState, action) => {
                 ...currentState,
                 ptqInfo: action.ptqInfo,
                 currentPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), currentState.allInstruments.presets),
-                currentParameters: action.params
+                currentParameters: action.params,
+                instrumentParameters: new InstrumentParameters(action.params)
             }
         case "info":
             //The replace ("My Presets") is required for the old API 7.5.2
@@ -88,6 +93,7 @@ const defaultReducer = (currentState, action) => {
             return {
                 ...currentState,
                 currentParameters: action.params,
+                instrumentParameters: new InstrumentParameters(action.params),
                 isPresetModified: action.presetModified
             }
         case "setParameter":
