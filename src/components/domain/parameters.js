@@ -1,53 +1,99 @@
-export function getParameterValueAsText(id="", params=[]) {
-    if (params && params.length) {
-        const value = params.find((param) => param.id === id);
-        if (value) return value.text
-    }
-    return "No value found for attribute "+id;
-}
-
 export function getSwitchToBooleanValue(switchValue) {
     const v = switchValue && switchValue === "On" ? true : false;
     return v;
 }
 
-export function getFxGain(params=[]) {
-    return getParameterValueAsText("Post Effect Gain", params);
-}
-export function getDelay(params=[]) {
-    return getSwitchToBooleanValue(getParameterValueAsText("Effect[1].Switch", params));
-}
+export class InstrumentParameters {
+    constructor(params = []) {
+        this.parameters = params;
+        this.paramsByIds = new Map(this.parameters.map((e) => { return [e.id, e] }));
+    }
 
-export function getEq1(params=[]) {
-    return getSwitchToBooleanValue(getParameterValueAsText("Effect[2].Switch", params));
-}
+    //Output parameters
+    get dynamics() {
+        return this.paramsByIds.get("Dynamics");
+    }
 
-export function getEq2(params=[]) {
-    return getSwitchToBooleanValue(getParameterValueAsText("Effect[3].Switch", params));
-}
+    get volume() {
+        return this.paramsByIds.get("Volume");
+    }
 
-export function getReverb(params=[]) {
-    return getSwitchToBooleanValue(getParameterValueAsText("Reverb Switch", params));
-}
+    // Voicing parameters
+    get hammerHardnessPiano() {
+        return this.paramsByIds.get("Hammer Hardness Piano");
+    }
 
-export function getHammerHardnessPiano(params=[]) {
-    return getParameterValueAsText("Hammer Hardness Piano", params);
-}
-export function getHammerHardnessMezzo(params=[]) {
-    return getParameterValueAsText("Hammer Hardness Mezzo", params);
-}
-export function getHammerHardnessForte(params=[]) {
-    return getParameterValueAsText("Hammer Hardness Forte", params);
-}
+    get hammerHardnessMezzo() {
+        return this.paramsByIds.get("Hammer Hardness Mezzo");
+    }
 
-export function getHammerNoise(params=[]) {
-    return getParameterValueAsText("Hammer Noise", params );
-}
+    get hammerHardnessForte() {
+        return this.paramsByIds.get("Hammer Hardness Forte");
+    }
 
-export function getStrikePoint(params=[]) {
-    return getParameterValueAsText("Strike Point", params );
-}
+    get hammerNoise() {
+        return this.paramsByIds.get("Hammer Noise");
+    }
 
-export function getSoftPedalSmoothing(params=[]) {
-    return getParameterValueAsText("Soft Level", params);
+    get strikePoint() {
+        return this.paramsByIds.get("Strike Point");
+    }
+
+    get softPedalSmoothing() {
+        return this.paramsByIds.get("Soft Level");
+    }
+
+    // Effects parameters
+    get postFxGain() {
+        return this.paramsByIds.get("Post Effect Gain");
+    }
+
+    get delay() {
+        return this.paramsByIds.get("Effect[1].Switch");
+    }
+
+    get eq1() {
+        return this.paramsByIds.get("Effect[2].Switch");
+    }
+    
+    get eq2() {
+        return this.paramsByIds.get("Effect[3].Switch");
+    }
+    
+    get reverb() {
+        return this.paramsByIds.get("Reverb Switch");
+    }
+
+    // Design parameters
+    get sbImpedance() {
+        return this.paramsByIds.get("Impedance");
+    }
+    
+    get sbCutoff() {
+        return this.paramsByIds.get("Cutoff Freq");
+    }
+    
+    get sbQFactor() {
+        return this.paramsByIds.get("Q Factor");
+    }
+    
+    get stringLength() {
+        return this.paramsByIds.get("String Length");
+    }
+    
+    get sympatheticResonance() {
+        return this.paramsByIds.get("Sympathetic Resonance");
+    }
+    
+    get duplexScale() {
+        return this.paramsByIds.get("Duplex Scale Resonance");
+    }
+    
+    get bloomingEnergy() {
+        return this.paramsByIds.get("Blooming Energy");
+    }
+    
+    get bloomingInertia() {
+        return this.paramsByIds.get("Blooming Inertia");
+    }
 }

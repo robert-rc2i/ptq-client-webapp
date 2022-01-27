@@ -1,4 +1,7 @@
 import React, { createContext, useContext, useReducer } from 'react';
+import { factoryMetronomeObject } from '../domain/metronome';
+import { factoryMidiSequencerObject } from '../domain/midiSequencer';
+import { InstrumentParameters } from '../domain/parameters';
 import { factoryPresets, getInstrumentByName } from '../domain/presets';
 
 /**
@@ -9,13 +12,16 @@ import { factoryPresets, getInstrumentByName } from '../domain/presets';
  * @param {*} info 
  * @returns 
  */
-export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, currParams=[], info={}, isPresetModified=false}) => {
+export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, currParams=[], info={}, isPresetModified=false, metronome=factoryMetronomeObject(), midiState=factoryMidiSequencerObject()}) => {
     return {
         allInstruments: presets,
         currentPreset: currPreset,
         currentParameters: currParams,
+        instrumentParameters: new InstrumentParameters(currParams),
         ptqInfo: info,
-        isPresetModified: isPresetModified
+        isPresetModified: isPresetModified,
+        metronome: metronome,
+        midiState: midiState
     }
 }
 
@@ -34,6 +40,7 @@ const defaultReducer = (currentState, action) => {
                 ptqInfo: action.ptqInfo,
                 currentPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), currentState.allInstruments.presets),
                 currentParameters: action.params,
+                instrumentParameters: new InstrumentParameters(action.params),
                 isPresetModified: false
             }
         case "savedPreset":
@@ -43,6 +50,7 @@ const defaultReducer = (currentState, action) => {
                 ptqInfo: action.ptqInfo,
                 currentPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), currentState.allInstruments.presets),
                 currentParameters: action.params,
+                instrumentParameters: new InstrumentParameters(action.params),
                 isPresetModified: false
             }
         case "initContext":
@@ -50,8 +58,15 @@ const defaultReducer = (currentState, action) => {
                 presets: action.presets, 
                 currPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), action.presets.presets), 
                 info: action.ptqInfo, 
-                currParams: action.params
+                currParams: action.params,
+                metronome: action.metronome,
+                midiState: action.midiState
             });
+        case "setMetronome":
+            return {
+                ...currentState,
+                metronome: action.value
+            }
         case "apiError": {
             return {
                 ...factoryInitialState({}),
@@ -63,9 +78,11 @@ const defaultReducer = (currentState, action) => {
                 ...currentState,
                 ptqInfo: action.ptqInfo,
                 currentPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), currentState.allInstruments.presets),
-                currentParameters: action.params
+                currentParameters: action.params,
+                instrumentParameters: new InstrumentParameters(action.params)
             }
         case "info":
+            //The replace ("My Presets") is required for the old API 7.5.2
             return {
                 ...currentState,
                 ptqInfo: action.ptqInfo,
@@ -76,6 +93,7 @@ const defaultReducer = (currentState, action) => {
             return {
                 ...currentState,
                 currentParameters: action.params,
+                instrumentParameters: new InstrumentParameters(action.params),
                 isPresetModified: action.presetModified
             }
         case "setParameter":
@@ -87,6 +105,18 @@ const defaultReducer = (currentState, action) => {
             newState.currentParameters[action.index].text = action.value;
 
             return newState;
+        case "setSequencerState": {
+            return {
+                ...currentState,
+                midiState: action.value
+            }
+        }
+        case "cancelSave": {
+            return {
+                ...currentState,
+                isPresetModified: false
+            }
+        }
         default:
             break;
     }

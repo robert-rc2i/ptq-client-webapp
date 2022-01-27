@@ -2,30 +2,35 @@ import React, { useState } from 'react';
 import { Button, Offcanvas } from 'react-bootstrap';
 import { useInstrumentContext } from '../utils/instrumentContext';
 import { InstrumentSelectionPaneView } from './instrumentsViews';
-import * as PtqApi from '../api/pqtApi';
 import { PianotteqUrlSettingController } from './settingViews';
+import { MidiControlerButtonView } from './midiControlViews';
+import { MetronomeControlerButtonView } from './metronomeViews';
 
-function TopMenu(props) {
-    const [ctx, reducer] = useInstrumentContext();
-    const [show, setShow] = useState(false);
-    const toggleShow = () => setShow(!show);
-    const isError = ctx.error;
+function TopMenu() {
+    const [, reducer] = useInstrumentContext();
+    const [show, setShow] = useState({ menu: false });
+    const toggleMenu = (e) => {setShow({ ...show, menu: !show.menu });}
 
     return (
-        <div className="pt-2 bg-secondary text-white d-flex justify-content-between sticky-top w-100 mb-2">
-            <Button className="m-2" onTouchEnd={toggleShow} onClick={toggleShow}><strong><i className="lead bi bi-list"/></strong> Menu</Button>
-            <Button className="m-2" disabled={isError} onClick={(event) => { event.stopPropagation(); PtqApi.switchAB(reducer); }}><strong><i className="bi bi-arrow-left-right"></i></strong> A/B</Button>
-            <Offcanvas show={show} onHide={toggleShow}>
+        <>
+            <div className="pt-2 bg-secondary text-white d-flex justify-content-between sticky-top w-100 mb-2">
+                <Button title="Menu" className="mx-2 mb-2 px-2 py-0" onClick={toggleMenu}><strong><i className="bi bi-list" /></strong> Menu</Button>
+                <div>
+                    <MidiControlerButtonView />
+                    <MetronomeControlerButtonView />
+                </div>
+            </div>
+            <Offcanvas show={show.menu} onHide={toggleMenu}>
                 <Offcanvas.Header closeButton>
                     <Offcanvas.Title>Main menu</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                    <PianotteqUrlSettingController onClose={toggleShow} dispatch={reducer}/>
+                    <PianotteqUrlSettingController onClose={toggleMenu} dispatch={reducer} />
                     <h6>Instrument selection</h6>
-                    <InstrumentSelectionPaneView toggleFunction={toggleShow} />
+                    <InstrumentSelectionPaneView toggleFunction={toggleMenu} />
                 </Offcanvas.Body>
             </Offcanvas>
-        </div>
+        </>
     );
 }
 
