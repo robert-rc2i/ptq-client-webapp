@@ -38,3 +38,10 @@ export const RangeParameterViewController = ({param={}, apiCallback, ...others})
         <RangeViewController {...others} value={param.text} paramIdx={param.index} apiCallback={setParamCallback} />
     )
 } 
+
+export const NegativeRangeParameterViewController = ({param={}, apiCallback, ...others}) => {
+    const setParamCallback = (value, dispatch) => {apiCallback(value, param, dispatch)};
+    return (
+        <RangeViewController {...others} value={Number.parseFloat(param.text)} paramIdx={param.index} apiCallback={setParamCallback} />
+    )
+} 

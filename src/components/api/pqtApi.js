@@ -213,52 +213,6 @@ export async function setMetronome(value, dispatch) {
     });
 }
 
-/**
- * 
- * @param {*} value A number between -96 and 12
- * @param {*} dispatch dispatcher to update context with new state
- * @returns 
- */
-export async function setVolume(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Volume", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setDynamics(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Dynamics", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setFxGain(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Post Effect Gain", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setHardnessForPiano(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Hammer Hardness Piano", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setHardnessForMezzo(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Hammer Hardness Mezzo", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setHardnessForForte(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Hammer Hardness Forte", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setHammerNoise(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Hammer Noise", "text": value }] });
-    return getParams(dispatch, true);
-}
-
-export async function setSoftPedalSmoothing(value, dispatch) {
-    await postCommand("setParameters", { "list": [{ "id": "Soft Level", "text": value }] });
-    return getParams(dispatch, true);
-}
-
 export async function setDelayEffectSwitch(value, dispatch) {
     console.log("Delay value", value);
     const textVal = value ? "On" : "Off";
@@ -282,6 +236,18 @@ export async function setReverb(value, dispatch) {
     const textVal = value ? "On" : "Off";
     await postCommand("setParameters", { "list": [{ "id": "Reverb Switch", "text": textVal }] });
     return getParams(dispatch, true);
+}
+
+/**
+ * 
+ * @param {Boolean} value to convert as text
+ * @param {*} param the parameter to set the value to 
+ * @param {*} dispatch 
+ * @returns the result of the api call
+ */
+export async function setParameterSwitchValue(value, param={}, dispatch) {
+    const textVal = value ? "On" : "Off";
+    return setParameterAsText(textVal, param, dispatch);
 }
 
 /**
