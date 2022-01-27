@@ -213,31 +213,6 @@ export async function setMetronome(value, dispatch) {
     });
 }
 
-export async function setDelayEffectSwitch(value, dispatch) {
-    console.log("Delay value", value);
-    const textVal = value ? "On" : "Off";
-    await postCommand("setParameters", { "list": [{ "id": "Effect[1].Switch", "text": textVal }] });
-    return getParams(dispatch, true);
-}
-
-export async function setEq1EffectSwitch(value, dispatch) {
-    const textVal = value ? "On" : "Off";
-    await postCommand("setParameters", { "list": [{ "id": "Effect[2].Switch", "text": textVal }] });
-    return getParams(dispatch, true);
-}
-
-export async function setEq2EffectSwitch(value, dispatch) {
-    const textVal = value ? "On" : "Off";
-    await postCommand("setParameters", { "list": [{ "id": "Effect[3].Switch", "text": textVal }] });
-    return getParams(dispatch, true);
-}
-
-export async function setReverb(value, dispatch) {
-    const textVal = value ? "On" : "Off";
-    await postCommand("setParameters", { "list": [{ "id": "Reverb Switch", "text": textVal }] });
-    return getParams(dispatch, true);
-}
-
 /**
  * 
  * @param {Boolean} value to convert as text
