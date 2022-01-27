@@ -51,3 +51,35 @@ export function getStrikePoint(params=[]) {
 export function getSoftPedalSmoothing(params=[]) {
     return getParameterValueAsText("Soft Level", params);
 }
+
+export function getSbImpedance(params=[]) {
+    return params[45];
+}
+
+export function getSbCutoff(params=[]) {
+    return params[46];
+}
+
+export function getSbQFactor(params=[]) {
+    return params[47];
+}
+
+export function getStringLength(params=[]) {
+    return params[48];
+}
+
+export function getSympatheticResonance(params=[]) {
+    return params[49];
+}
+
+export function getDuplexScale(params=[]) {
+    return params[50];
+}
+
+export function getBloomingEnergy(params=[]) {
+    return params[53];
+}
+
+export function getBloomingInertia(params=[]) {
+    return params[54];
+}

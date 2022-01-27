@@ -51,9 +51,9 @@ export async function loadNextPreset(dispatch) {
     const response = await postCommand("nextPreset");
 
     if (isResponseOk(response) && dispatch) {
-        dispatch({type: "cancelSave"});
+        dispatch({ type: "cancelSave" });
         reloadInstrumentAndItsParameters(dispatch);
-    } 
+    }
     return response;
 }
 
@@ -66,9 +66,9 @@ export async function loadPreviousPreset(dispatch) {
     const response = await postCommand("prevPreset");
 
     if (isResponseOk(response) && dispatch) {
-        dispatch({type: "cancelSave"});
+        dispatch({ type: "cancelSave" });
         reloadInstrumentAndItsParameters(dispatch);
-    } 
+    }
     return response;
 }
 
@@ -199,10 +199,10 @@ export async function setMetronome(value, dispatch) {
     console.log("Metronome:", value);
     return await postCommand("setMetronome", {
         "accentuate": value.accentuate,
-//        "bpm": Number.parseFloat(value.bpm),
+        //        "bpm": Number.parseFloat(value.bpm),
         "enabled": value.enabled,
         "timesig": value.timesig
- //       "volume_db": Number.parseFloat(value.volume_db)
+        //       "volume_db": Number.parseFloat(value.volume_db)
     }).then((response) => {
         if (dispatch) {
             dispatch({ type: "setMetronome", value: value });
@@ -284,10 +284,22 @@ export async function setReverb(value, dispatch) {
     return getParams(dispatch, true);
 }
 
+/**
+ * 
+ * @param {*} value to set
+ * @param {*} param to update
+ * @param {*} dispatch 
+ * @returns the updated parameters
+ */
+export async function setParameterAsText(value, param = {}, dispatch) {
+    await postCommand("setParameters", { "list": [{ "id": param.id, "text": value }] });
+    return getParams(dispatch, true);
+}
+
 export async function getMidiSequencerState(dispatch) {
-    return  await postCommand("getSequencerInfo").then((v) => {
+    return await postCommand("getSequencerInfo").then((v) => {
         if (dispatch) {
-            dispatch({type: "setSequencerState", value: v.result[0]})
+            dispatch({ type: "setSequencerState", value: v.result[0] })
         }
         return Promise.resolve(v.result[0]);
     }).catch((err) => {
