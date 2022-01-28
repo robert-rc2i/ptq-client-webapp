@@ -1,5 +1,4 @@
-# Pianoteq client
-
+# Pianoteq client [![CodeQL](https://github.com/robert-rc2i/ptq-client-webapp/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/robert-rc2i/ptq-client-webapp/actions/workflows/codeql-analysis.yml)
 This project allows you to control your Pianoteq instance from any browser (Safari, Chrome and Firefox).
 
 This is the first version, which is limited to the following:
@@ -12,6 +11,7 @@ This is the first version, which is limited to the following:
 *  Saving a modified preset
 *  Reloading an instrument (Useful, when you make changes to Pianoteq directly)
 *  A/B Switching
+*  Metronome
 
 ### Some screenshots
 
