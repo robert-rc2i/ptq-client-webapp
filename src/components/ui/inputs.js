@@ -9,7 +9,7 @@ import { Form } from 'react-bootstrap';
  */
 export const InputRange = ({ onChange, onSetRangeValue, ...others }) => {
     return (
-        <input {...others} type="range" className="form-range" onChange={(e) => { e.preventDefault(); onChange(e.target.value) }} onTouchEnd={(e) => { e.preventDefault(); onSetRangeValue(e.target.value) }} onClick={(e) => { e.preventDefault(); onSetRangeValue(e.target.value) }} />
+        <input {...others} type="range" className="form-range ps-5" onChange={(e) => { e.preventDefault(); onChange(e.target.value) }} onTouchEnd={(e) => { e.preventDefault(); onSetRangeValue(e.target.value) }} onMouseUp={(e) => { onSetRangeValue(e.target.value); }} />
     )
 }
 

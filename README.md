@@ -20,8 +20,8 @@ This is the first version, which is limited to the following:
 
 ## Requirements
 
-* Git - Usually git is installed by default on most operating systems
-* Node - Node has to be installed on your computer for this to work, as I make use of it to serve the single page application.  Also note that Node will proxy the JsonRPC to Pianoteq, otherwise CORS issue will arise without it.
+* Git (Optional) - Usually git is installed by default on most operating systems
+* Node - Node has to be installed on your computer for this to work, as I make use of it to start the single page application.
 * Pianoteq running on a reachable device
 
 ### Running Pianoteq from the command line
@@ -29,9 +29,7 @@ This is the first version, which is limited to the following:
 * On Mac - `open /Applications/Pianoteq\ 7/Pianoteq\ 7.app --args --serve ip.address.of.device:8081`
 * On PC - `C:\Program Files\Modartt\Pianoteq 7>"Pianoteq 7.exe" --serve ip.address.of.device:8081`
 
-> *Note:* You need to replace the **ip.address.of.device** with the ip address of your device.  We need to specify the ip address, otherwise it will cause CORS issues with the application.
-
-If you want a different port, simply change it on the command line to launch Pianoteq and change the proxy param accordingly in the package.json file.  This is only necessary if you start it in development mode
+> *Note:* You need to replace the **ip.address.of.device** with the ip address of your device.  We need to specify the ip address, otherwise it will cause CORS issues with the application.  If you want a different port, simply change it on the command line to launch Pianoteq.
 
 ### How to install node on Mac / Windows
 Visit the node webpage [here](https://nodejs.dev) 
@@ -45,7 +43,7 @@ Visit the [git repo](https://github.com/nodesource/distributions) of nodesource 
 
 ## How to install this project
 
-### First install
+### First install using git
 In the folder of your choice, launch the following command from a terminal window.
 
     git clone https://github.com/robert-rc2i/ptq-client-webapp.git
@@ -54,8 +52,20 @@ In the folder of your choice, launch the following command from a terminal windo
 
 This will create a new folder named `ptq-client-webapp` and will install all required dependencies of this project.  
 
-### Upgrade to latest version
-This is only necessary when there is a new version of the app.  For this, you simply launch the following commands in the project root folder
+### First install by downloading a release ###
+With this method, git is not required.
+
+Download a release, of your choice, from here: https://github.com/robert-rc2i/ptq-client-webapp/releases
+Unzip the downloaded release file into a new folder.  This shoudl have created a folder with a name `ptq-client-webapp-RELEASE-vx.x.x`, where x are the release number you selected.  Now you are ready to install the project's dependencies
+
+    # Change the x.x.x to the release number you selected
+    cd ptq-client-webapp-RELEASE-vx.x.x
+    npm install
+
+### Upgrade to latest version using git
+> *Note:* This is only necessary when there is a new version of the app.  It also only works if you install this project using git method for the first install.  
+
+For this, you simply launch the following commands in the project root folder
 
      git pull origin main
      npm install
@@ -84,6 +94,25 @@ Before you can deploy the app, you need to build a deployable package.  For this
     npm run build
 
 Once done, you will have a folder called build.  You simply need to copy the content of this folder to your web server of choice.  See your web serve's documentation to know how.
+
+### Serve the newly built project ###
+You can also serve the built project by using `serve` module.  From the project root directory tpye the following commands:
+    
+    npm run build
+    npx serve -s build
+
+This will launch a small http server and serve the newly built project at the directory named `build`.  You should see an output like so:
+
+    ┌──────────────────────────────────────────────────┐
+    │                                                  │
+    │   Serving!                                       │
+    │                                                  │
+    │   - Local:            http://localhost:3000      │
+    │   - On Your Network:  http://192.168.2.59:3000   │
+    │                                                  │
+    │   Copied local address to clipboard!             │
+    │                                                  │
+    └──────────────────────────────────────────────────┘
 
 ## Final note
 I am not affiliated with Modartt.  All references to Modartt are governed by their trademark and licenses.

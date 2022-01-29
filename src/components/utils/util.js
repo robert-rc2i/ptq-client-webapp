@@ -17,3 +17,23 @@ export function versionIsSupported(requiredVersion="7.5.3", currentVersion="1.0.
     const re = /\./gi;
     return (Number.parseInt(currentVersion.replace(re, '')) - Number.parseInt(requiredVersion.replace(re, ''))) >= 0;
 }
+
+/**
+ * Function utility to wrap another funciton that requires only the last call to be performed.  The last called is dertermined by a timeout.
+ * @param {function} fn is the function to call once the timeout is triggered
+ * @param {Array} ars an array of arguments to pass to the function
+ * @param {int} timeout to trigger the function, in milli-seconds.
+ */
+export function debounce(fn, args=[], timeout, timerId) {
+    console.log("Timer id:", timerId);
+
+    //Clear the timer if any. That way any pending timer won't trigger the function
+    clearTimeout(timerId);
+
+    timerId = setTimeout(() => {
+        console.log("Debounce: Calling function...");
+        fn.apply(this, args);
+    }, timeout);
+
+    return timerId;
+}
