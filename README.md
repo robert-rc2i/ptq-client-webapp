@@ -23,10 +23,10 @@ Simply click on the link below!
 
 * http://ptq-web-client.s3-website-us-east-1.amazonaws.com
 
-On there, you'll need to the URL of the running instance of Pianoteq that you have.  See requirements below. 
+Once the page opens, you'll need to set the URL of the running instance of Pianoteq, using the menu.  See Pianoteq's requirements below. 
 
 ### Install on your mobile device
-Yes, you may install a web application on your home screen.  Your mobile device will treat it as if it was a native application.
+Yes, you may install this web application on your home screen.  Your mobile device will treat it as if it was a native application.
 
 * iOS Safai
     * Click on the link above to load the web app
