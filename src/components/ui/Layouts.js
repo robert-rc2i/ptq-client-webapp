@@ -29,7 +29,7 @@ function TopMenu() {
                     <PianotteqUrlSettingController onClose={toggleMenu} dispatch={reducer} />
                     <h6>Instrument selection</h6>
                     <InstrumentSelectionPaneView toggleFunction={toggleMenu} />
-                    <AppVersionView />
+                    <AppVersionView appVersion={process.env.REACT_APP_appVersion} apiVersion={process.env.REACT_APP_apiVersion}/>
                 </Offcanvas.Body>
             </Offcanvas>
         </>
