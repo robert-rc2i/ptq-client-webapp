@@ -5,6 +5,7 @@ import { InstrumentSelectionPaneView } from './instrumentsViews';
 import { PianotteqUrlSettingController } from './settingViews';
 import { MidiControlerButtonView } from './midiControlViews';
 import { MetronomeControlerButtonView } from './metronomeViews';
+import { AppVersionView } from './versionViews';
 
 function TopMenu() {
     const [, reducer] = useInstrumentContext();
@@ -28,6 +29,7 @@ function TopMenu() {
                     <PianotteqUrlSettingController onClose={toggleMenu} dispatch={reducer} />
                     <h6>Instrument selection</h6>
                     <InstrumentSelectionPaneView toggleFunction={toggleMenu} />
+                    <AppVersionView appVersion={process.env.REACT_APP_appVersion} apiVersion={process.env.REACT_APP_apiVersion}/>
                 </Offcanvas.Body>
             </Offcanvas>
         </>

@@ -51,7 +51,7 @@ export const MetronomeModalView = ({ show = false, handleClose, ctx, reducer }) 
                                 <Dropdown.Item eventKey="6/8" active={"6/8" === metronomeState.timesig}>6/8</Dropdown.Item>
                                 <Dropdown.Item eventKey="7/8" active={"7/8" === metronomeState.timesig}>7/8</Dropdown.Item>
                                 <Dropdown.Item eventKey="9/8" active={"9/8" === metronomeState.timesig}>9/8</Dropdown.Item>
-                                <Dropdown.Item eventKey="12/8" active={"12/8" === metronomeState.timesig}>12/8</Dropdown.Item>
+                                <Dropdown.Item eventKey="12/8" active={"12/8" === metronomeState.timesig} disabled>12/8</Dropdown.Item>
                             </Dropdown.Menu>
                         </Dropdown>
                         <InputSwitch name="accentuate" label="Accentuatefirst beat" isChecked={metronomeState.accentuate} onClick={(v) => { PtqApi.setMetronome({ ...metronomeState, accentuate: v }, reducer) }} />
