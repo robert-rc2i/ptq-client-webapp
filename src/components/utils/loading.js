@@ -11,13 +11,14 @@ export default class Loading extends React.Component {
 
         const isError = ctx.error;
         const isLoading = !ctx || !ctx.allInstruments || ctx.allInstruments.presets.length === 0;
-        return (
-            <>
-                {isLoading && <Initializing />}
-                {isError && <ErrorMessage />}
-                {!isLoading && this.props.children}
-            </>
-        )
+
+        if (isError) {
+            return (<ErrorMessage/>);
+        } else if (isLoading) {
+            return (<Initializing />);
+        }
+
+        return this.props.children;
     }
 
     async componentDidMount() {
