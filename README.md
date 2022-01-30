@@ -15,8 +15,29 @@ This is the first version, which is limited to the following:
 
 ### Some screenshots
 
-> ![Midi controls](https://i.imgur.com/WnOljWL.jpg?1) ![Voicing controls](https://i.imgur.com/veORPFI.jpg?1)  ![Output controls](https://i.imgur.com/sWXriNI.jpg?1)
+![Midi controls](https://i.imgur.com/WnOljWL.jpg?1) ![Voicing controls](https://i.imgur.com/veORPFI.jpg?1)  ![Output controls](https://i.imgur.com/sWXriNI.jpg?1)
 
+
+## How to use it
+Simply click on the link below!  
+
+* http://ptq-web-client.s3-website-us-east-1.amazonaws.com
+
+On there, you'll need to the URL of the running instance of Pianoteq that you have.  See requirements below. 
+
+### Install on your mobile device
+Yes, you may install a web application on your home screen.  Your mobile device will treat it as if it was a native application.
+
+* iOS Safai
+    * Click on the link above to load the web app
+    * Click on the share button
+    * And select the `Add to home screen` menu.  That's it!
+* Android Chrome
+    * Click on the link above to load the web app
+    * Click on the 3 dots
+    * And select `Add to homescreen`
+
+> **Note** - This will run the web application offline, i.e. it will not load the app from the web anymore (This behavior varies from devices).  To force a reload from the web, you'll need to force quit the app.  Usefull, when a new version is available.
 
 ## Requirements
 
@@ -42,6 +63,7 @@ Visit the [git repo](https://github.com/nodesource/distributions) of nodesource 
     sudo apt-get install -y nodejs
 
 ## How to install this project
+This is only necessary if you want to host the webapp locally and not make use of the provided link above.
 
 ### First install using git
 In the folder of your choice, launch the following command from a terminal window.
@@ -72,7 +94,7 @@ For this, you simply launch the following commands in the project root folder
 
 This will replace your current project with the latest changes from the git repo and install any new dependencies that the project may have added
 
-## How to start
+## How to serve the webapp
 You can run this software in two modes.  A self-contained mode, which does not require any other software to run or deploy to a web server of your choice
 
 ### Self-contained mode
