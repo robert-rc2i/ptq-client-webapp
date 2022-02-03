@@ -9,7 +9,7 @@ export const VoicingTabView = () => {
     const [ctx, reducer] = useInstrumentContext();
 
     return (
-        <>
+        <div className="mb-5">
             <Card className="mb-2">
                 <Card.Header>Hammer settings</Card.Header>
                 <Card.Body>
@@ -25,6 +25,6 @@ export const VoicingTabView = () => {
                     <RangeParameterViewController label="Soft pedal smoothing" name="softPedal" min={0} max={1} step={0.01} param={ctx.instrumentParameters.softPedalSmoothing} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
                 </Card.Body>
             </Card>
-        </>
+        </div>
     )
 }

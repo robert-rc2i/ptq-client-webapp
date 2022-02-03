@@ -9,7 +9,7 @@ export const EffectsTabView = () => {
     const [ctx, reducer] = useInstrumentContext();
 
     return (
-        <div>
+        <div className="mb-5">
             <div className="mb-2">
             <NegativeRangeParameterViewController label="Post Effect Gain" name="fxGain" min={-12} max={12} step={0.2} param={ctx.instrumentParameters.postFxGain} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             </div>
