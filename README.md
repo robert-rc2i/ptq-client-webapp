@@ -6,7 +6,7 @@ This is the first version, which is limited to the following:
 *  Media player (Midi)
 *  Piano controls
     * Volume and dynamics controls
-    * Sound modes (Recording, binaural, stero & mono)
+    * Sound modes (Recording, binaural, stereo & mono)
     * Piano condition
     * Piano lid 
 *  Voicing controls
@@ -41,16 +41,16 @@ Once the page opens, you'll need to set the URL of the running instance of Piano
 ### Install on your mobile device
 Yes, you may install this web application on your home screen.  Your mobile device will treat it as if it was a native application.
 
-* iOS Safai
+* iOS Safari
     * Click on the link above to load the web app
     * Click on the share button
     * And select the `Add to home screen` menu.  That's it!
 * Android Chrome
     * Click on the link above to load the web app
     * Click on the 3 dots
-    * And select `Add to homescreen`
+    * And select `Add to home screen`
 
-> **Note** - This will run the web application offline, i.e. it will not load the app from the web anymore (This behavior varies from devices).  To force a reload from the web, you'll need to force quit the app.  Usefull, when a new version is available.
+> **Note** - This will run the web application offline, i.e. it will not load the app from the web anymore (This behavior varies from devices).  To force a reload from the web, you'll need to force quit the app.  Useful, when a new version is available.
 
 ## Requirements
 
@@ -76,7 +76,7 @@ Visit the [git repo](https://github.com/nodesource/distributions) of nodesource 
     sudo apt-get install -y nodejs
 
 ## How to install this project
-This is only necessary if you want to host the webapp locally and not make use of the provided link above.
+This is only necessary if you want to host the web app locally and not make use of the provided link above.
 
 ### First install using git
 In the folder of your choice, launch the following command from a terminal window.
@@ -91,13 +91,13 @@ This will create a new folder named `ptq-client-webapp` and will install all req
 With this method, git is not required.
 
 Download a release, of your choice, from here: https://github.com/robert-rc2i/ptq-client-webapp/releases
-Unzip the downloaded release file into a new folder.  This shoudl have created a folder with a name `ptq-client-webapp-RELEASE-vx.x.x`, where x are the release number you selected.  Now you are ready to install the project's dependencies
+Unzip the downloaded release file into a new folder.  This should have created a folder with the name `ptq-client-webapp-RELEASE-vx.x.x`, where x are the release number you selected.  Now you are ready to install the project's dependencies
 
     # Change the x.x.x to the release number you selected
     cd ptq-client-webapp-RELEASE-vx.x.x
     npm install
 
-### Upgrade to latest version using git
+### Upgrade to the latest version using git
 > *Note:* This is only necessary when there is a new version of the app.  It also only works if you install this project using git method for the first install.  
 
 For this, you simply launch the following commands in the project root folder
@@ -107,7 +107,7 @@ For this, you simply launch the following commands in the project root folder
 
 This will replace your current project with the latest changes from the git repo and install any new dependencies that the project may have added
 
-## How to serve the webapp
+## How to serve the web app
 You can run this software in two modes.  A self-contained mode, which does not require any other software to run or deploy to a web server of your choice
 
 ### Self-contained mode
@@ -116,7 +116,7 @@ Again, before running the command below, make sure that you are at the root fold
 
     npm start
 
-This will try to open your default browser to localhost:3000.  To access it remotely, you'll need to find the ip address of your device.  I suggest that you make that addresss permanent in your router so it does not change every day!  Then point your mobile phone to your device like so.
+This will try to open your default browser to localhost:3000.  To access it remotely, you'll need to find the ip address of your device.  I suggest that you make that address permanent in your router so it does not change every day!  Then point your mobile phone to your device like so.
 
     http://your.ip.address:3000
 
@@ -128,15 +128,15 @@ Before you can deploy the app, you need to build a deployable package.  For this
 
     npm run build
 
-Once done, you will have a folder called build.  You simply need to copy the content of this folder to your web server of choice.  See your web serve's documentation to know how.
+Once done, you will have a folder called build.  You simply need to copy the content of this folder to your web server of choice.  See your web server's documentation to know-how.
 
 ### Serve the newly built project ###
-You can also serve the built project by using `serve` module.  From the project root directory tpye the following commands:
+You can also serve the built project by using `serve` module.  From the project root directory type the following commands:
     
     npm run build
     npx serve -s build
 
-This will launch a small http server and serve the newly built project at the directory named `build`.  You should see an output like so:
+This will launch a small HTTP server and serve the newly built project at the directory named `build`.  You should see an output like so:
 
     ┌──────────────────────────────────────────────────┐
     │                                                  │
