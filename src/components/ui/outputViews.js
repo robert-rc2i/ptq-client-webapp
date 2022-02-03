@@ -9,7 +9,7 @@ export const OutputCardView = () => {
     const [ctx, reducer] = useInstrumentContext();
 
     return (
-        <div>
+        <div className="mb-5">
             <Card className="mb-2">
                 <Card.Header>Piano sound</Card.Header>
                 <Card.Body>
