@@ -14,7 +14,7 @@ export const CurrentInstrumentPage = () => {
         <>
             <InstrumentCardView instrument={ctx.currentPreset} dispatch={reducer} />
             <Tabs defaultActiveKey="output" id="uncontrolled-tab-example" className="mb-3">
-                <Tab eventKey="output" title="Output">
+                <Tab eventKey="output" title="Piano">
                     <OutputCardView />
                 </Tab>
                 <Tab eventKey="voicing" title="Voicing" >

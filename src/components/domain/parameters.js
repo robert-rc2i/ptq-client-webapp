@@ -18,6 +18,26 @@ export class InstrumentParameters {
         return this.paramsByIds.get("Volume");
     }
 
+    get outputMode() {
+        return this.paramsByIds.get("Output Mode");
+    }
+
+    get condition() {
+        return this.paramsByIds.get("Condition");
+    }
+
+    get lid() {
+        return this.paramsByIds.get("Lid")
+    }
+
+    get isLidOff() {
+        return this.lid.text === "Off";
+    }
+
+    get lidPosition() {
+        return this.paramsByIds.get("Lid Position")
+    }
+
     // Voicing parameters
     get hammerHardnessPiano() {
         return this.paramsByIds.get("Hammer Hardness Piano");
