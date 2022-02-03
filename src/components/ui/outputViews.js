@@ -13,7 +13,7 @@ export const OutputCardView = () => {
             <Card className="mb-2">
                 <Card.Header>Piano sound</Card.Header>
                 <Card.Body>
-                    <div className="mb-2 d-flex flex-row justify-content-center"><SoundModeView ctx={ctx} reducer={reducer} /></div>
+                    <SoundModeView ctx={ctx} reducer={reducer} />
                     <NegativeRangeParameterViewController label="Volume" name="volume" min={-96} max={12} step={0.5} param={ctx.instrumentParameters.volume} dispatch={reducer} apiCallback={pqtApi.setParameterAsText} />
                     <RangeParameterViewController label="Dynamic" name="dynamic" min={0} max={100} step={1} param={ctx.instrumentParameters.dynamics} dispatch={reducer} apiCallback={pqtApi.setParameterAsText} />
                 </Card.Body>
@@ -50,9 +50,9 @@ export const PianoConditionCardView = ({ ctx, reducer }) => {
 export const SoundModeView = ({ ctx, reducer }) => {
 
     return (
-        <div className="d-flex flex-column">
+        <div className="d-flex flex-column mb-2">
             <div className="mb-2">Modes:</div>
-            <div>
+            <div className="ms-5">
                 <Form.Check inline id="sr" label="Recording" name="soundMode" value="Sound Recording" type="radio" checked={"Sound Recording" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { pqtApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }} />
                 <Form.Check inline id="binaural" label="Binaural" name="soundMode" value="Binaural" type="radio" checked={"Binaural" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { pqtApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }} />
                 <Form.Check inline id="stero" label="Stereo" name="soundMode" value="Sterophonic" type="radio" checked={"Sterophonic" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { pqtApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }} />
