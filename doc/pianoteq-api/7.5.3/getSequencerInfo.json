@@ -1,0 +1,17 @@
+{
+    "id": 0,
+    "jsonrpc": "2.0",
+    "result": [
+        {
+            "description": "Blues Demo\nPerformer: Piet De Ridder\nCopyright (c) 2010 Piet De Ridder",
+            "duration": 147.25,
+            "is_paused": false,
+            "is_playing": false,
+            "is_recording": false,
+            "name": "Blues Demo",
+            "path": "(builtin)",
+            "playback_speed": 1.0,
+            "position": 1.6921532154083252
+        }
+    ]
+}

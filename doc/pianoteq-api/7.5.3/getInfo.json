@@ -1,0 +1,24 @@
+{
+    "id": 0,
+    "jsonrpc": "2.0",
+    "result": [
+        {
+            "arch": "arm",
+            "arch_bits": 64,
+            "build_date": "20220120",
+            "computing_parameter_update": false,
+            "current_preset": {
+                "author": "Modartt",
+                "bank": "My Presets",
+                "comment": "A preset that lets you discover a colourful variant of the NY Steinway D grand piano.",
+                "instrument": "Grand Steinway D (New York)",
+                "mini_presets": {},
+                "name": "NY Steinway D Prelude (RC)"
+            },
+            "plugin_type": "sta",
+            "product_name": "Pianoteq",
+            "vendor_name": "Modartt",
+            "version": "7.5.3"
+        }
+    ]
+}

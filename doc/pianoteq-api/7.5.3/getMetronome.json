@@ -1,0 +1,13 @@
+{
+    "id": 0,
+    "jsonrpc": "2.0",
+    "result": [
+        {
+            "accentuate": true,
+            "bpm": 120.0,
+            "enabled": false,
+            "timesig": "4/4",
+            "volume_db": 0.0
+        }
+    ]
+}
