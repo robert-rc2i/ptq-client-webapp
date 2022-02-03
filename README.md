@@ -3,13 +3,26 @@ This project allows you to control your Pianoteq instance from any browser (Safa
 
 This is the first version, which is limited to the following:
 
-*  midi controls
-*  Volume and dynamics controls
+*  Media player (Midi)
+*  Piano controls
+    * Volume and dynamics controls
+    * Sound modes (Recording, binaural, stero & mono)
+    * Piano condition
+    * Piano lid 
 *  Voicing controls
+    * Hammer settings
+    * Pedal settings
 *  Effects controls
-*  Instrument loading
+    * EQ 1 & 2
+    * Delay and reverb
+*  Design controls
+    * Soundboard settings
+    * String settings
+    * Blooming settings
+*  Loading an instrument
+    * Previous and next preset
+    * Reload a preset (Useful, when you make changes to Pianoteq directly)
 *  Saving a modified preset
-*  Reloading an instrument (Useful, when you make changes to Pianoteq directly)
 *  A/B Switching
 *  Metronome
 
