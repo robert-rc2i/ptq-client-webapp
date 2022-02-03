@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Dropdown, Form } from "react-bootstrap";
+import { Card, Form } from "react-bootstrap";
 import * as pqtApi from '../api/pqtApi';
 import { getSwitchToBooleanValue } from "../domain/parameters";
 import { useInstrumentContext } from "../utils/instrumentContext";
@@ -50,11 +50,14 @@ export const PianoConditionCardView = ({ ctx, reducer }) => {
 export const SoundModeView = ({ ctx, reducer }) => {
 
     return (
-        <Form>
-            <Form.Check inline id="sr" label="Recording" name="soundMode" value="Sound Recording" type="radio" checked={"Sound Recording" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { pqtApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }}/>
-            <Form.Check inline id="binaural" label="Binaural" name="soundMode" value="Binaural" type="radio" checked={"Binaural" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { pqtApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }}/>
-            <Form.Check inline id="stero" label="Stereo" name="soundMode" value="Sterophonic" type="radio" checked={"Sterophonic" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { pqtApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }}/>
-            <Form.Check inline id="mono" label="Mon" name="soundMode" value="Monophonic" type="radio" checked={"Monophonic" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { pqtApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }}/>
-        </Form>
+        <div className="d-flex flex-column">
+            <div className="mb-2">Modes:</div>
+            <div>
+                <Form.Check inline id="sr" label="Recording" name="soundMode" value="Sound Recording" type="radio" checked={"Sound Recording" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { pqtApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }} />
+                <Form.Check inline id="binaural" label="Binaural" name="soundMode" value="Binaural" type="radio" checked={"Binaural" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { pqtApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }} />
+                <Form.Check inline id="stero" label="Stereo" name="soundMode" value="Sterophonic" type="radio" checked={"Sterophonic" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { pqtApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }} />
+                <Form.Check inline id="mono" label="Mono" name="soundMode" value="Monophonic" type="radio" checked={"Monophonic" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { pqtApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }} />
+            </div>
+        </div>
     );
 }
