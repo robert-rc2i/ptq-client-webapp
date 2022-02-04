@@ -9,7 +9,7 @@ export const OutputCardView = () => {
     const [ctx, reducer] = useInstrumentContext();
 
     return (
-        <div>
+        <div className="mb-5">
             <Card className="mb-2">
                 <Card.Header>Piano sound</Card.Header>
                 <Card.Body>
@@ -26,7 +26,7 @@ export const OutputCardView = () => {
 
 export const LidCardView = ({ ctx, reducer }) => {
     return (
-        <Card>
+        <Card className="mb-2">
             <Card.Header><InputSwitch name="lidSwitch" label="Piano lid" isChecked={getSwitchToBooleanValue(ctx.instrumentParameters.lid.text)} onClick={(v) => { pqtApi.setParameterSwitchValue(v, ctx.instrumentParameters.lid, reducer) }} /></Card.Header>
             <Card.Body>
                 <RangeParameterViewController disabled={ctx.instrumentParameters.isLidOff} label="Lid position" name="condition" min={0} max={1} step={0.01} param={ctx.instrumentParameters.lidPosition} dispatch={reducer} apiCallback={pqtApi.setParameterAsText} />

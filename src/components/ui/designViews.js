@@ -9,7 +9,7 @@ export const DesignCardsView = () => {
     const [ctx, reducer] = useInstrumentContext();
 
     return (
-        <>
+        <div className="mb-5">
             <Card className="mb-2">
                 <Card.Header>Soundboard settings</Card.Header>
                 <Card.Body>
@@ -33,6 +33,6 @@ export const DesignCardsView = () => {
                     <RangeParameterViewController label="Inertia" name="inertia" min={0.1} max={3} step={0.01} param={ctx.instrumentParameters.bloomingInertia} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
                 </Card.Body>
             </Card>
-        </>
+        </div>
     )
 }

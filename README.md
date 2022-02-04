@@ -28,7 +28,8 @@ This is the first version, which is limited to the following:
 
 ### Some screenshots
 
-![Midi controls](https://i.imgur.com/WnOljWL.jpg?1) ![Voicing controls](https://i.imgur.com/veORPFI.jpg?1)  ![Output controls](https://i.imgur.com/sWXriNI.jpg?1)
+![Piano](./doc/assets/piano-settings.png) ![Voicing](./doc/assets/voicing-settings.png)  
+![Desing](./doc/assets/design-settings.png) ![Menu](./doc/assets/menu.png) 
 
 
 ## How to use it
