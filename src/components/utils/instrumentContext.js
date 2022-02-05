@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react';
-import { factoryMetronomeObject } from '../domain/metronome';
+import { factoryMetronomeObject, Metronome } from '../domain/metronome';
 import { factoryMidiSequencerObject } from '../domain/midiSequencer';
 import { InstrumentParameters } from '../domain/parameters';
 import { factoryPresets, getInstrumentByName } from '../domain/presets';
@@ -20,7 +20,7 @@ export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, 
         instrumentParameters: new InstrumentParameters(currParams),
         ptqInfo: info,
         isPresetModified: isPresetModified,
-        metronome: metronome,
+        metronome: new Metronome(metronome),
         midiState: midiState
     }
 }
@@ -32,7 +32,6 @@ export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, 
  * @returns 
  */
 const defaultReducer = (currentState, action) => {
-    console.log("Reducder command:", action);
     switch (action.type) {
         case "loadInstrument":
             return {
@@ -65,7 +64,7 @@ const defaultReducer = (currentState, action) => {
         case "setMetronome":
             return {
                 ...currentState,
-                metronome: action.value
+                metronome: new Metronome(action.value)
             }
         case "apiError": {
             return {
@@ -118,6 +117,7 @@ const defaultReducer = (currentState, action) => {
             }
         }
         default:
+            console.error("Unknown reducer action", action);
             break;
     }
 } 
