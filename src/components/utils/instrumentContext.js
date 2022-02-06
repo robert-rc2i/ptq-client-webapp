@@ -12,11 +12,10 @@ import { factoryPresets, getInstrumentByName } from '../domain/presets';
  * @param {*} info 
  * @returns 
  */
-export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, currParams=[], info={}, isPresetModified=false, metronome=factoryMetronomeObject(), midiState=factoryMidiSequencerObject()}) => {
+export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, info={}, currParams=[], isPresetModified=false, metronome=factoryMetronomeObject(), midiState=factoryMidiSequencerObject()}) => {
     return {
         allInstruments: presets,
         currentPreset: currPreset,
-        currentParameters: currParams,
         instrumentParameters: new InstrumentParameters(currParams),
         ptqInfo: info,
         isPresetModified: isPresetModified,
@@ -38,7 +37,6 @@ const defaultReducer = (currentState, action) => {
                 ...currentState,
                 ptqInfo: action.ptqInfo,
                 currentPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), currentState.allInstruments.presets),
-                currentParameters: action.params,
                 instrumentParameters: new InstrumentParameters(action.params),
                 isPresetModified: false
             }
@@ -48,7 +46,6 @@ const defaultReducer = (currentState, action) => {
                 allInstruments: action.presets,
                 ptqInfo: action.ptqInfo,
                 currentPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), currentState.allInstruments.presets),
-                currentParameters: action.params,
                 instrumentParameters: new InstrumentParameters(action.params),
                 isPresetModified: false
             }
@@ -77,7 +74,6 @@ const defaultReducer = (currentState, action) => {
                 ...currentState,
                 ptqInfo: action.ptqInfo,
                 currentPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), currentState.allInstruments.presets),
-                currentParameters: action.params,
                 instrumentParameters: new InstrumentParameters(action.params)
             }
         case "info":
@@ -91,7 +87,6 @@ const defaultReducer = (currentState, action) => {
         case "loadParameters":
             return {
                 ...currentState,
-                currentParameters: action.params,
                 instrumentParameters: new InstrumentParameters(action.params),
                 isPresetModified: action.presetModified
             }
@@ -101,7 +96,7 @@ const defaultReducer = (currentState, action) => {
                 isPresetModified: true
             }
             //Assign new value to the desired param
-            newState.currentParameters[action.index].text = action.value;
+            newState.instrumentParameters.parameters[action.index].text = action.value;
 
             return newState;
         case "setSequencerState": {
