@@ -13,7 +13,7 @@ export const MetronomeControlerButtonView = () => {
     const buttonVariant = ctx.metronome.enabled ? "info" : "primary"
     return (
         <>
-            <Button title="Metronome controls" variant={buttonVariant} className="mb-2 me-2 px-1 py-1" onClick={onClose}><img alt="metronome" src="/assets/metronome-tick.png" /></Button>
+            <Button title="Metronome controls" variant={buttonVariant} className="mb-2 me-2 px-3 py-1" onClick={onClose}><img alt="metronome" src="/assets/metronome-tick.png" /></Button>
             {hasClicked && (<MetronomeModalView show={hasClicked} handleClose={onClose} ctx={ctx} reducer={reducer} />)}
         </>
 
@@ -43,7 +43,6 @@ export const MetronomeModalView = ({ show = false, handleClose, ctx, reducer }) 
                         <Button variant={metronomeState.enabled ? "danger" : "primary"} className="pb-0" onClick={() => { PtqApi.setMetronome({ ...metronomeState, enabled: !metronomeState.enabled }, reducer) }} ><h3><i className="bi bi-pause" /><i className="bi bi-play" /></h3></Button>
                     </div>
                 </RenderBasedOnApiVersion>
-
             </Modal.Body>
         </Modal>
 
