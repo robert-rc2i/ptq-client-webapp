@@ -116,4 +116,17 @@ export class InstrumentParameters {
     get bloomingInertia() {
         return this.paramsByIds.get("Blooming Inertia");
     }
+
+    //Piano action
+    get damperNoise() {
+        return this.paramsByIds.get("Damper Noise");
+    }
+
+    get keyReleaseNoise() {
+        return this.paramsByIds.get("Key Release Noise");
+    }
+
+    get sustainPedalNoise() {
+        return this.paramsByIds.get("Pedal Noise");
+    }
 }

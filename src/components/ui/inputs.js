@@ -7,9 +7,9 @@ import { Form } from 'react-bootstrap';
  * @param {onSetRangeValue} function A callback function when the slider value is set, happens when the user release the mouse button or after the touch event 
  * @returns 
  */
-export const InputRange = ({ onChange, onSetRangeValue, ...others }) => {
+export const InputRange = ({ onChange, onSetRangeValue, value, ...others }) => {
     return (
-        <input {...others} type="range" className="form-range ps-5" onChange={(e) => { e.preventDefault(); onChange(e.target.value) }} onTouchEnd={(e) => { e.preventDefault(); onSetRangeValue(e.target.value) }} onMouseUp={(e) => { onSetRangeValue(e.target.value); }} />
+        <input {...others} type="range" className="form-range ps-5" value={value} onChange={(e) => { e.preventDefault(); onChange(e.target.value) }} onTouchEnd={(e) => { e.preventDefault(); onSetRangeValue(e.target.value) }} onMouseUp={(e) => { onSetRangeValue(e.target.value); }} />
     )
 }
 
