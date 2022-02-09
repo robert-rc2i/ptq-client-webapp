@@ -57,8 +57,8 @@ export const PianoConditionCardView = ({ ctx, reducer }) => {
 export const SoundModeView = ({ ctx, reducer }) => {
 
     return (
-        <div className="d-flex flex-column mb-2">
-            <div className="mb-2">Modes:</div>
+        <div className="d-flex mb-2">
+            <div>Modes:</div>
             <div className="ms-5">
                 <Form.Check inline id="sr" label="Recording" name="soundMode" value="Sound Recording" type="radio" checked={"Sound Recording" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { pqtApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }} />
                 <Form.Check inline id="binaural" label="Binaural" name="soundMode" value="Binaural" type="radio" checked={"Binaural" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { pqtApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }} />
