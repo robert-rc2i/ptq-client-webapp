@@ -32,14 +32,14 @@ This is the first version, which is limited to the following:
 ![Desing](./doc/assets/design-settings.png) ![Menu](./doc/assets/menu.png) 
 
 
-## How to use it
+# How to use it
 Simply click on the link below!  
 
 * http://ptq-web-client.s3-website-us-east-1.amazonaws.com
 
 Once the page opens, you'll need to set the URL of the running instance of Pianoteq, using the menu.  See Pianoteq's requirements below. 
 
-### Install on your mobile device
+## Install on your mobile device
 Yes, you may install this web application on your home screen.  Your mobile device will treat it as if it was a native application.
 
 * iOS Safari
@@ -53,7 +53,11 @@ Yes, you may install this web application on your home screen.  Your mobile devi
 
 > **Note** - This will run the web application offline, i.e. it will not load the app from the web anymore (This behavior varies from devices).  To force a reload from the web, you'll need to force quit the app.  Useful, when a new version is available.
 
+# Deploy localy
+This step is required only if you want to host this application localy on your network.
+
 ## Requirements
+Before you can deploy this project locally, you need to first install the required software.
 
 * Git (Optional) - Usually git is installed by default on most operating systems
 * Node - Node has to be installed on your computer for this to work, as I make use of it to start the single page application.
@@ -77,7 +81,7 @@ Visit the [git repo](https://github.com/nodesource/distributions) of nodesource 
     sudo apt-get install -y nodejs
 
 ## How to install this project
-This is only necessary if you want to host the web app locally and not make use of the provided link above.
+This is only necessary if you want to host the web app locally and not make use of the provided link above.  You have to option, either using `git` or simply downloading a specific release of your choice.
 
 ### First install using git
 In the folder of your choice, launch the following command from a terminal window.
@@ -129,7 +133,7 @@ Before you can deploy the app, you need to build a deployable package.  For this
 
     npm run build
 
-Once done, you will have a folder called build.  You simply need to copy the content of this folder to your web server of choice.  See your web server's documentation to know-how.
+Once done, you will have a folder called build.  You simply need to copy the content of this folder to your web server of choice.  See your web server's documentation to know-how.  Or simply serve it using `serve`.  See below.
 
 ### Serve the newly built project ###
 You can also serve the built project by using `serve` module.  From the project root directory type the following commands:

@@ -29,11 +29,11 @@ export default class Loading extends React.Component {
 
 export function ErrorMessage() {
     return (
-        <Alert>
+        <Alert variant='danger'>
             <Alert.Heading>Network error</Alert.Heading>
-            <p>Error occured while trying to communicate with Pianoteq.  Pls make sure Pianoteq is started with the <code>--serve ip.address.here:8081</code></p>
+            <p>Error occured while trying to communicate with Pianoteq.  Pls make sure Pianoteq is started with the option <code>--serve ip.address.here:8081</code></p>
             <hr />
-            <p>Please, make sure the provided Pianoteq url <i>{ApiHelper.apiBaseUrl}</i> is correct.</p>
+            <p>Please, make sure the provided Pianoteq url <i>{ApiHelper.apiBaseUrl}</i> is correct.  If not the right address, pls click on the menu button and change it.</p>
             <p>The expected format is: http://ip.address.here:8081/jsonrpc</p>
         </Alert>
     )
