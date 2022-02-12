@@ -29,7 +29,7 @@ export default class Loading extends React.Component {
 
 export function ErrorMessage() {
     return (
-        <Alert>
+        <Alert variant='danger'>
             <Alert.Heading>Network error</Alert.Heading>
             <p>Error occured while trying to communicate with Pianoteq.  Pls make sure Pianoteq is started with the option <code>--serve ip.address.here:8081</code></p>
             <hr />

@@ -11,7 +11,7 @@ export const MidiControlerButtonView = () => {
     const [hasClicked, setHasClicked] = useState(false);
 
     const onClose = (name) => { setHasClicked(!hasClicked); }
-    const buttonVariant = ctx.midiState.is_playing || ctx.midiState.is_recording ? "info" : "primary"
+    const buttonVariant = ctx.midiState.is_playing || ctx.midiState.is_recording ? "info" : "outline-secondary"
 
     return (
         <>

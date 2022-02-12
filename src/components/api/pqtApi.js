@@ -198,10 +198,10 @@ export async function reloadInstrumentAndItsParameters(dispatch = null) {
 export async function setMetronome(value, dispatch) {
     return await postCommand("setMetronome", {
         "accentuate": value.accentuate,
-        //        "bpm": Number.parseFloat(value.bpm),
+        "bpm": Number.parseFloat(value.bpm),
         "enabled": value.enabled,
-        "timesig": value.timesig
-        //       "volume_db": Number.parseFloat(value.volume_db)
+        "timesig": value.timesig,
+        "volume_db": Number.parseFloat(value.volume_db)
     }).then((response) => {
         if (dispatch) {
             dispatch({ type: "setMetronome", value: value });
