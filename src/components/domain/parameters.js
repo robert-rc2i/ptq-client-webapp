@@ -129,4 +129,38 @@ export class InstrumentParameters {
     get sustainPedalNoise() {
         return this.paramsByIds.get("Pedal Noise");
     }
+
+    //Spectrum profile
+    get spectrumProfile1() {
+        return this.paramsByIds.get("Profil[1]");
+    }
+
+    get spectrumProfile2() {
+        return this.paramsByIds.get("Profil[2]");
+    }
+    
+    get spectrumProfile3() {
+        return this.paramsByIds.get("Profil[3]");
+    }
+    
+    get spectrumProfile4() {
+        return this.paramsByIds.get("Profil[4]");
+    }
+    
+    get spectrumProfile5() {
+        return this.paramsByIds.get("Profil[5]");
+    }
+    
+    get spectrumProfile6() {
+        return this.paramsByIds.get("Profil[6]");
+    }
+    
+    get spectrumProfile7() {
+        return this.paramsByIds.get("Profil[7]");
+    }
+    
+    get spectrumProfile8() {
+        return this.paramsByIds.get("Profil[8]");
+    }
+    
 }
