@@ -1,0 +1,191 @@
+{
+    "id": 0,
+    "jsonrpc": "2.0",
+    "result": [
+        {
+            "doc": "Return various informations about the current state of Pianoteq.",
+            "name": "getInfo",
+            "spec": "getInfo()"
+        },
+        {
+            "doc": "Return cpu performance informations.",
+            "name": "getPerfInfo",
+            "spec": "getPerfInfo()"
+        },
+        {
+            "doc": "Immediately quit Pianoteq.",
+            "name": "quit",
+            "spec": "quit()"
+        },
+        {
+            "doc": "Randomize the value of parameters, just like the 'Random' button in the interface.",
+            "name": "randomizeParameters",
+            "spec": "randomizeParameters(amount=1.0)"
+        },
+        {
+            "doc": "Return the list of presets. preset_type can have the following values: {}.",
+            "name": "getListOfPresets",
+            "spec": "getListOfPresets(preset_type=\"full\")"
+        },
+        {
+            "doc": "",
+            "name": "activate",
+            "spec": "activate(serial,device_name)"
+        },
+        {
+            "doc": "Get activation info.",
+            "name": "getActivationInfo",
+            "spec": "getActivationInfo()"
+        },
+        {
+            "doc": "Load the specified preset. preset_type can have the following values: full, equ, vel, mic, reverb, tuning, effect_rack, effect1, effect2, effect3.",
+            "name": "loadPreset",
+            "spec": "loadPreset(name, bank=\"\", preset_type=\"full\")"
+        },
+        {
+            "doc": "Save the current preset.",
+            "name": "savePreset",
+            "spec": "savePreset(name, bank, preset_type=\"full\")"
+        },
+        {
+            "doc": "Reset parameters to saved preset.",
+            "name": "resetPreset",
+            "spec": "resetPreset()"
+        },
+        {
+            "doc": "",
+            "name": "nextPreset",
+            "spec": "nextPreset()"
+        },
+        {
+            "doc": "",
+            "name": "prevPreset",
+            "spec": "prevPreset()"
+        },
+        {
+            "doc": "",
+            "name": "nextInstrument",
+            "spec": "nextInstrument()"
+        },
+        {
+            "doc": "",
+            "name": "prevInstrument",
+            "spec": "prevInstrument()"
+        },
+        {
+            "doc": "Switch A and B presets.",
+            "name": "abSwitch",
+            "spec": "abSwitch()"
+        },
+        {
+            "doc": "Copy current (A or B) preset to the other one (B or A).",
+            "name": "abCopy",
+            "spec": "abCopy()"
+        },
+        {
+            "doc": "Undo last edition.",
+            "name": "undo",
+            "spec": "undo()"
+        },
+        {
+            "doc": "Redo last edition.",
+            "name": "redo",
+            "spec": "redo()"
+        },
+        {
+            "doc": "Return the list of parameters, with their respective values.",
+            "name": "getParameters",
+            "spec": "getParameters()"
+        },
+        {
+            "doc": "Change the value for the list of parameters provided. The list uses the same format as the list returned by getParameters, except that many fields can be omitted. The requirement is just to supply 'id' to identify the parameter, and either 'normalized_value' or 'text' to specify its new value.",
+            "name": "setParameters",
+            "spec": "setParameters(list=[])"
+        },
+        {
+            "doc": "Load the specified MIDI file. If the argument is the name of a folder, or a list of strings, then a playlist will be loaded.",
+            "name": "loadMidiFile",
+            "spec": "loadMidiFile(path)"
+        },
+        {
+            "doc": "Save the currently loaded MIDI file.",
+            "name": "saveMidiFile",
+            "spec": "saveMidiFile(path)"
+        },
+        {
+            "doc": "send raw MIDI bytes to the engine.",
+            "name": "midiSend",
+            "spec": "midiSend(bytes=[])"
+        },
+        {
+            "doc": "Return the metronome state.",
+            "name": "getMetronome",
+            "spec": "getMetronome()"
+        },
+        {
+            "doc": "Change the metronome state.",
+            "name": "setMetronome",
+            "spec": "setMetronome(enabled=null, bpm=null, volume_db=null, timesig=null, accentuate=null)"
+        },
+        {
+            "doc": "Load any supported file (fxp/mfxp/scl/kbm/ptq/wav..",
+            "name": "loadFile",
+            "spec": "loadFile(path)"
+        },
+        {
+            "doc": "Return the MIDI sequencer state.",
+            "name": "getSequencerInfo",
+            "spec": "getSequencerInfo()"
+        },
+        {
+            "doc": "Play MIDI sequence.",
+            "name": "midiPlay",
+            "spec": "midiPlay()"
+        },
+        {
+            "doc": "Stop MIDI sequence.",
+            "name": "midiStop",
+            "spec": "midiStop()"
+        },
+        {
+            "doc": "Pause MIDI sequence.",
+            "name": "midiPause",
+            "spec": "midiPause()"
+        },
+        {
+            "doc": "Rewind MIDI sequence.",
+            "name": "midiRewind",
+            "spec": "midiRewind()"
+        },
+        {
+            "doc": "Record MIDI sequence.",
+            "name": "midiRecord",
+            "spec": "midiRecord()"
+        },
+        {
+            "doc": "Change position in MIDI sequence.",
+            "name": "midiSeek",
+            "spec": "midiSeek(seconds)"
+        },
+        {
+            "doc": "Reset all MIDI state.",
+            "name": "panic",
+            "spec": "panic()"
+        },
+        {
+            "doc": "Return information of the current audio device selected.",
+            "name": "getAudioDeviceInfo",
+            "spec": "getAudioDeviceInfo()"
+        },
+        {
+            "doc": "Return the list of audio devices available.",
+            "name": "getListOfAudioDevices",
+            "spec": "getListOfAudioDevices()"
+        },
+        {
+            "doc": "Get the list of jsonrpc functions.",
+            "name": "list",
+            "spec": "list()"
+        }
+    ]
+}

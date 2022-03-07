@@ -1,0 +1,1654 @@
+{
+    "id": 0,
+    "jsonrpc": "2.0",
+    "result": [
+        {
+            "id": "Condition",
+            "index": 0,
+            "name": "Condition",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Dynamics",
+            "index": 1,
+            "name": "Dynamics",
+            "normalized_value": 0.39393940567970276,
+            "text": "40",
+            "unit": "dB"
+        },
+        {
+            "id": "Pitch Bend",
+            "index": 2,
+            "name": "Pitch Bend",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "cents"
+        },
+        {
+            "id": "Unison",
+            "index": 3,
+            "name": "Unison Width",
+            "normalized_value": 0.5,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "Stereo Width",
+            "index": 4,
+            "name": "Stereo Width",
+            "normalized_value": 0.595470130443573,
+            "text": "1.50",
+            "unit": ""
+        },
+        {
+            "id": "Hammer Noise",
+            "index": 5,
+            "name": "Hammer Noise",
+            "normalized_value": 0.3103448152542114,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "Sustain Pedal",
+            "index": 6,
+            "name": "Sustain Pedal",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Soft Pedal",
+            "index": 7,
+            "name": "Soft Pedal",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Sostenuto Pedal",
+            "index": 8,
+            "name": "Sostenuto Pedal",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Harmonic Pedal",
+            "index": 9,
+            "name": "Harmonic Pedal",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Rattle Pedal",
+            "index": 10,
+            "name": "Rattle Pedal",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Lute Stop Pedal",
+            "index": 11,
+            "name": "Buff Stop Pedal",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Celeste Pedal",
+            "index": 12,
+            "name": "Celeste Pedal",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Mozart Rail",
+            "index": 13,
+            "name": "Mozart Rail",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Super Sostenuto",
+            "index": 14,
+            "name": "Super Sostenuto",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Pinch Harmonic Pedal",
+            "index": 15,
+            "name": "Pinch Harmonic Pedal",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Glissando Pedal",
+            "index": 16,
+            "name": "Glissando Pedal",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Harpsichord Register[1]",
+            "index": 17,
+            "name": "Harpsichord Register 1",
+            "normalized_value": 1.0,
+            "text": "1",
+            "unit": ""
+        },
+        {
+            "id": "Harpsichord Register[2]",
+            "index": 18,
+            "name": "Harpsichord Register 2",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Harpsichord Register[3]",
+            "index": 19,
+            "name": "Harpsichord Register 3",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Reversed Sustain",
+            "index": 20,
+            "name": "Reversed Sustain",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Volume",
+            "index": 21,
+            "name": "Volume",
+            "normalized_value": 0.7272727489471436,
+            "text": "0",
+            "unit": "dB"
+        },
+        {
+            "id": "Post Effect Gain",
+            "index": 22,
+            "name": "Post Effect Gain",
+            "normalized_value": 0.550000011920929,
+            "text": "+1.2",
+            "unit": "dB"
+        },
+        {
+            "id": "Diapason",
+            "index": 23,
+            "name": "Diapason",
+            "normalized_value": 0.3333333432674408,
+            "text": "440.0",
+            "unit": "Hz"
+        },
+        {
+            "id": "Octave Stretching",
+            "index": 24,
+            "name": "Octave Stretching",
+            "normalized_value": 0.23108820617198944,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "Unison Balance",
+            "index": 25,
+            "name": "Unison Balance",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Direct Sound",
+            "index": 26,
+            "name": "Direct Sound Duration",
+            "normalized_value": 0.5,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "Hammer Hardness Piano",
+            "index": 27,
+            "name": "Hammer Hard. Piano",
+            "normalized_value": 0.125,
+            "text": "0.25",
+            "unit": ""
+        },
+        {
+            "id": "Hammer Hardness Mezzo",
+            "index": 28,
+            "name": "Hammer Hard. Mezzo",
+            "normalized_value": 0.4000000059604645,
+            "text": "0.80",
+            "unit": ""
+        },
+        {
+            "id": "Hammer Hardness Forte",
+            "index": 29,
+            "name": "Hammer Hard. Forte",
+            "normalized_value": 0.5,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "Profil[1]",
+            "index": 30,
+            "name": "Spectrum Profile 1",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "dB"
+        },
+        {
+            "id": "Profil[2]",
+            "index": 31,
+            "name": "Spectrum Profile 2",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "dB"
+        },
+        {
+            "id": "Profil[3]",
+            "index": 32,
+            "name": "Spectrum Profile 3",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "dB"
+        },
+        {
+            "id": "Profil[4]",
+            "index": 33,
+            "name": "Spectrum Profile 4",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "dB"
+        },
+        {
+            "id": "Profil[5]",
+            "index": 34,
+            "name": "Spectrum Profile 5",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "dB"
+        },
+        {
+            "id": "Profil[6]",
+            "index": 35,
+            "name": "Spectrum Profile 6",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "dB"
+        },
+        {
+            "id": "Profil[7]",
+            "index": 36,
+            "name": "Spectrum Profile 7",
+            "normalized_value": 0.44999998807907104,
+            "text": "-1.50",
+            "unit": "dB"
+        },
+        {
+            "id": "Profil[8]",
+            "index": 37,
+            "name": "Spectrum Profile 8",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "dB"
+        },
+        {
+            "id": "Strike Point",
+            "index": 38,
+            "name": "Strike Point",
+            "normalized_value": 0.5511617064476013,
+            "text": "1/9.5",
+            "unit": ""
+        },
+        {
+            "id": "Pinch Harmonic Point",
+            "index": 39,
+            "name": "Pinch Harmonic Point",
+            "normalized_value": 1.0,
+            "text": "1/2.0",
+            "unit": ""
+        },
+        {
+            "id": "Pickup Symmetry",
+            "index": 40,
+            "name": "Pickup Symmetry",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Pickup Distance",
+            "index": 41,
+            "name": "Pickup Distance",
+            "normalized_value": 0.444444477558136,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "Soft Level",
+            "index": 42,
+            "name": "Soft Level",
+            "normalized_value": 0.30000001192092896,
+            "text": "0.30",
+            "unit": ""
+        },
+        {
+            "id": "Clavinet Low Mic",
+            "index": 43,
+            "name": "Clavinet Low Mic",
+            "normalized_value": 1.0,
+            "text": "+1.00",
+            "unit": ""
+        },
+        {
+            "id": "Clavinet High Mic",
+            "index": 44,
+            "name": "Clavinet High Mic",
+            "normalized_value": 1.0,
+            "text": "+1.00",
+            "unit": ""
+        },
+        {
+            "id": "Impedance",
+            "index": 45,
+            "name": "Impedance",
+            "normalized_value": 0.42057639360427856,
+            "text": "0.80",
+            "unit": ""
+        },
+        {
+            "id": "Cutoff Freq",
+            "index": 46,
+            "name": "Cutoff",
+            "normalized_value": 0.4999999701976776,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "Q Factor",
+            "index": 47,
+            "name": "Q Factor",
+            "normalized_value": 0.4999999701976776,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "String Length",
+            "index": 48,
+            "name": "String Length",
+            "normalized_value": 0.5,
+            "text": "2.70",
+            "unit": "m"
+        },
+        {
+            "id": "Sympathetic Resonance",
+            "index": 49,
+            "name": "Sympathetic Resonance",
+            "normalized_value": 0.5,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "Duplex Scale Resonance",
+            "index": 50,
+            "name": "Duplex Scale Resonance",
+            "normalized_value": 0.4999999701976776,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "Quadratic Effect",
+            "index": 51,
+            "name": "Quadratic Effect",
+            "normalized_value": 0.56982421875,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "Hammer Tine Noise",
+            "index": 52,
+            "name": "Hammer Tine Noise",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "dB"
+        },
+        {
+            "id": "Blooming Energy",
+            "index": 53,
+            "name": "Blooming Energy",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Blooming Inertia",
+            "index": 54,
+            "name": "Blooming Inertia",
+            "normalized_value": 0.6496410369873047,
+            "text": "1.50",
+            "unit": "s"
+        },
+        {
+            "id": "Equalizer Switch",
+            "index": 55,
+            "name": "Equalizer Switch",
+            "normalized_value": 1.0,
+            "text": "On",
+            "unit": ""
+        },
+        {
+            "id": "Aftertouch",
+            "index": 56,
+            "name": "Aftertouch",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Morphing",
+            "index": 57,
+            "name": "Morphing",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": "%"
+        },
+        {
+            "id": "Bounce Switch",
+            "index": 58,
+            "name": "Bounce Switch",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": ""
+        },
+        {
+            "id": "Bounce Delay",
+            "index": 59,
+            "name": "Bounce Delay",
+            "normalized_value": 0.4583333432674408,
+            "text": "120.00",
+            "unit": "ms"
+        },
+        {
+            "id": "Bounce Sync",
+            "index": 60,
+            "name": "Bounce Sync",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": ""
+        },
+        {
+            "id": "Bounce Sync Speed",
+            "index": 61,
+            "name": "Bounce Sync Speed",
+            "normalized_value": 0.5652173757553101,
+            "text": "1",
+            "unit": ""
+        },
+        {
+            "id": "Bounce Velocity Sensitivity",
+            "index": 62,
+            "name": "Bounce Velocity Sensitivity",
+            "normalized_value": 0.5,
+            "text": "50",
+            "unit": "%"
+        },
+        {
+            "id": "Bounce Delay Loss",
+            "index": 63,
+            "name": "Bounce Delay Loss",
+            "normalized_value": 0.5,
+            "text": "10",
+            "unit": "%"
+        },
+        {
+            "id": "Bounce Velocity Loss",
+            "index": 64,
+            "name": "Bounce Velocity Loss",
+            "normalized_value": 0.5,
+            "text": "20",
+            "unit": "%"
+        },
+        {
+            "id": "Bounce Humanization",
+            "index": 65,
+            "name": "Bounce Humanization",
+            "normalized_value": 0.5,
+            "text": "50",
+            "unit": "%"
+        },
+        {
+            "id": "Effect[1].Switch",
+            "index": 66,
+            "name": "Eff 1 Switch",
+            "normalized_value": 1.0,
+            "text": "On",
+            "unit": ""
+        },
+        {
+            "id": "Effect[1].Param[1]",
+            "index": 67,
+            "name": "Eff 1 DelMix",
+            "normalized_value": 0.05999999865889549,
+            "text": "6",
+            "unit": "%"
+        },
+        {
+            "id": "Effect[1].Param[2]",
+            "index": 68,
+            "name": "Eff 1 DelTime",
+            "normalized_value": 0.2283361405134201,
+            "text": "60",
+            "unit": "ms"
+        },
+        {
+            "id": "Effect[1].Param[3]",
+            "index": 69,
+            "name": "Eff 1 DelFb",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": "%"
+        },
+        {
+            "id": "Effect[1].Param[4]",
+            "index": 70,
+            "name": "Eff 1 DelTone",
+            "normalized_value": 0.25,
+            "text": "-0.50",
+            "unit": ""
+        },
+        {
+            "id": "Effect[1].Param[5]",
+            "index": 71,
+            "name": "Eff 1 DelPol",
+            "normalized_value": 1.0,
+            "text": "On",
+            "unit": ""
+        },
+        {
+            "id": "Effect[1].Param[6]",
+            "index": 72,
+            "name": "Eff 1 Param 6",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Effect[1].Param[7]",
+            "index": 73,
+            "name": "Eff 1 Param 7",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Effect[1].Param[8]",
+            "index": 74,
+            "name": "Eff 1 Param 8",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Effect[2].Switch",
+            "index": 75,
+            "name": "Eff 2 Switch",
+            "normalized_value": 1.0,
+            "text": "On",
+            "unit": ""
+        },
+        {
+            "id": "Effect[2].Param[1]",
+            "index": 76,
+            "name": "Eff 2 PEQ1F",
+            "normalized_value": 0.3192083239555359,
+            "text": "300",
+            "unit": "Hz"
+        },
+        {
+            "id": "Effect[2].Param[2]",
+            "index": 77,
+            "name": "Eff 2 PEQ1G",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "dB"
+        },
+        {
+            "id": "Effect[2].Param[3]",
+            "index": 78,
+            "name": "Eff 2 PEQ1Q",
+            "normalized_value": 0.4999999701976776,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "Effect[2].Param[4]",
+            "index": 79,
+            "name": "Eff 2 PEQ2F",
+            "normalized_value": 0.5099461078643799,
+            "text": "1000",
+            "unit": "Hz"
+        },
+        {
+            "id": "Effect[2].Param[5]",
+            "index": 80,
+            "name": "Eff 2 PEQ2G",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "dB"
+        },
+        {
+            "id": "Effect[2].Param[6]",
+            "index": 81,
+            "name": "Eff 2 PEQ2Q",
+            "normalized_value": 0.4247424900531769,
+            "text": "0.50",
+            "unit": ""
+        },
+        {
+            "id": "Effect[2].Param[7]",
+            "index": 82,
+            "name": "Eff 2 PEQ3F",
+            "normalized_value": 0.7295679450035095,
+            "text": "4000",
+            "unit": "Hz"
+        },
+        {
+            "id": "Effect[2].Param[8]",
+            "index": 83,
+            "name": "Eff 2 PEQ3G",
+            "normalized_value": 0.5400000214576721,
+            "text": "+2.0",
+            "unit": "dB"
+        },
+        {
+            "id": "Effect[3].Switch",
+            "index": 84,
+            "name": "Eff 3 Switch",
+            "normalized_value": 1.0,
+            "text": "On",
+            "unit": ""
+        },
+        {
+            "id": "Effect[3].Param[1]",
+            "index": 85,
+            "name": "Eff 3 PEQ1F",
+            "normalized_value": 0.14516213536262512,
+            "text": "100",
+            "unit": "Hz"
+        },
+        {
+            "id": "Effect[3].Param[2]",
+            "index": 86,
+            "name": "Eff 3 PEQ1G",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "dB"
+        },
+        {
+            "id": "Effect[3].Param[3]",
+            "index": 87,
+            "name": "Eff 3 PEQ1Q",
+            "normalized_value": 0.4999999701976776,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "Effect[3].Param[4]",
+            "index": 88,
+            "name": "Eff 3 PEQ2F",
+            "normalized_value": 0.7938032150268555,
+            "text": "6000",
+            "unit": "Hz"
+        },
+        {
+            "id": "Effect[3].Param[5]",
+            "index": 89,
+            "name": "Eff 3 PEQ2G",
+            "normalized_value": 0.5199999809265137,
+            "text": "+1.0",
+            "unit": "dB"
+        },
+        {
+            "id": "Effect[3].Param[6]",
+            "index": 90,
+            "name": "Eff 3 PEQ2Q",
+            "normalized_value": 0.36928030848503113,
+            "text": "0.30",
+            "unit": ""
+        },
+        {
+            "id": "Effect[3].Param[7]",
+            "index": 91,
+            "name": "Eff 3 PEQ3F",
+            "normalized_value": 0.648641049861908,
+            "text": "2400",
+            "unit": "Hz"
+        },
+        {
+            "id": "Effect[3].Param[8]",
+            "index": 92,
+            "name": "Eff 3 PEQ3G",
+            "normalized_value": 0.5199999809265137,
+            "text": "+1.0",
+            "unit": "dB"
+        },
+        {
+            "id": "Reverb Switch",
+            "index": 93,
+            "name": "Reverb Switch",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": ""
+        },
+        {
+            "id": "Reverb Duration",
+            "index": 94,
+            "name": "Reverb Duration",
+            "normalized_value": 0.46169304847717285,
+            "text": "1.80",
+            "unit": "s"
+        },
+        {
+            "id": "Reverb Mix",
+            "index": 95,
+            "name": "Reverb Mix",
+            "normalized_value": 0.5299999713897705,
+            "text": "+3.0",
+            "unit": "dB"
+        },
+        {
+            "id": "Room Dimensions",
+            "index": 96,
+            "name": "Room Dimensions",
+            "normalized_value": 0.31999969482421875,
+            "text": "19.40",
+            "unit": "m"
+        },
+        {
+            "id": "Reverb Pre-delay",
+            "index": 97,
+            "name": "Reverb Pre-delay",
+            "normalized_value": 0.3292102813720703,
+            "text": "0.022",
+            "unit": "s"
+        },
+        {
+            "id": "Reverb Early Reflections",
+            "index": 98,
+            "name": "Reverb Early Reflections",
+            "normalized_value": 0.4500000476837158,
+            "text": "-2.0",
+            "unit": "dB"
+        },
+        {
+            "id": "Reverb Tone",
+            "index": 99,
+            "name": "Reverb Tone",
+            "normalized_value": 0.550000011920929,
+            "text": "+0.10",
+            "unit": ""
+        },
+        {
+            "id": "Reverb Envelope",
+            "index": 100,
+            "name": "Reverb Envelope",
+            "normalized_value": 1.0,
+            "text": "0",
+            "unit": "dB/s"
+        },
+        {
+            "id": "Reverb Resampling",
+            "index": 101,
+            "name": "Reverb Resampling",
+            "normalized_value": 0.5,
+            "text": "100",
+            "unit": "%"
+        },
+        {
+            "id": "Limiter Switch",
+            "index": 102,
+            "name": "Limiter Switch",
+            "normalized_value": 1.0,
+            "text": "On",
+            "unit": ""
+        },
+        {
+            "id": "Limiter Sharpness",
+            "index": 103,
+            "name": "Limiter Sharpness",
+            "normalized_value": 0.5,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "Limiter Threshold",
+            "index": 104,
+            "name": "Limiter Threshold",
+            "normalized_value": 0.5199999809265137,
+            "text": "-12",
+            "unit": "dB"
+        },
+        {
+            "id": "Limiter Gain",
+            "index": 105,
+            "name": "Limiter Gain",
+            "normalized_value": 0.8333333134651184,
+            "text": "0",
+            "unit": "dB"
+        },
+        {
+            "id": "Mute",
+            "index": 106,
+            "name": "Mute",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": ""
+        },
+        {
+            "id": "Damper Noise",
+            "index": 107,
+            "name": "Damper Noise",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "dB"
+        },
+        {
+            "id": "Damper Position",
+            "index": 108,
+            "name": "Damper Position",
+            "normalized_value": 0.7414437532424927,
+            "text": "1/4.9",
+            "unit": ""
+        },
+        {
+            "id": "Last Damper",
+            "index": 109,
+            "name": "Last Damper",
+            "normalized_value": 0.7109375,
+            "text": "91",
+            "unit": ""
+        },
+        {
+            "id": "Pedal Noise",
+            "index": 110,
+            "name": "Pedal Noise",
+            "normalized_value": 0.4548616111278534,
+            "text": "-3",
+            "unit": "dB"
+        },
+        {
+            "id": "Key Release Noise",
+            "index": 111,
+            "name": "Key Release Noise",
+            "normalized_value": 0.4125697910785675,
+            "text": "-6",
+            "unit": "dB"
+        },
+        {
+            "id": "Damping Duration",
+            "index": 112,
+            "name": "Damping Duration",
+            "normalized_value": 0.4840444326400757,
+            "text": "0.90",
+            "unit": ""
+        },
+        {
+            "id": "Keyboard Range Switch",
+            "index": 113,
+            "name": "Keyboard Range Switch",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": ""
+        },
+        {
+            "id": "Lid Position",
+            "index": 114,
+            "name": "Lid Position",
+            "normalized_value": 1.0,
+            "text": "1.00",
+            "unit": ""
+        },
+        {
+            "id": "Output Mode",
+            "index": 115,
+            "name": "Output Mode",
+            "normalized_value": 0.6666666865348816,
+            "text": "Sound Recording",
+            "unit": ""
+        },
+        {
+            "id": "Mic Level Compensation",
+            "index": 116,
+            "name": "Mic Level Compensation",
+            "normalized_value": 1.0,
+            "text": "On",
+            "unit": ""
+        },
+        {
+            "id": "Mic Delay Compensation",
+            "index": 117,
+            "name": "Mic Delay Compensation",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": ""
+        },
+        {
+            "id": "Head.X",
+            "index": 118,
+            "name": "Head X position",
+            "normalized_value": 0.531000018119812,
+            "text": "+0.620",
+            "unit": "m"
+        },
+        {
+            "id": "Head.Y",
+            "index": 119,
+            "name": "Head Y position",
+            "normalized_value": 0.4699999988079071,
+            "text": "-0.360",
+            "unit": "m"
+        },
+        {
+            "id": "Head.Z",
+            "index": 120,
+            "name": "Head Z position",
+            "normalized_value": 0.37142854928970337,
+            "text": "1.300",
+            "unit": "m"
+        },
+        {
+            "id": "Head Diameter",
+            "index": 121,
+            "name": "Head Diameter",
+            "normalized_value": 0.20000000298023224,
+            "text": "18.000",
+            "unit": "cm"
+        },
+        {
+            "id": "Head Angle",
+            "index": 122,
+            "name": "Head Angle",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "°"
+        },
+        {
+            "id": "Mic[1].Mic Switch",
+            "index": 123,
+            "name": "Mic 1 Mic Switch",
+            "normalized_value": 1.0,
+            "text": "On",
+            "unit": ""
+        },
+        {
+            "id": "Mic[1].X",
+            "index": 124,
+            "name": "Mic 1 X position",
+            "normalized_value": 0.5134999752044678,
+            "text": "+0.270",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[1].Y",
+            "index": 125,
+            "name": "Mic 1 Y position",
+            "normalized_value": 0.5149999856948853,
+            "text": "+0.180",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[1].Z",
+            "index": 126,
+            "name": "Mic 1 Z position",
+            "normalized_value": 0.2914285659790039,
+            "text": "1.020",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[1].Azimuth",
+            "index": 127,
+            "name": "Mic 1 Azimuth",
+            "normalized_value": 0.3384096026420593,
+            "text": "-58.2",
+            "unit": "°"
+        },
+        {
+            "id": "Mic[1].Elevation",
+            "index": 128,
+            "name": "Mic 1 Elevation",
+            "normalized_value": 0.48876479268074036,
+            "text": "-4.0",
+            "unit": "°"
+        },
+        {
+            "id": "Mic[1].Level[1]",
+            "index": 129,
+            "name": "Mic 1 Level 1",
+            "normalized_value": 0.7833333611488342,
+            "text": "-2",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[1].Delay[1]",
+            "index": 130,
+            "name": "Mic 1 Delay 1",
+            "normalized_value": 0.5049999952316284,
+            "text": "+0.8",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[1].Level[2]",
+            "index": 131,
+            "name": "Mic 1 Level 2",
+            "normalized_value": 0.512499988079071,
+            "text": "-12",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[1].Delay[2]",
+            "index": 132,
+            "name": "Mic 1 Delay 2",
+            "normalized_value": 0.6875,
+            "text": "+30.0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[1].Level[3]",
+            "index": 133,
+            "name": "Mic 1 Level 3",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[1].Delay[3]",
+            "index": 134,
+            "name": "Mic 1 Delay 3",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[1].Level[4]",
+            "index": 135,
+            "name": "Mic 1 Level 4",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[1].Delay[4]",
+            "index": 136,
+            "name": "Mic 1 Delay 4",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[1].Level[5]",
+            "index": 137,
+            "name": "Mic 1 Level 5",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[1].Delay[5]",
+            "index": 138,
+            "name": "Mic 1 Delay 5",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[2].Mic Switch",
+            "index": 139,
+            "name": "Mic 2 Mic Switch",
+            "normalized_value": 1.0,
+            "text": "On",
+            "unit": ""
+        },
+        {
+            "id": "Mic[2].X",
+            "index": 140,
+            "name": "Mic 2 X position",
+            "normalized_value": 0.5489999651908875,
+            "text": "+0.980",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[2].Y",
+            "index": 141,
+            "name": "Mic 2 Y position",
+            "normalized_value": 0.5149999856948853,
+            "text": "+0.180",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[2].Z",
+            "index": 142,
+            "name": "Mic 2 Z position",
+            "normalized_value": 0.36571428179740906,
+            "text": "1.280",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[2].Azimuth",
+            "index": 143,
+            "name": "Mic 2 Azimuth",
+            "normalized_value": 0.6434236168861389,
+            "text": "+51.6",
+            "unit": "°"
+        },
+        {
+            "id": "Mic[2].Elevation",
+            "index": 144,
+            "name": "Mic 2 Elevation",
+            "normalized_value": 0.48876479268074036,
+            "text": "-4.0",
+            "unit": "°"
+        },
+        {
+            "id": "Mic[2].Level[1]",
+            "index": 145,
+            "name": "Mic 2 Level 1",
+            "normalized_value": 0.512499988079071,
+            "text": "-12",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[2].Delay[1]",
+            "index": 146,
+            "name": "Mic 2 Delay 1",
+            "normalized_value": 0.5987499952316284,
+            "text": "+15.8",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[2].Level[2]",
+            "index": 147,
+            "name": "Mic 2 Level 2",
+            "normalized_value": 0.7833333611488342,
+            "text": "-2",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[2].Delay[2]",
+            "index": 148,
+            "name": "Mic 2 Delay 2",
+            "normalized_value": 0.5037500262260437,
+            "text": "+0.6",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[2].Level[3]",
+            "index": 149,
+            "name": "Mic 2 Level 3",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[2].Delay[3]",
+            "index": 150,
+            "name": "Mic 2 Delay 3",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[2].Level[4]",
+            "index": 151,
+            "name": "Mic 2 Level 4",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[2].Delay[4]",
+            "index": 152,
+            "name": "Mic 2 Delay 4",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[2].Level[5]",
+            "index": 153,
+            "name": "Mic 2 Level 5",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[2].Delay[5]",
+            "index": 154,
+            "name": "Mic 2 Delay 5",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[3].Mic Switch",
+            "index": 155,
+            "name": "Mic 3 Mic Switch",
+            "normalized_value": 1.0,
+            "text": "On",
+            "unit": ""
+        },
+        {
+            "id": "Mic[3].X",
+            "index": 156,
+            "name": "Mic 3 X position",
+            "normalized_value": 0.5376499891281128,
+            "text": "+0.753",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[3].Y",
+            "index": 157,
+            "name": "Mic 3 Y position",
+            "normalized_value": 0.6790833473205566,
+            "text": "+2.149",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[3].Z",
+            "index": 158,
+            "name": "Mic 3 Z position",
+            "normalized_value": 0.4391428530216217,
+            "text": "1.537",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[3].Azimuth",
+            "index": 159,
+            "name": "Mic 3 Azimuth",
+            "normalized_value": 0.9549999833106995,
+            "text": "+163.8",
+            "unit": "°"
+        },
+        {
+            "id": "Mic[3].Elevation",
+            "index": 160,
+            "name": "Mic 3 Elevation",
+            "normalized_value": 0.38833335041999817,
+            "text": "-40.2",
+            "unit": "°"
+        },
+        {
+            "id": "Mic[3].Level[1]",
+            "index": 161,
+            "name": "Mic 3 Level 1",
+            "normalized_value": 0.4208334684371948,
+            "text": "-15",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[3].Delay[1]",
+            "index": 162,
+            "name": "Mic 3 Delay 1",
+            "normalized_value": 0.5012499690055847,
+            "text": "+0.2",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[3].Level[2]",
+            "index": 163,
+            "name": "Mic 3 Level 2",
+            "normalized_value": 0.43916672468185425,
+            "text": "-15",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[3].Delay[2]",
+            "index": 164,
+            "name": "Mic 3 Delay 2",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[3].Level[3]",
+            "index": 165,
+            "name": "Mic 3 Level 3",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[3].Delay[3]",
+            "index": 166,
+            "name": "Mic 3 Delay 3",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[3].Level[4]",
+            "index": 167,
+            "name": "Mic 3 Level 4",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[3].Delay[4]",
+            "index": 168,
+            "name": "Mic 3 Delay 4",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[3].Level[5]",
+            "index": 169,
+            "name": "Mic 3 Level 5",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[3].Delay[5]",
+            "index": 170,
+            "name": "Mic 3 Delay 5",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[4].Mic Switch",
+            "index": 171,
+            "name": "Mic 4 Mic Switch",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": ""
+        },
+        {
+            "id": "Mic[4].X",
+            "index": 172,
+            "name": "Mic 4 X position",
+            "normalized_value": 0.6067500114440918,
+            "text": "+2.135",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[4].Y",
+            "index": 173,
+            "name": "Mic 4 Y position",
+            "normalized_value": 0.6470833420753479,
+            "text": "+1.765",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[4].Z",
+            "index": 174,
+            "name": "Mic 4 Z position",
+            "normalized_value": 0.5028571486473083,
+            "text": "1.760",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[4].Azimuth",
+            "index": 175,
+            "name": "Mic 4 Azimuth",
+            "normalized_value": 0.801111102104187,
+            "text": "+108.4",
+            "unit": "°"
+        },
+        {
+            "id": "Mic[4].Elevation",
+            "index": 176,
+            "name": "Mic 4 Elevation",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "°"
+        },
+        {
+            "id": "Mic[4].Level[1]",
+            "index": 177,
+            "name": "Mic 4 Level 1",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[4].Delay[1]",
+            "index": 178,
+            "name": "Mic 4 Delay 1",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[4].Level[2]",
+            "index": 179,
+            "name": "Mic 4 Level 2",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[4].Delay[2]",
+            "index": 180,
+            "name": "Mic 4 Delay 2",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[4].Level[3]",
+            "index": 181,
+            "name": "Mic 4 Level 3",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[4].Delay[3]",
+            "index": 182,
+            "name": "Mic 4 Delay 3",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[4].Level[4]",
+            "index": 183,
+            "name": "Mic 4 Level 4",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[4].Delay[4]",
+            "index": 184,
+            "name": "Mic 4 Delay 4",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[4].Level[5]",
+            "index": 185,
+            "name": "Mic 4 Level 5",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[4].Delay[5]",
+            "index": 186,
+            "name": "Mic 4 Delay 5",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[5].Mic Switch",
+            "index": 187,
+            "name": "Mic 5 Mic Switch",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": ""
+        },
+        {
+            "id": "Mic[5].X",
+            "index": 188,
+            "name": "Mic 5 X position",
+            "normalized_value": 0.5770000219345093,
+            "text": "+1.540",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[5].Y",
+            "index": 189,
+            "name": "Mic 5 Y position",
+            "normalized_value": 0.5699999928474426,
+            "text": "+0.840",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[5].Z",
+            "index": 190,
+            "name": "Mic 5 Z position",
+            "normalized_value": 0.5028571486473083,
+            "text": "1.760",
+            "unit": "m"
+        },
+        {
+            "id": "Mic[5].Azimuth",
+            "index": 191,
+            "name": "Mic 5 Azimuth",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "°"
+        },
+        {
+            "id": "Mic[5].Elevation",
+            "index": 192,
+            "name": "Mic 5 Elevation",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "°"
+        },
+        {
+            "id": "Mic[5].Level[1]",
+            "index": 193,
+            "name": "Mic 5 Level 1",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[5].Delay[1]",
+            "index": 194,
+            "name": "Mic 5 Delay 1",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[5].Level[2]",
+            "index": 195,
+            "name": "Mic 5 Level 2",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[5].Delay[2]",
+            "index": 196,
+            "name": "Mic 5 Delay 2",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[5].Level[3]",
+            "index": 197,
+            "name": "Mic 5 Level 3",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[5].Delay[3]",
+            "index": 198,
+            "name": "Mic 5 Delay 3",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[5].Level[4]",
+            "index": 199,
+            "name": "Mic 5 Level 4",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[5].Delay[4]",
+            "index": 200,
+            "name": "Mic 5 Delay 4",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Mic[5].Level[5]",
+            "index": 201,
+            "name": "Mic 5 Level 5",
+            "normalized_value": 0.0,
+            "text": "Off",
+            "unit": "dB"
+        },
+        {
+            "id": "Mic[5].Delay[5]",
+            "index": 202,
+            "name": "Mic 5 Delay 5",
+            "normalized_value": 0.5,
+            "text": "0",
+            "unit": "ms"
+        },
+        {
+            "id": "Sound Speed",
+            "index": 203,
+            "name": "Sound Speed",
+            "normalized_value": 0.5000000596046448,
+            "text": "340",
+            "unit": "m/s"
+        },
+        {
+            "id": "Wall distance",
+            "index": 204,
+            "name": "Wall distance",
+            "normalized_value": 0.0,
+            "text": "0",
+            "unit": "m"
+        },
+        {
+            "id": "Lid",
+            "index": 205,
+            "name": "Lid",
+            "normalized_value": 1.0,
+            "text": "On",
+            "unit": ""
+        }
+    ]
+}
