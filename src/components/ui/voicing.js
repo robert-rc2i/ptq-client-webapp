@@ -13,13 +13,7 @@ export const VoicingTabView = () => {
             <Accordion.Item eventKey="hammer">
                 <Accordion.Header>Hammer</Accordion.Header>
                 <Accordion.Body>
-                    <RangeParameterViewController label="Piano dynamics" name="piano" min={0} max={2} step={0.1} param={ctx.instrumentParameters.hammerHardnessPiano} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
-                    <RangeParameterViewController label="Mezzo dynamics" name="mezo" min={0} max={2} step={0.1} param={ctx.instrumentParameters.hammerHardnessMezzo} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
-                    <RangeParameterViewController label="Forte dynamics" name="forte" min={0} max={2} step={0.1} param={ctx.instrumentParameters.hammerHardnessForte} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
-                    <div className="text-muted text-center"><p>Adjust the hammer hardner at 3 different velocities</p></div>
-                    <hr />
-                    <RangeParameterViewController label="Hammer noise" name="hnoise" min={0.1} max={3} step={0.01} param={ctx.instrumentParameters.hammerNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
-                    <div className="text-muted text-center"><p>Adjust the weight of the hammer percussion sound</p></div>
+                    <HammerSettings context={ctx} reducer={reducer} />
                 </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="profile">
@@ -39,6 +33,19 @@ export const VoicingTabView = () => {
     );
 }
 
+const HammerSettings = ({ context: ctx, reducer }) => {
+    return (
+        <>
+            <RangeParameterViewController label="Piano dynamics" name="piano" min={0} max={2} step={0.1} param={ctx.instrumentParameters.hammerHardnessPiano} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
+            <RangeParameterViewController label="Mezzo dynamics" name="mezo" min={0} max={2} step={0.1} param={ctx.instrumentParameters.hammerHardnessMezzo} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
+            <RangeParameterViewController label="Forte dynamics" name="forte" min={0} max={2} step={0.1} param={ctx.instrumentParameters.hammerHardnessForte} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
+            <div className="text-muted text-center"><p>Adjust the hammer hardner at 3 different velocities</p></div>
+            <hr />
+            <RangeParameterViewController label="Hammer noise" name="hnoise" min={0.1} max={3} step={0.01} param={ctx.instrumentParameters.hammerNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
+            <div className="text-muted text-center"><p>Adjust the weight of the hammer percussion sound</p></div>
+        </>
+    );
+}
 const SpectrumProfile = ({ context: ctx, reducer }) => {
     return (
         <>
