@@ -45,8 +45,9 @@ export const PianoAction = ({ ctx, reducer }) => {
         <>
             <FractionRangeParameterViewController label="Damper position" name="dpos" min={2} max={64} step={0.1} param={ctx.instrumentParameters.damperPosition} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <RangeParameterViewController label="Damper duration" name="ddur" min={.03} max={10.00} step={0.01} param={ctx.instrumentParameters.damperDuration} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
-            <RangeParameterViewController label="last damper" name="lndamper" min={0} max={128} step={1} param={ctx.instrumentParameters.lastDamperNote} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
-            <NegativeRangeParameterViewController label="Damper noise" name="dnoise" min={-75} max={25} step={1} param={ctx.instrumentParameters.dampterNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
+            <RangeParameterViewController label="Last damper" name="lndamper" min={0} max={128} step={1} param={ctx.instrumentParameters.lastDamperNote} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
+            <hr/>
+            <NegativeRangeParameterViewController label="Damper noise" name="dnoise" min={-75} max={25} step={1} param={ctx.instrumentParameters.damperNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <NegativeRangeParameterViewController label="Key release noise" name="krnoise" min={-75} max={25} step={1} param={ctx.instrumentParameters.keyReleaseNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <NegativeRangeParameterViewController label="Sustain pedal noise" name="spnoise" min={-75} max={25} step={1} param={ctx.instrumentParameters.sustainPedalNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
        </>

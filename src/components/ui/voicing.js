@@ -42,8 +42,7 @@ const HammerSettings = ({ context: ctx, reducer }) => {
             <div className="text-muted text-center"><p>Adjust the hammer hardner at 3 different velocities</p></div>
             <hr/>
             <FractionRangeParameterViewController label="Hammer strike position" name="hspos" min={2} max={64} step={0.1} param={ctx.instrumentParameters.strikePoint} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
-            <hr />
-            <RangeParameterViewController label="Hammer noise" name="hnoise" min={0.1} max={3} step={0.01} param={ctx.instrumentParameters.hammerNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
+            <RangeParameterViewController label="Hammer weight" name="hnoise" min={0.1} max={3} step={0.01} param={ctx.instrumentParameters.hammerNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <div className="text-muted text-center"><p>Adjust the weight of the hammer percussion sound</p></div>
         </>
     );

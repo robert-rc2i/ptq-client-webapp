@@ -1,7 +1,7 @@
 import React from "react";
 import { Accordion } from "react-bootstrap";
 import { useInstrumentContext } from "../utils/instrumentContext";
-import { NegativeRangeParameterViewController, RangeParameterViewController } from "./inputs";
+import { RangeParameterViewController } from "./inputs";
 import * as PtqApi from "../api/pqtApi";
 
 export const DesignCardsView = () => {
@@ -24,14 +24,6 @@ export const DesignCardsView = () => {
                     <RangeParameterViewController label="String length" name="length" min={0.8} max={10} step={0.01} param={ctx.instrumentParameters.stringLength} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
                     <RangeParameterViewController label="Sympathetic raisonance" name="sympathetic" min={0} max={5} step={0.01} param={ctx.instrumentParameters.sympatheticResonance} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
                     <RangeParameterViewController label="Duplex scale" name="duplex" min={0} max={20} step={0.01} param={ctx.instrumentParameters.duplexScale} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
-                </Accordion.Body>
-            </Accordion.Item>
-            <Accordion.Item eventKey="noise">
-                <Accordion.Header>Noises</Accordion.Header>
-                <Accordion.Body>
-                <NegativeRangeParameterViewController label="Damper" title="Control the level of noise" name="damperNoise" min={-72} max={25} step={1} param={ctx.instrumentParameters.damperNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
-                    <NegativeRangeParameterViewController label="Key release" title="Control the level of noise" name="keyNoise" min={-72} max={25} step={1} param={ctx.instrumentParameters.keyReleaseNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
-                    <NegativeRangeParameterViewController label="Sustain key release" title="Control the level of noise" name="sustainNoise" min={-72} max={25} step={1} param={ctx.instrumentParameters.sustainPedalNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
                 </Accordion.Body>
             </Accordion.Item>
             <Accordion.Item eventKey="bloom">

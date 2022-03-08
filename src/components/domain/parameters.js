@@ -151,7 +151,7 @@ export class InstrumentParameters {
     }
 
     //Piano action
-    get dampterNoise() {
+    get damperNoise() {
         return this.paramsByIds.get("Damper Noise");
     }
 
