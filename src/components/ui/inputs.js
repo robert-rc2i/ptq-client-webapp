@@ -24,13 +24,18 @@ export const InputSwitch = ({ name = "none", label, isChecked = false, onClick, 
     )
 }
 
-export const RangeViewController = ({ value, dispatch, label = "none", labelValue = true, apiCallback, min = 0, max = 10, step = 0.1, name = "None set", paramIdx, onChange = null, ...others }) => {
+const defaultLabelRenderer = (label, lblValue) => {
+    return `${label} ${lblValue}`;
+}
+
+export const RangeViewController = ({ value, dispatch, labelCallback = undefined, label = "none", labelValue = true, rangeReversed=false, apiCallback, min = 0, max = 10, step = 0.1, name = "None set", paramIdx, onChange = null, ...others }) => {
     const handleChange = onChange ? onChange : (v) => { dispatch({ type: "setParameter", index: paramIdx, value: v }) };
     const lblValue = labelValue ? `(${value})` : "";
+    const orientationStyle = rangeReversed ? {direction: "rtl"} : null;
     return (
         <>
-            <Form.Label>{`${label} ${lblValue}`}</Form.Label>
-            <InputRange {...others} name={name} value={value} min={min} max={max} step={step} onChange={(v) => handleChange(v)} onSetRangeValue={(v) => { apiCallback(v, dispatch); }} />
+            <Form.Label>{labelCallback ? labelCallback(label, value) : defaultLabelRenderer(label, lblValue)}</Form.Label>
+            <InputRange {...others} name={name} style={orientationStyle} value={value} min={min} max={max} step={step} onChange={(v) => handleChange(v)} onSetRangeValue={(v) => { apiCallback(v, dispatch); }} />
         </>
     );
 }
@@ -39,6 +44,17 @@ export const RangeParameterViewController = ({ param = {}, apiCallback, ...other
     const setParamCallback = (value, dispatch) => { apiCallback(value, param, dispatch) };
     return (
         <RangeViewController {...others} value={param.text} paramIdx={param.index} apiCallback={setParamCallback} />
+    )
+}
+
+const fractionLabelRenderer = (lbl, v) => {return `${lbl} (1/${v})`};
+
+export const FractionRangeParameterViewController = ({ param = {}, apiCallback, label, ...others }) => {
+    const setParamCallback = (v, dispatch) => { apiCallback("1/"+v, param, dispatch) };
+    const splitedValues = param.text.split('/');
+    const val = splitedValues.length>1 ? splitedValues[1] : param.text;
+    return (
+        <RangeViewController {...others} rangeReversed={true} value={val} labelCallback={fractionLabelRenderer} label={label} labelValue={false} paramIdx={param.index} apiCallback={setParamCallback} />
     )
 }
 

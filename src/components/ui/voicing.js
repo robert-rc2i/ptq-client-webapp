@@ -1,7 +1,7 @@
 import React from "react";
-import { Accordion, Card } from "react-bootstrap";
+import { Accordion } from "react-bootstrap";
 import { useInstrumentContext } from "../utils/instrumentContext";
-import { RangeParameterViewController } from "./inputs";
+import { FractionRangeParameterViewController, RangeParameterViewController } from "./inputs";
 import * as PtqApi from "../api/pqtApi";
 
 export const VoicingTabView = () => {
@@ -40,6 +40,8 @@ const HammerSettings = ({ context: ctx, reducer }) => {
             <RangeParameterViewController label="Mezzo dynamics" name="mezo" min={0} max={2} step={0.1} param={ctx.instrumentParameters.hammerHardnessMezzo} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <RangeParameterViewController label="Forte dynamics" name="forte" min={0} max={2} step={0.1} param={ctx.instrumentParameters.hammerHardnessForte} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <div className="text-muted text-center"><p>Adjust the hammer hardner at 3 different velocities</p></div>
+            <hr/>
+            <FractionRangeParameterViewController label="Hammer strike position" name="hspos" min={2} max={64} step={0.1} param={ctx.instrumentParameters.strikePoint} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <hr />
             <RangeParameterViewController label="Hammer noise" name="hnoise" min={0.1} max={3} step={0.01} param={ctx.instrumentParameters.hammerNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <div className="text-muted text-center"><p>Adjust the weight of the hammer percussion sound</p></div>

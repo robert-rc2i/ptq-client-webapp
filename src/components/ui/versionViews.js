@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export function AppVersionView({appVersion="1.0.0", apiVersion="7.5.3"}) {
     return (
