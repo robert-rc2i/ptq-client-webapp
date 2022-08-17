@@ -1,7 +1,5 @@
 # Pianoteq client [![CodeQL](https://github.com/robert-rc2i/ptq-client-webapp/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/robert-rc2i/ptq-client-webapp/actions/workflows/codeql-analysis.yml)
 
-[TOC]
-
 This project allows you to control your Pianoteq instance from any browser (Safari, Chrome and Firefox).
 
 This is the first version, which is limited to the following:
@@ -80,7 +78,7 @@ Before you can deploy this project locally, you need to first install the requir
 * On Mac - `open /Applications/Pianoteq\ 7/Pianoteq\ 7.app --args --serve ip.address.of.device:8081`
 * On PC - `C:\Program Files\Modartt\Pianoteq 7>"Pianoteq 7.exe" --serve ip.address.of.device:8081`
 
-> **Note:** You need to replace the **ip.address.of.device** with the ip address of your device.  We need to specify the ip address, otherwise it will cause CORS issues with the application.  If you want a different port, simply change it on the command line to launch Pianoteq.
+> **Note:** You need to replace the `ip.address.of.device` with the ip address of your device.  We need to specify the ip address, otherwise it will cause CORS issues with the application.  If you want a different port, simply change it on the command line to launch Pianoteq.
 
 ### How to install node on Mac / Windows
 Visit the node webpage [here](https://nodejs.dev) 
@@ -115,7 +113,7 @@ For this, you simply launch the following commands in the project root folder
 This will replace your current project with the latest changes from the git repo and install any new dependencies that the project may have added
 
 ## How to serve the web app
-You can also serve the built project by using `serve` module.  From the project root directory type the following commands:
+You can serve the built project by using `serve` module.  From the project root directory type the following commands:
     
     npm run build
     npx serve -s build
