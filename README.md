@@ -37,7 +37,16 @@ Simply click on the link below!
 
 * http://ptq-web-client.s3-website-us-east-1.amazonaws.com
 
-Once the page opens, you'll need to set the URL of the running instance of Pianoteq, using the menu.  See Pianoteq's requirements below. 
+Once the page opens, you'll need to set the URL of the running instance of Pianoteq, using the menu.
+
+## Initial setup of the app
+In the top left corner, click on the menu. This will bring the Main menu up where you'll find the parameters to `Pianoteq full API address`. See image below
+
+![Main menu](doc/assets/menu.png)
+
+Enter the URL of your running Pianoteq instance in the `Pianoteq full API address` field and then click on the right blue arrow. That's it, you are all set. Happy playing!
+
+> **Note** - You need to click on the right blue arrow for the change to take effect, otherwise the provided value will be ignored.
 
 ## Install on your mobile device
 Yes, you may install this web application on your home screen.  Your mobile device will treat it as if it was a native application.
