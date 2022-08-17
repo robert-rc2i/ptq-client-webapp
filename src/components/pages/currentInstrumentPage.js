@@ -9,7 +9,7 @@ import { DesignCardsView } from '../ui/designViews';
 
 export const CurrentInstrumentPage = () => {
     const [ctx, reducer] = useInstrumentContext();
-    console.log("[CurrentInstrumentPage] Ctx:", ctx);
+    //console.log("[CurrentInstrumentPage] Ctx:", ctx);
     return (
         <>
             <InstrumentCardView instrument={ctx.currentPreset} dispatch={reducer} />
