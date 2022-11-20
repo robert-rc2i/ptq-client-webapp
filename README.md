@@ -40,7 +40,7 @@ Simply click on the link below!
 
 Once the page opens, you'll need to set the URL of the running instance of Pianoteq, using the menu.
 
-> **Note:** - This public site will probably be brought down in the future as browsers are starting to implement a new security feature that forbids public sites to make local network calls. This is a great addition for a safer browsing experience, but will negatively impact the public site for ptq-client-webapp. For now, as of this writing, the following browsers are supported with the public site: **Safari** and **Firefox**.
+> **Note** - This public site will probably be brought down in the future as browsers are starting to implement a new security feature that forbids public sites to make local network calls. This is a great addition for a safer browsing experience, but will negatively impact the public site for ptq-client-webapp. For now, as of this writing, the following browsers are supported with the public site: **Safari** and **Firefox**.
 
 ## Initial setup of the app
 In the top left corner, click on the menu. This will bring the Main menu up where you'll find the parameters to `Pianoteq full API address`. See image below
@@ -77,7 +77,7 @@ Before you can deploy this project locally, you need to first install the requir
 
 ### Running Pianoteq from the command line
 
-* On Mac - `open /Applications/Pianoteq\ 7/Pianoteq\ 7.app --args --serve ip.address.of.device:8081`
+* On Mac - `open /Applications/Pianoteq\ 7/Pianoteq\ 7.app/Contents/MacOS/Pianoteq\ 7 --args --serve p.address.of.device:8081`
 * On PC - `C:\Program Files\Modartt\Pianoteq 7>"Pianoteq 7.exe" --serve ip.address.of.device:8081`
 
 > **Note:** You need to replace the `ip.address.of.device` with the ip address of your device.  We need to specify the ip address, otherwise it will cause CORS issues with the application.  If you want a different port, simply change it on the command line to launch Pianoteq.
