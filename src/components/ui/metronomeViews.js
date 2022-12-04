@@ -32,7 +32,7 @@ export const MetronomeModalView = ({ show = false, handleClose, ctx, reducer }) 
                 <RenderBasedOnApiVersion requiredVersion="7.5.4" currentVersion={ctx.ptqInfo.version}>
                     <div className="mb-4 d-flex justify-content-between">
                         <InputSwitch name="accentuate" label={(<span>Accentuate<br />first beat</span>)} isChecked={metronomeState.accentuate} onClick={(v) => { PtqApi.setMetronome({ ...metronomeState, accentuate: v }, reducer) }} />
-                        <TimeSignatureControlerView metronome={ctx.metronome} reducer={reducer} />
+                        <TimeSignatureControlerView metronome={ctx.metronome} reducer={reducer} apiVersion={ctx.ptqInfo.version}/>
                     </div>
                     <BpmControlerView metronome={metronomeState} reducer={reducer} />
                     <RangeViewController label="BPM" labelValue={false} name="bpm" min={24} max={360} step={1} value={metronomeState.bpm} dispatch={reducer} onChange={(v) => reducer({ type: "setMetronome", value: { ...metronomeState, bpm: v } })} apiCallback={(v, r) => { PtqApi.setMetronome({ ...metronomeState, bpm: v }, r) }} />
@@ -62,7 +62,7 @@ export const BpmControlerView = ({ metronome, reducer }) => {
     );
 }
 
-export const TimeSignatureControlerView = ({ metronome, reducer }) => {
+export const TimeSignatureControlerView = ({ metronome, reducer, apiVersion }) => {
     return (
         <Dropdown onSelect={(ts) => { PtqApi.setMetronome({ ...metronome, timesig: ts }, reducer) }}>
             <Dropdown.Toggle id="dropdown-basic">
@@ -79,7 +79,9 @@ export const TimeSignatureControlerView = ({ metronome, reducer }) => {
                 <Dropdown.Item eventKey="6/8" active={"6/8" === metronome.timesig}>6/8</Dropdown.Item>
                 <Dropdown.Item eventKey="7/8" active={"7/8" === metronome.timesig}>7/8</Dropdown.Item>
                 <Dropdown.Item eventKey="9/8" active={"9/8" === metronome.timesig}>9/8</Dropdown.Item>
-                <Dropdown.Item eventKey="12/8" disabled active={"12/8" === metronome.timesig}>12/8</Dropdown.Item>
+                <RenderBasedOnApiVersion requiredVersion="8.0.0" currentVersion={apiVersion}>
+                    <Dropdown.Item eventKey="12/8" active={"12/8" === metronome.timesig}>12/8</Dropdown.Item>
+                </RenderBasedOnApiVersion>
             </Dropdown.Menu>
         </Dropdown>
     )
