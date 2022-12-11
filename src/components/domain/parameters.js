@@ -68,8 +68,24 @@ export class InstrumentParameters {
         return this.paramsByIds.get("Post Effect Gain");
     }
 
-    get delay() {
+    //Delay section
+    get delaySwitch() {
         return this.paramsByIds.get("Effect[1].Switch");
+    }
+    get delayMix() {
+        return this.paramsByIds.get("Effect[1].Param[1]");
+    }
+    get delayTime() {
+        return this.paramsByIds.get("Effect[1].Param[2]");
+    }
+    get delayFeedback() {
+        return this.paramsByIds.get("Effect[1].Param[3]");
+    }
+    get delayTone() {
+        return this.paramsByIds.get("Effect[1].Param[4]");
+    }
+    get delayPolarity() {
+        return this.paramsByIds.get("Effect[1].Param[5]");
     }
 
     get eq1() {
@@ -80,8 +96,27 @@ export class InstrumentParameters {
         return this.paramsByIds.get("Effect[3].Switch");
     }
 
-    get reverb() {
+    //Reverb section
+    get reverbSwitch() {
         return this.paramsByIds.get("Reverb Switch");
+    }
+    get reverbMix() {
+        return this.paramsByIds.get("Reverb Mix");
+    }
+    get reverbDuration() {
+        return this.paramsByIds.get("Reverb Duration");
+    }
+    get reverbRoomDimensions() {
+        return this.paramsByIds.get("Room Dimensions");
+    }
+    get reverbPreDelay() {
+        return this.paramsByIds.get("Reverb Pre-delay");
+    }
+    get reverbEarlyReflections() {
+        return this.paramsByIds.get("Reverb Early Reflections");
+    }
+    get reverbTone() {
+        return this.paramsByIds.get("Reverb Tone");
     }
 
     // Design parameters

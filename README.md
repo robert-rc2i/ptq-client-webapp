@@ -14,6 +14,7 @@ Here are the main features
     * Hammer settings
     * Pedal settings
 *  Effects controls
+    * Post effect gain
     * EQ 1 & 2
     * Delay and reverb
 *  Design controls
@@ -31,7 +32,7 @@ Here are the main features
 
 ![Piano](./doc/assets/piano-settings.png) ![Voicing](./doc/assets/voicing-settings.png)  
 ![Desing](./doc/assets/design-settings.png) ![Menu](./doc/assets/menu.png) 
-
+![Effect](doc/assets/effect-main.jpeg) ![Effect delay](doc/assets/effect-delay.jpeg)
 
 # How to use it
 Simply click on the link below!  
@@ -77,8 +78,8 @@ Before you can deploy this project locally, you need to first install the requir
 
 ### Running Pianoteq from the command line
 
-* On Mac - `open /Applications/Pianoteq\ 7/Pianoteq\ 7.app/Contents/MacOS/Pianoteq\ 7 --args --serve p.address.of.device:8081`
-* On PC - `C:\Program Files\Modartt\Pianoteq 7>"Pianoteq 7.exe" --serve ip.address.of.device:8081`
+* On Mac - `open /Applications/Pianoteq\ 8/Pianoteq\ 8.app --args --serve ip.address.of.device:8081`
+* On PC - `C:\Program Files\Modartt\Pianoteq 8>"Pianoteq 8.exe" --serve ip.address.of.device:8081`
 
 > **Note** You need to replace the `ip.address.of.device` with the ip address of your device.  We need to specify the ip address, otherwise it will cause CORS issues with the application.  If you want a different port, simply change it on the command line to launch Pianoteq.
 

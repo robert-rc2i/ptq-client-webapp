@@ -69,3 +69,16 @@ export function RenderBasedOnApiVersion({ requiredVersion = "7.5.2", currentVers
         </>
     );
 }
+
+/**
+ * 
+ * @param {boolean} params.predicate true or false value 
+ * @returns the children if the provided predicate is true, otherwise null
+ */
+export function RenderIfTrue({predicate = false, children}) {
+    if (predicate) {
+        return children;
+    }
+
+    return null;
+}
