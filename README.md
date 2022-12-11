@@ -17,6 +17,7 @@ Here are the main features
     * Post effect gain
     * EQ 1 & 2
     * Delay and reverb
+    * Note effects (As of version 8)
 *  Design controls
     * Soundboard settings
     * String settings
