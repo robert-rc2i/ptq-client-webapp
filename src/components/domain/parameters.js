@@ -119,6 +119,47 @@ export class InstrumentParameters {
         return this.paramsByIds.get("Reverb Tone");
     }
 
+    // Note effects
+    get nfxAttackEnvelope() {
+        return this.paramsByIds.get("Attack Envelope");
+    }
+
+    // Note effects - Modulation
+    get nfxModulationRate() {
+        return this.paramsByIds.get("NFX Lfo Rate");
+    }
+    get nfxModulationOnsetDuration() {
+        return this.paramsByIds.get("NFX Onset Duration");
+    }
+    get nfxModulationShape() {
+        return this.paramsByIds.get("NFX Lfo Shape");
+    }
+    get nfxModulationShapeSkew() {
+        return this.paramsByIds.get("NFX Lfo Skew");
+    }
+    get nfxModulationPhase() {
+        return this.paramsByIds.get("NFX Lfo Phase");
+    }
+    get nfxModulationPhaseLocked() {
+        return this.paramsByIds.get("NFX Lfo Phase Locked");
+    }
+
+    //Note effects - Vibrato
+    get nfxVibratoDepth() {
+        return this.paramsByIds.get("NFX Vibrato");
+    }
+    get nfxVibratoOffset() {
+        return this.paramsByIds.get("NFX Vibrato Offset");
+    }
+
+    //Note effects - Tremolo
+    get nfxTremoloDepth() {
+        return this.paramsByIds.get("NFX Tremolo Depth");
+    }
+    get nfxTremoloPhase() {
+        return this.paramsByIds.get("NFX Tremolo Phase");
+    }
+
     // Design parameters
     get sbImpedance() {
         return this.paramsByIds.get("Impedance");

@@ -34,7 +34,7 @@ Here are the main features
 ![Piano](./doc/assets/piano-settings.png) ![Voicing](./doc/assets/voicing-settings.png)  
 ![Desing](./doc/assets/design-settings.png) ![Menu](./doc/assets/menu.png) 
 ![Effect](doc/assets/effect-main.jpeg) ![Effect delay](doc/assets/effect-delay.jpeg)
-
+![Note effects](doc/assets/note-effects.jpeg)
 # How to use it
 Simply click on the link below!  
 

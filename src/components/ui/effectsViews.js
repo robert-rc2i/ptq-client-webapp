@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Accordion, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import * as Parameters from "../domain/parameters";
 import { useInstrumentContext } from "../utils/instrumentContext";
 import { InputSwitch, NegativeRangeParameterViewController, RangeParameterViewController } from "./inputs";
@@ -40,7 +40,7 @@ export const DelayView = () => {
         <Card className="mb-3">
             <Card.Header className="d-flex justify-content-between">
                 <InputSwitch name="delaySwitch" label={swtichLabel} isChecked={Parameters.getSwitchToBooleanValue(ctx.instrumentParameters.delaySwitch.text)} onClick={(v) => { PtqApi.setParameterSwitchValue(v, ctx.instrumentParameters.delaySwitch, reducer) }} />
-                <div onClick={(e) => setViewBody(!viewBody)} className="d-flex flex-grow-1 justify-content-end"><i className={cName}/></div>
+                <div onClick={(e) => setViewBody(!viewBody)} className="d-flex flex-grow-1 justify-content-end"><i className={cName} /></div>
             </Card.Header>
             <RenderIfTrue predicate={viewBody}>
                 <Card.Body>
@@ -65,7 +65,7 @@ export const ReverbView = () => {
         <Card className="mb-3">
             <Card.Header className="d-flex justify-content-between">
                 <InputSwitch name="reverbSwitch" label={swtichLabel} isChecked={Parameters.getSwitchToBooleanValue(ctx.instrumentParameters.reverbSwitch.text)} onClick={(v) => { PtqApi.setParameterSwitchValue(v, ctx.instrumentParameters.reverbSwitch, reducer) }} />
-                <div onClick={(e) => setViewBody(!viewBody)} className="d-flex flex-grow-1 justify-content-end"><i className={cName}/></div>
+                <div onClick={(e) => setViewBody(!viewBody)} className="d-flex flex-grow-1 justify-content-end"><i className={cName} /></div>
             </Card.Header>
             <RenderIfTrue predicate={viewBody}>
                 <Card.Body>

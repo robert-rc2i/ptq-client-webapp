@@ -6,6 +6,7 @@ import { OutputCardView } from '../ui/outputViews';
 import { EffectsTabView } from '../ui/effectsViews';
 import { VoicingTabView } from '../ui/voicing';
 import { DesignCardsView } from '../ui/designViews';
+import { NoteEffectsTabView } from '../ui/noteEffectsViews';
 
 export const CurrentInstrumentPage = () => {
     const [ctx, reducer] = useInstrumentContext();
@@ -20,11 +21,14 @@ export const CurrentInstrumentPage = () => {
                 <Tab eventKey="voicing" title="Voicing" >
                     <VoicingTabView />
                 </Tab>
+                <Tab eventKey="design" title="Design" >
+                    <DesignCardsView />
+                </Tab>
                 <Tab eventKey="effects" title="Effects" >
                     <EffectsTabView />
                 </Tab>
-                <Tab eventKey="design" title="Design" >
-                    <DesignCardsView />
+                <Tab eventKey="noteEffects" title="Note effects" >
+                    <NoteEffectsTabView />
                 </Tab>
             </Tabs>
         </>

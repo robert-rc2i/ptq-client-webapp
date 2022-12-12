@@ -1,5 +1,3 @@
-import { isCompositeComponent } from "react-dom/test-utils";
-
 /**
  * Returns a numeric value of the provided string.  If not a string, 400 is returned to signla an error
  * @param {string} numToConvert value as a string
