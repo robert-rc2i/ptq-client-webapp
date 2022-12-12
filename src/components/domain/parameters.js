@@ -68,8 +68,24 @@ export class InstrumentParameters {
         return this.paramsByIds.get("Post Effect Gain");
     }
 
-    get delay() {
+    //Delay section
+    get delaySwitch() {
         return this.paramsByIds.get("Effect[1].Switch");
+    }
+    get delayMix() {
+        return this.paramsByIds.get("Effect[1].Param[1]");
+    }
+    get delayTime() {
+        return this.paramsByIds.get("Effect[1].Param[2]");
+    }
+    get delayFeedback() {
+        return this.paramsByIds.get("Effect[1].Param[3]");
+    }
+    get delayTone() {
+        return this.paramsByIds.get("Effect[1].Param[4]");
+    }
+    get delayPolarity() {
+        return this.paramsByIds.get("Effect[1].Param[5]");
     }
 
     get eq1() {
@@ -80,8 +96,68 @@ export class InstrumentParameters {
         return this.paramsByIds.get("Effect[3].Switch");
     }
 
-    get reverb() {
+    //Reverb section
+    get reverbSwitch() {
         return this.paramsByIds.get("Reverb Switch");
+    }
+    get reverbMix() {
+        return this.paramsByIds.get("Reverb Mix");
+    }
+    get reverbDuration() {
+        return this.paramsByIds.get("Reverb Duration");
+    }
+    get reverbRoomDimensions() {
+        return this.paramsByIds.get("Room Dimensions");
+    }
+    get reverbPreDelay() {
+        return this.paramsByIds.get("Reverb Pre-delay");
+    }
+    get reverbEarlyReflections() {
+        return this.paramsByIds.get("Reverb Early Reflections");
+    }
+    get reverbTone() {
+        return this.paramsByIds.get("Reverb Tone");
+    }
+
+    // Note effects
+    get nfxAttackEnvelope() {
+        return this.paramsByIds.get("Attack Envelope");
+    }
+
+    // Note effects - Modulation
+    get nfxModulationRate() {
+        return this.paramsByIds.get("NFX Lfo Rate");
+    }
+    get nfxModulationOnsetDuration() {
+        return this.paramsByIds.get("NFX Onset Duration");
+    }
+    get nfxModulationShape() {
+        return this.paramsByIds.get("NFX Lfo Shape");
+    }
+    get nfxModulationShapeSkew() {
+        return this.paramsByIds.get("NFX Lfo Skew");
+    }
+    get nfxModulationPhase() {
+        return this.paramsByIds.get("NFX Lfo Phase");
+    }
+    get nfxModulationPhaseLocked() {
+        return this.paramsByIds.get("NFX Lfo Phase Locked");
+    }
+
+    //Note effects - Vibrato
+    get nfxVibratoDepth() {
+        return this.paramsByIds.get("NFX Vibrato");
+    }
+    get nfxVibratoOffset() {
+        return this.paramsByIds.get("NFX Vibrato Offset");
+    }
+
+    //Note effects - Tremolo
+    get nfxTremoloDepth() {
+        return this.paramsByIds.get("NFX Tremolo Depth");
+    }
+    get nfxTremoloPhase() {
+        return this.paramsByIds.get("NFX Tremolo Phase");
     }
 
     // Design parameters
