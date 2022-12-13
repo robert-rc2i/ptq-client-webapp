@@ -9,7 +9,7 @@ export const VoicingTabView = () => {
     const [ctx, reducer] = useInstrumentContext();
 
     return (
-        <Accordion defaultActiveKey="hammer" className="mb-5">
+        <Accordion className="mb-5">
             <Accordion.Item eventKey="hammer">
                 <Accordion.Header>Hammer</Accordion.Header>
                 <Accordion.Body>

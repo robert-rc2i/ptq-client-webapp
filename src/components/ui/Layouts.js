@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Offcanvas } from 'react-bootstrap';
+import { Alert, Button, Offcanvas } from 'react-bootstrap';
 import { useInstrumentContext } from '../utils/instrumentContext';
 import { InstrumentSelectionPaneView } from './instrumentsViews';
 import { PianotteqUrlSettingController } from './settingViews';
@@ -10,7 +10,7 @@ import { AppVersionView } from './versionViews';
 function TopMenu() {
     const [, reducer] = useInstrumentContext();
     const [show, setShow] = useState({ menu: false });
-    const toggleMenu = (e) => {setShow({ ...show, menu: !show.menu });}
+    const toggleMenu = (e) => { setShow({ ...show, menu: !show.menu }); }
 
     return (
         <>
@@ -29,7 +29,7 @@ function TopMenu() {
                     <PianotteqUrlSettingController onClose={toggleMenu} dispatch={reducer} />
                     <h6>Instrument selection</h6>
                     <InstrumentSelectionPaneView toggleFunction={toggleMenu} />
-                    <AppVersionView appVersion={process.env.REACT_APP_appVersion} apiVersion={process.env.REACT_APP_apiVersion}/>
+                    <AppVersionView appVersion={process.env.REACT_APP_appVersion} apiVersion={process.env.REACT_APP_apiVersion} />
                 </Offcanvas.Body>
             </Offcanvas>
         </>
@@ -52,3 +52,17 @@ export function PageLayout1Column(props) {
     );
 }
 
+export function InfoView({ title = null, children, initialState=false }) {
+    const [show, setShow] = useState(initialState);
+
+    if (show) {
+        return (
+            <Alert variant="success" onClose={() => setShow(false)} dismissible>
+                {title && <Alert.Heading>{title}</Alert.Heading>}
+                {children}
+            </Alert>
+        );
+    }
+
+    return null;
+}

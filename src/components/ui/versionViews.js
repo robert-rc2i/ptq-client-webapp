@@ -7,13 +7,13 @@ export function AppVersionView({ appVersion = "1.0.0", apiVersion = "7.5.3" }) {
     return (
         <>
             <div className="d-flex justify-content-between">
-                <div className="text-muted">Web application version</div>
-                <div className="text-muted">{appVersion}</div>
+                <div className="text-muted"><small>Web application version</small></div>
+                <div className="text-muted"><small>{appVersion}</small></div>
             </div>
             <RenderIfTrue predicate={ctx.ptqInfo.version}>
                 <div className="d-flex justify-content-between">
-                    <div className="text-muted">Detected Pianoteq version</div>
-                    <div className="text-muted">{ctx.ptqInfo.version}</div>
+                    <div className="text-muted"><small>Detected Pianoteq version</small></div>
+                    <div className="text-muted"><small>{ctx.ptqInfo.version}</small></div>
                 </div>
             </RenderIfTrue>
         </>
