@@ -5,14 +5,20 @@ import * as PtqApi from "../api/pqtApi";
 export const dummyFunction = () => { };
 
 export const InputNumber = ({ dispatch = dummyFunction, param = {}, ...others }) => {
-    const handleChange = (e) => { 
-        console.log("InputNumber", e.target.value); 
-        dispatch({ type: "setParameter", index: param.index, value: e.target.value }); 
+    const inputValue = param.text.replace('+', '');
+    const handleChange = (e) => {
+        dispatch({ type: "setParameter", index: param.index, value: e.target.value });
     };
-    const onSetValue = (e) => PtqApi.setParameterAsText(e.target.value, param, dispatch);
-    
+    const onSetValue = (e) => {
+        if (e.target.value === inputValue) {
+            console.log("InputNumber - Nothing to change");
+        } else {
+            PtqApi.setParameterAsText(e.target.value, param, dispatch)
+        };
+    }
+
     return (
-        <input {...others} type="number" value={param.text.replace('+', '')} onChange={handleChange} onBlur={onSetValue}/>
+        <input {...others} type="number" value={inputValue} onChange={handleChange} onBlur={onSetValue} />
     );
 }
 
