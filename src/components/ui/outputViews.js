@@ -3,6 +3,7 @@ import { Accordion, Form } from "react-bootstrap";
 import * as PtqApi from '../api/pqtApi';
 import { getSwitchToBooleanValue } from "../domain/parameters";
 import { useInstrumentContext } from "../utils/instrumentContext";
+import { versionIsSupported } from "../utils/util";
 import { FractionRangeParameterViewController, InputSwitch, NegativeRangeParameterViewController, RangeParameterViewController } from "./inputs";
 
 export const OutputCardView = () => {
@@ -46,11 +47,11 @@ export const PianoAction = ({ ctx, reducer }) => {
             <FractionRangeParameterViewController label="Damper position" name="dpos" min={2} max={64} step={0.1} param={ctx.instrumentParameters.damperPosition} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <RangeParameterViewController label="Damper duration" name="ddur" min={.03} max={10.00} step={0.01} param={ctx.instrumentParameters.damperDuration} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <RangeParameterViewController label="Last damper" name="lndamper" min={0} max={128} step={1} param={ctx.instrumentParameters.lastDamperNote} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
-            <hr/>
+            <hr />
             <NegativeRangeParameterViewController label="Damper noise" name="dnoise" min={-75} max={25} step={1} param={ctx.instrumentParameters.damperNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <NegativeRangeParameterViewController label="Key release noise" name="krnoise" min={-75} max={25} step={1} param={ctx.instrumentParameters.keyReleaseNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <NegativeRangeParameterViewController label="Sustain pedal noise" name="spnoise" min={-75} max={25} step={1} param={ctx.instrumentParameters.sustainPedalNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
-       </>
+        </>
     );
 }
 export const LidCardView = ({ ctx, reducer }) => {
@@ -74,12 +75,21 @@ export const PianoConditionCardView = ({ ctx, reducer }) => {
 }
 
 export const SoundModeView = ({ ctx, reducer }) => {
+    //For version 7 only
+    let micLabel = "Recording";
+    let micValue = "Sound Recording";
+
+    //Apply version 8 values if required
+    if (versionIsSupported("8.0.0", ctx.ptqInfo.version)) {
+        micLabel = "Microphones";
+        micValue = "Microphones";
+    }
 
     return (
         <div className="d-flex mb-2">
             <div>Modes:</div>
             <div className="ms-5">
-                <Form.Check inline id="sr" label="Recording" name="soundMode" value="Sound Recording" type="radio" checked={"Sound Recording" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { PtqApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }} />
+                <Form.Check inline id="sr" label={micLabel} name="soundMode" value={micValue} type="radio" checked={micValue === ctx.instrumentParameters.outputMode.text} onChange={(v) => { PtqApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }} />
                 <Form.Check inline id="binaural" label="Binaural" name="soundMode" value="Binaural" type="radio" checked={"Binaural" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { PtqApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }} />
                 <Form.Check inline id="stero" label="Stereo" name="soundMode" value="Sterophonic" type="radio" checked={"Sterophonic" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { PtqApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }} />
                 <Form.Check inline id="mono" label="Mono" name="soundMode" value="Monophonic" type="radio" checked={"Monophonic" === ctx.instrumentParameters.outputMode.text} onChange={(v) => { PtqApi.setParameterAsText(v.target.value, ctx.instrumentParameters.outputMode, reducer) }} />
