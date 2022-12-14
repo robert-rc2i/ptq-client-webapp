@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import * as PtqApi from "../api/pqtApi";
 
 export const dummyFunction = () => { };
 
 export const InputNumber = ({ dispatch = dummyFunction, param = {}, ...others }) => {
-    const inputValue = param.text.replace('+', '');
+    const [paramValue, setParamValue] = useState(0);
+    useEffect(
+        () => {setParamValue(param.text.replace('+', ''))},
+        [param.text]
+    );
     const handleChange = (e) => {
-        dispatch({ type: "setParameter", index: param.index, value: e.target.value });
+        setParamValue(e.target.value);
     };
-    const onSetValue = (e) => {
-        if (e.target.value === inputValue) {
-            console.log("InputNumber - Nothing to change");
-        } else {
-            PtqApi.setParameterAsText(e.target.value, param, dispatch)
+    const handleSaveValue = (e) => {
+        const newValue = e.target.value;
+        if (newValue !== param.text.replace('+', '')) {
+            PtqApi.setParameterAsText(newValue, param, dispatch);
         };
     }
 
     return (
-        <input {...others} type="number" value={inputValue} onChange={handleChange} onBlur={onSetValue} />
+        <input {...others} type="number" value={paramValue} onChange={handleChange} onBlur={handleSaveValue} />
     );
 }
 
