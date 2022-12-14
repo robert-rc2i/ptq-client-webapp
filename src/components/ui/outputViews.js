@@ -75,9 +75,11 @@ export const PianoConditionCardView = ({ ctx, reducer }) => {
 }
 
 export const SoundModeView = ({ ctx, reducer }) => {
+    //For version 7 only
     let micLabel = "Recording";
     let micValue = "Sound Recording";
 
+    //Apply version 8 values if required
     if (versionIsSupported("8.0.0", ctx.ptqInfo.version)) {
         micLabel = "Microphones";
         micValue = "Microphones";
