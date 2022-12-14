@@ -7,7 +7,6 @@ import { EffectsTabView } from '../ui/effectsViews';
 import { VoicingTabView } from '../ui/voicing';
 import { DesignCardsView } from '../ui/designViews';
 import { NoteEffectsTabView } from '../ui/noteEffectsViews';
-import { RenderBasedOnApiVersion } from '../utils/loading';
 import { versionIsSupported } from '../utils/util';
 
 export const CurrentInstrumentPage = () => {

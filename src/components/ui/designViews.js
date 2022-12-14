@@ -9,7 +9,7 @@ export const DesignCardsView = () => {
     const [ctx, reducer] = useInstrumentContext();
 
     return (
-        <Accordion className="mb-5" defaultActiveKey="sound">
+        <Accordion className="mb-5">
             <Accordion.Item eventKey="sound">
                 <Accordion.Header>Soundboard</Accordion.Header>
                 <Accordion.Body>

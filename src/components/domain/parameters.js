@@ -88,12 +88,62 @@ export class InstrumentParameters {
         return this.paramsByIds.get("Effect[1].Param[5]");
     }
 
+    // Equalizer #1
     get eq1() {
         return this.paramsByIds.get("Effect[2].Switch");
     }
+    get eq1Frequency1() {
+        return this.paramsByIds.get("Effect[2].Param[1]");
+    }
+    get eq1Gain1() {
+        return this.paramsByIds.get("Effect[2].Param[2]");
+    }
+    get eq1QFactor1() {
+        return this.paramsByIds.get("Effect[2].Param[3]");
+    }
+    get eq1Frequency2() {
+        return this.paramsByIds.get("Effect[2].Param[4]");
+    }
+    get eq1Gain2() {
+        return this.paramsByIds.get("Effect[2].Param[5]");
+    }
+    get eq1QFactor2() {
+        return this.paramsByIds.get("Effect[2].Param[6]");
+    }
+    get eq1Frequency3() {
+        return this.paramsByIds.get("Effect[2].Param[7]");
+    }
+    get eq1Gain3() {
+        return this.paramsByIds.get("Effect[2].Param[8]");
+    }
 
+    // Equalizer #2
     get eq2() {
         return this.paramsByIds.get("Effect[3].Switch");
+    }
+    get eq2Frequency1() {
+        return this.paramsByIds.get("Effect[3].Param[1]");
+    }
+    get eq2Gain1() {
+        return this.paramsByIds.get("Effect[3].Param[2]");
+    }
+    get eq2QFactor1() {
+        return this.paramsByIds.get("Effect[3].Param[3]");
+    }
+    get eq2Frequency2() {
+        return this.paramsByIds.get("Effect[3].Param[4]");
+    }
+    get eq2Gain2() {
+        return this.paramsByIds.get("Effect[3].Param[5]");
+    }
+    get eq2QFactor2() {
+        return this.paramsByIds.get("Effect[3].Param[6]");
+    }
+    get eq2Frequency3() {
+        return this.paramsByIds.get("Effect[3].Param[7]");
+    }
+    get eq2Gain3() {
+        return this.paramsByIds.get("Effect[3].Param[8]");
     }
 
     //Reverb section
