@@ -18,6 +18,10 @@ export function versionIsSupported(requiredVersion="7.5.3", currentVersion="1.0.
     return (Number.parseInt(currentVersion.replace(re, '').substring(0,3)) - Number.parseInt(requiredVersion.replace(re, '').substring(0,3))) >= 0;
 }
 
+export function isVersion(requiredVersion="8.0.0", currentVersion="7.0.0") {
+    return Number(requiredVersion.charAt(0)) === Number(currentVersion.charAt(0));
+}
+
 /**
  * Function utility to wrap another funciton that requires only the last call to be performed.  The last called is dertermined by a timeout.
  * @param {function} fn is the function to call once the timeout is triggered
