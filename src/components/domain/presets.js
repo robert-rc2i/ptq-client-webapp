@@ -57,19 +57,3 @@ export function listPresetsForInstruments(presets = [], instrName = null) {
 
     return Array.from(instrPresets);
 }
-
-export function getAcousticPianoClasses() {
-    return ["Acoustic Piano","Piano Predecessor","Historical Piano"];
-}
-
-export function getElectricPianoClasses() {
-    return ["Electric Piano"];
-}
-
-export function getChromaticPercussionClasses() {
-    return ["Chromatic Percussion"];
-}
-
-export function getDrumClasses() {
-    return ["Steelpan"];
-}

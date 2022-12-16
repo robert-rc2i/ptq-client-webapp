@@ -184,15 +184,9 @@ export async function getParams(dispatch = null, isModified = false) {
  * @param {*} dispatch 
  */
 export async function reloadInstrumentAndItsParameters(dispatch = null) {
-    if (dispatch) {
-        const info = await getInfo();
-        const params = await getParams();
-        dispatch({
-            type: "refresh",
-            params: params,
-            ptqInfo: info
-        })
-    }
+    return await postCommand("resetPreset").then((resp) => {
+        getParams(dispatch);
+    })
 }
 
 export async function setMetronome(value, dispatch) {
@@ -219,7 +213,7 @@ export async function setMetronome(value, dispatch) {
  * @param {*} dispatch 
  * @returns the result of the api call
  */
-export async function setParameterSwitchValue(value, param={}, dispatch) {
+export async function setParameterSwitchValue(value, param = {}, dispatch) {
     const textVal = value ? "On" : "Off";
     return setParameterAsText(textVal, param, dispatch);
 }

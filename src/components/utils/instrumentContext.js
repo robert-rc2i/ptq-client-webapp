@@ -1,8 +1,9 @@
-import React, { createContext, useContext, useReducer } from 'react';
+import React, { createContext, useContext, useEffect, useReducer } from 'react';
 import { factoryMetronomeObject, Metronome } from '../domain/metronome';
 import { factoryMidiSequencerObject } from '../domain/midiSequencer';
 import { InstrumentParameters } from '../domain/parameters';
 import { factoryPresets, getInstrumentByName } from '../domain/presets';
+import * as pqtApi from '../api/pqtApi';
 
 /**
  * 
@@ -12,7 +13,7 @@ import { factoryPresets, getInstrumentByName } from '../domain/presets';
  * @param {*} info 
  * @returns 
  */
-export const factoryInitialState = ({presets = factoryPresets(), currPreset={}, info={}, currParams=[], isPresetModified=false, metronome=factoryMetronomeObject(), midiState=factoryMidiSequencerObject()}) => {
+export const factoryInitialState = ({ presets = factoryPresets(), currPreset = {}, info = {}, currParams = [], isPresetModified = false, metronome = factoryMetronomeObject(), midiState = factoryMidiSequencerObject() }) => {
     return {
         allInstruments: presets,
         currentPreset: currPreset,
@@ -51,9 +52,9 @@ const defaultReducer = (currentState, action) => {
             }
         case "initContext":
             return factoryInitialState({
-                presets: action.presets, 
-                currPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), action.presets.presets), 
-                info: action.ptqInfo, 
+                presets: action.presets,
+                currPreset: getInstrumentByName(action.ptqInfo.current_preset.name.replace("My Presets/", ""), action.presets.presets),
+                info: action.ptqInfo,
                 currParams: action.params,
                 metronome: action.metronome,
                 midiState: action.midiState
@@ -67,7 +68,7 @@ const defaultReducer = (currentState, action) => {
             return {
                 ...factoryInitialState({}),
                 error: action.error
-            } 
+            }
         }
         case "refresh":
             return {
@@ -115,13 +116,23 @@ const defaultReducer = (currentState, action) => {
             console.error("Unknown reducer action", action);
             break;
     }
-} 
+}
 
 export const CurrentInstrumentContext = createContext(factoryInitialState({}));
 
-export const CurrentInstrumentContextProvider = ({initState, children }) => {
+export const CurrentInstrumentContextProvider = ({ children }) => {
+    const ctx = useReducer(defaultReducer, factoryInitialState({}));
+    const [state, reducer] = ctx;
+    useEffect(() => {
+        if (!state.isInitialized) {
+            pqtApi.refreshCurrentContext(reducer);
+        }
+    }, []);
+
+    //console.debug("CurrentInstrumentContextProvider: Ctx", state);
+
     return (
-        <CurrentInstrumentContext.Provider value={useReducer(defaultReducer, initState)}>
+        <CurrentInstrumentContext.Provider value={ctx}>
             {children}
         </CurrentInstrumentContext.Provider>
     );

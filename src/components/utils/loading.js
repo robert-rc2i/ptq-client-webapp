@@ -1,15 +1,13 @@
 import React from 'react';
 import { Alert, Spinner } from 'react-bootstrap';
-import * as pqtApi from '../api/pqtApi';
 import { ApiHelper } from '../api/RestHelper';
+import { useInstrumentContext } from './instrumentContext';
 import { versionIsSupported} from './util';
 
-export default class Loading extends React.Component {
+export function Loading({children}) {
+    const [ctx] = useInstrumentContext();
 
-    render() {
-        const ctx = this.props.context;
-
-        const isError = ctx.error;
+        const isError =  ctx.error;
         const isLoading = !ctx || !ctx.allInstruments || ctx.allInstruments.presets.length === 0;
 
         if (isError) {
@@ -18,13 +16,7 @@ export default class Loading extends React.Component {
             return (<Initializing />);
         }
 
-        return this.props.children;
-    }
-
-    async componentDidMount() {
-        const ctx = pqtApi.refreshCurrentContext(this.props.dispatch)
-        console.log("[Loading] Init ctx", ctx);
-    }
+        return children;
 }
 
 export function ErrorMessage() {
