@@ -38,7 +38,7 @@ Here are the main features
 You have two options 
 
 1. Make use of the public website (Easiest)
-2. Or Install the web application locally onto the same computer as your running instance of Pianoteq [Section for option 2](#option-2---deploy-localy)
+2. Or Install the web application locally onto the same computer as your running instance of Pianoteq [Section for option 2](#option-2---deploy-locally)
 
 ## Option 1 - Public website 
 Simply click on the link below!  This option does not require any install, other than having a running instance of Pianoteq on a computer.
@@ -50,7 +50,7 @@ Once the page opens, you'll need to set the URL of the running instance of Piano
 > **Note** - This public site will probably be brought down in the future as browsers are starting to implement a new security feature that forbids public sites to make local network calls. This is a great addition for a safer browsing experience, but will negatively impact the public site for ptq-client-webapp. For now, as of this writing, the following browsers are supported with the public site: **Safari** and **Firefox**.
 
 ### Option 1 - Step 1: Running Pianoteq to enable JSONRPC
-Before you can perform the initial setup, you need to make sure that you have enable JSONRPC when launching Pianoteq.  Here is some example on how to do it below.
+For our application to work, you need to make sure that you have enabled JSONRPC when launching Pianoteq.  Here are some examples of how to do it below.
 
 * On Mac - `open /Applications/Pianoteq\ 8/Pianoteq\ 8.app --args --serve ip.address.of.device:8081`
 * On PC - `C:\Program Files\Modartt\Pianoteq 8>"Pianoteq 8.exe" --serve ip.address.of.device:8081`
@@ -71,7 +71,7 @@ Enter the URL of your running Pianoteq instance in the `Pianoteq full API addres
 > **Note** - You need to click on the right blue arrow for the change to take effect, otherwise the provided value will be ignored.
 
 ### Option 1 - Step 3: Install a shortcut on your mobile device (Optional)
-Yes, you may install a shortcut of this web application on your home screen.  Bear in mind that is just a shortcut being installed.  This shortcut still references the URL it came from.
+Yes, you may install a shortcut to this web application on your home screen.  Bear in mind that this is just a shortcut being installed.  This shortcut still references the URL it came from.
 
 * iOS Safari
     * Click on the link above to load the web app
@@ -82,29 +82,29 @@ Yes, you may install a shortcut of this web application on your home screen.  Be
     * Click on the 3 dots
     * And select `Add to home screen`
 
-> **Note** - This will run the web application offline, i.e. it will not load the app from the web at every launch (This behavior varies from devices).  To force a reload from the web, you'll need to force quit the app.
+> **Note** - This will run the web application offline, i.e. it will not load the app from the web at every launch (This behavior varies from device).  To force a reload from the web, you'll need to force quit the app.
 
-# Option 2 - Deploy localy
-This option is only required if you do not want to make use of the public site (option 1) and want to host this application localy on your network.  This is required if you want to use Chrome on your mobile device.
+# Option 2 - Deploy locally
+This option is only required if you do not want to make use of the public site (option 1) and want to host this application locally on your network.  This is required if you want to use Chrome on your mobile device.
 
-The diagram below depict where you should be performing the install.  We expect all the required software to be install on the same computer that Pianoteq is running.  This is where the PTQ-WEB-CLIENT will be hosted.
+The diagram below depicts where you should be performing the installation.  We expect all the required software to be installed on the same computer that Pianoteq is running.  This is where the PTQ-WEB-CLIENT will be hosted.
 
 ![Alt text](doc/local-deployment.png)
 
-[A]: Mobile device with your prefered browser.  This will be use to access PTQ-Client-Webapp
+[A]: Mobile device with your preferred browser.  This will be used to access PTQ-Client-Webapp
 
-[B]: Computer where Pianoteq is running and where we expect you to install all the required softwares
+[B]: Computer where Pianoteq is running and where we expect you to install all the required software
 
 Here are the overall steps required for this option to work.  All these steps must be performed on the same computer as the running instance of Pianoteq
 
 1. Step 1 - Have a running instance of Pianoteq with JSONRPC enabled
 2. Step 2 - Install node on the same computer as Pianoteq
-3. Step 3 - Insall this project Ptq-Client-Webapp on the same computer as Pianoteq
+3. Step 3 - Install this project Ptq-Client-Webapp on the same computer as Pianoteq
 4. Step 4 - Run the HTTP server to serve Ptq-Client-Webapp to your local network
 5. Step 5 - Access the Ptq-Client-Webapp from your mobile device
 
 ### Option 2 - Step 1: Running Pianoteq with JSONRPC enabled
-For our application to work, you need to make sure that you have enable JSONRPC when launching Pianoteq.  Here is some example on how to do it below.
+For our application to work, you need to make sure that you have enabled JSONRPC when launching Pianoteq.  Here are some examples of how to do it below.
 
 * On Mac - `open /Applications/Pianoteq\ 8/Pianoteq\ 8.app --args --serve ip.address.of.device:8081`
 * On PC - `C:\Program Files\Modartt\Pianoteq 8>"Pianoteq 8.exe" --serve ip.address.of.device:8081`
@@ -112,7 +112,7 @@ For our application to work, you need to make sure that you have enable JSONRPC 
 > **Note** You need to replace the `ip.address.of.device` with the ip address of your device.  We need to specify the ip address, otherwise it will cause CORS issues with the application.  If you want a different port, simply change it on the command line to launch Pianoteq.
 
 ### Option 2 - Step 2: Install node
-You need to make sure that you have node installed on your computer where Pianoteq is running.  See how to install below .
+You need to make sure that you have node installed on your computer where Pianoteq is running.  See how to install it below.
 
 #### How to install node on Mac / Windows
 Visit the node webpage [here](https://nodejs.dev) 
@@ -125,7 +125,7 @@ Visit the [git repo](https://github.com/nodesource/distributions) of nodesource 
     sudo apt-get install -y nodejs
 
 ### Option 2 - Step 3 - Install PQT-Client-Webapp
-You need to install this on the same computer of the running instance of Pianoteq
+You need to install this on the same computer as the running instance of Pianoteq
 
 #### First install
 In the folder of your choice, type the following commands from a terminal window.
@@ -152,7 +152,7 @@ This step will make PQT-Client-Webapp available to any mobile device on your net
     npm run build
     npx serve -s build
 
-This will launch a small HTTP server and serve the newly built project at the directory named `build`.  You should see an output like so:
+This will launch a small HTTP server and serve the newly built project in the directory named `build`.  You should see an output like so:
 
     ┌──────────────────────────────────────────────────┐
     │                                                  │
@@ -166,7 +166,7 @@ This will launch a small HTTP server and serve the newly built project at the di
     └──────────────────────────────────────────────────┘
 
 ### Option 2 - Step 5: Access the PQT-Client-Webapp from your mobile device
-Open a browser on your phone/tablet and enter the URL that was provided in the Step 4 when you executed the `npx serve -s build`
+Open a browser on your phone/tablet and enter the URL that was provided in Step 4 when you executed the `npx serve -s build`
 
 That's it!  You should now see the application on your mobile device.
 
