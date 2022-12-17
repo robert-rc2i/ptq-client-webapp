@@ -98,7 +98,8 @@ export async function loadPreset({ name = "", bank = "", dispatch = null }) {
 export async function savePreset({ name = "My new preset", bank = "My Presets", dispatch = null }) {
     return postCommand("savePreset", { name: name, bank: bank }).then(() => {
         if (dispatch) {
-            refreshCurrentContext(dispatch);
+            //Need to refresh the context as this might be a new preset and we need to populate the navigation menu
+            loadPreset({name: name, bank: bank, dispatch}).then(()=>refreshCurrentContext(dispatch));
         }
     });
 }
