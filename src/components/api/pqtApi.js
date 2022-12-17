@@ -50,8 +50,7 @@ export async function postCommand(cmd = "list", params = [], jsonrpc = "2.0") {
 export async function loadNextPreset(dispatch) {
     return postCommand("nextPreset").then((response)=>{
         if (isResponseOk(response) && dispatch) {
-            getInfo(dispatch);
-            getParams(dispatch);
+            getInfo(dispatch).then(()=> getParams(dispatch));
         }
     });
 }
@@ -64,8 +63,8 @@ export async function loadNextPreset(dispatch) {
 export async function loadPreviousPreset(dispatch) {
     return postCommand("prevPreset").then((response)=>{
         if (isResponseOk(response) && dispatch) {
-            getInfo(dispatch);
-            getParams(dispatch);
+            getInfo(dispatch).then(()=> getParams(dispatch));
+            
         }
     });
 }
@@ -91,8 +90,7 @@ export async function getAllPresets(dispatch) {
 export async function loadPreset({ name = "", bank = "", dispatch = null }) {
     return postCommand("loadPreset", { name: name, bank: bank, preset_type: "full" }).then(() => {
         if (dispatch) {
-            getInfo(dispatch);
-            getParams(dispatch);
+            getInfo(dispatch).then(()=> getParams(dispatch));
         }
     });
 }
@@ -115,6 +113,7 @@ export async function refreshCurrentContext(dispatch) {
         return i;
     }).catch((e) => {
         apiError = e;
+        return null;
     });
 
     if (info) {
@@ -149,8 +148,7 @@ export async function getInfo(dispatch) {
 export async function switchAB(dispatch = null) {
     return postCommand("abSwitch").then(() => {
         if (dispatch) {
-            getInfo(dispatch);
-            getParams(dispatch);
+            getInfo(dispatch).then(()=> getParams(dispatch));
         }
     });
 }
@@ -173,9 +171,8 @@ export async function getParams(dispatch = null, isModified = false) {
  * @param {*} dispatch 
  */
 export async function reloadInstrumentAndItsParameters(dispatch = null) {
-    return postCommand("resetPreset").then((resp) => {
-        getInfo(dispatch);
-        getParams(dispatch);
+    return postCommand("resetPreset").then(() => {
+        getInfo(dispatch).then(()=> getParams(dispatch));
     })
 }
 
