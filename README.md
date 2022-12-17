@@ -103,7 +103,7 @@ Here are the overall steps required for this option to work.  All these steps mu
 4. Step 4 - Run the HTTP server to serve Ptq-Client-Webapp to your local network
 5. Step 5 - Access the Ptq-Client-Webapp from your mobile device
 
-### Option 2 - Step 1: Running Pianoteq to enable JSONRPC
+### Option 2 - Step 1: Running Pianoteq with JSONRPC enabled
 For our application to work, you need to make sure that you have enable JSONRPC when launching Pianoteq.  Here is some example on how to do it below.
 
 * On Mac - `open /Applications/Pianoteq\ 8/Pianoteq\ 8.app --args --serve ip.address.of.device:8081`
@@ -112,7 +112,7 @@ For our application to work, you need to make sure that you have enable JSONRPC 
 > **Note** You need to replace the `ip.address.of.device` with the ip address of your device.  We need to specify the ip address, otherwise it will cause CORS issues with the application.  If you want a different port, simply change it on the command line to launch Pianoteq.
 
 ### Option 2 - Step 2: Install node
-You need to make sure that you have node installed on your computer where Pianoteq is running.  Below expalin how to install it on your prefered computer
+You need to make sure that you have node installed on your computer where Pianoteq is running.  See how to install below .
 
 #### How to install node on Mac / Windows
 Visit the node webpage [here](https://nodejs.dev) 
@@ -128,7 +128,7 @@ Visit the [git repo](https://github.com/nodesource/distributions) of nodesource 
 You need to install this on the same computer of the running instance of Pianoteq
 
 #### First install
-In the folder of your choice, launch the following command from a terminal window. In a folder of your choice perform the following:
+In the folder of your choice, type the following commands from a terminal window.
 
     git clone https://github.com/robert-rc2i/ptq-client-webapp.git
     cd ptq-client-webapp
@@ -147,7 +147,7 @@ For this, you simply launch the following commands in the project root folder
 This will replace your current project with the latest changes from the git repo and install any new dependencies that the project may have added
 
 ### Option 2 - Step 4: Running the app (PQT-Client-Webapp)
-This step will make PQT-Client-Webapp available to any mobile device on your network. From the project root directory type the following commands:
+This step will make PQT-Client-Webapp available to any mobile device on your network. From the project directory type the following commands:
     
     npm run build
     npx serve -s build
@@ -166,7 +166,7 @@ This will launch a small HTTP server and serve the newly built project at the di
     └──────────────────────────────────────────────────┘
 
 ### Option 2 - Step 5: Access the PQT-Client-Webapp from your mobile device
-Open a browser on your phone/tablet and enter the URL that was provided in the Step 4.
+Open a browser on your phone/tablet and enter the URL that was provided in the Step 4 when you executed the `npx serve -s build`
 
 That's it!  You should now see the application on your mobile device.
 
