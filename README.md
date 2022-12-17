@@ -38,7 +38,7 @@ Here are the main features
 You have two options 
 
 1. Make use of the public website (Easiest)
-2. Install the web application locally onto the same computer as your running instance of Pianoteq
+2. Or Install the web application locally onto the same computer as your running instance of Pianoteq
 
 ## Option 1 - Public website 
 Simply click on the link below!  This option does not require any install, other than having a running instance of Pianoteq on a computer.
