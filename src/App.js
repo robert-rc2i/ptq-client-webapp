@@ -1,7 +1,7 @@
 import React from 'react';
 import { Loading } from './components/utils/loading';
 import { PageLayout1Column } from './components/ui/Layouts';
-import { CurrentInstrumentContextProvider, CurrentInstrumentContext, factoryInitialState } from './components/utils/instrumentContext';
+import { CurrentInstrumentContextProvider } from './components/utils/instrumentContext';
 import { CurrentInstrumentPage } from './components/pages/currentInstrumentPage';
 
 /**

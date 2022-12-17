@@ -51,8 +51,14 @@ export async function loadNextPreset(dispatch) {
     const response = await postCommand("nextPreset");
 
     if (isResponseOk(response) && dispatch) {
-        dispatch({ type: "cancelSave" });
-        reloadInstrumentAndItsParameters(dispatch);
+        const info = await getInfo();
+        const params = await getParams();
+
+        dispatch({
+            type: "loadInstrument",
+            params: params,
+            ptqInfo: info
+        });
     }
     return response;
 }
@@ -66,8 +72,14 @@ export async function loadPreviousPreset(dispatch) {
     const response = await postCommand("prevPreset");
 
     if (isResponseOk(response) && dispatch) {
-        dispatch({ type: "cancelSave" });
-        reloadInstrumentAndItsParameters(dispatch);
+        const info = await getInfo();
+        const params = await getParams();
+
+        dispatch({
+            type: "loadInstrument",
+            params: params,
+            ptqInfo: info
+        });
     }
     return response;
 }
@@ -126,8 +138,8 @@ export async function savePreset({ name = "My new preset", bank = "My Presets", 
  */
 export async function refreshCurrentContext(dispatch) {
     let params = [], allPresets = [], apiError = null, metronome, seqState;
-    const info = await getInfo().then(async (i) => {
-        return Promise.resolve(i);
+    const info = await getInfo().then((i) => {
+        return i;
     }).catch((e) => {
         apiError = e;
     });
@@ -185,6 +197,7 @@ export async function getParams(dispatch = null, isModified = false) {
  */
 export async function reloadInstrumentAndItsParameters(dispatch = null) {
     return await postCommand("resetPreset").then((resp) => {
+        getInfo(dispatch);
         getParams(dispatch);
     })
 }
