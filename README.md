@@ -146,7 +146,7 @@ For this, you simply launch the following commands in the project root folder
 
 This will replace your current project with the latest changes from the git repo and install any new dependencies that the project may have added
 
-### Option 2 - Step 4: Running the app (PQT-Client-Webapp)
+### Option 2 - Step 4: Run the HTTP server to serve Ptq-Client-Webapp
 This step will make PQT-Client-Webapp available to any mobile device on your network. From the project directory type the following commands:
     
     npm run build
