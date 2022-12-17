@@ -103,13 +103,6 @@ Here are the overall steps required for this option to work.  All these steps mu
 4. Step 4 - Run the HTTP server to serve Ptq-Client-Webapp to your local network
 5. Step 5 - Access the Ptq-Client-Webapp from your mobile device
 
-## Option 2 - Requirements
-Before you can deploy this project locally, you need to first install the required software.
-
-* Git (Optional) - Usually git is installed by default on most operating systems
-* Node - Node has to be installed on your computer for this to work, as I make use of it to start the single page application.
-* Pianoteq running on a reachable device
-
 ### Option 2 - Step 1: Running Pianoteq to enable JSONRPC
 For our application to work, you need to make sure that you have enable JSONRPC when launching Pianoteq.  Here is some example on how to do it below.
 
