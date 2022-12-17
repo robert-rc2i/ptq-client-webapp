@@ -75,7 +75,7 @@ const fractionLabelRenderer = (lbl, v) => { return `${lbl} (1/${v})` };
 
 export const FractionRangeParameterViewController = ({ param = {}, apiCallback, label, ...others }) => {
     const setParamCallback = (v, dispatch) => { apiCallback("1/" + v, param, dispatch) };
-    const splitedValues = param.text.split('/');
+    const splitedValues = param?.text.split('/');
     const val = splitedValues.length > 1 ? splitedValues[1] : param.text;
     return (
         <RangeViewController {...others} rangeReversed={true} value={val} labelCallback={fractionLabelRenderer} label={label} labelValue={false} paramIdx={param.index} apiCallback={setParamCallback} />

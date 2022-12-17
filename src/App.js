@@ -1,7 +1,7 @@
 import React from 'react';
-import Loading from './components/utils/loading';
+import { Loading } from './components/utils/loading';
 import { PageLayout1Column } from './components/ui/Layouts';
-import { CurrentInstrumentContextProvider, CurrentInstrumentContext, factoryInitialState } from './components/utils/instrumentContext';
+import { CurrentInstrumentContextProvider } from './components/utils/instrumentContext';
 import { CurrentInstrumentPage } from './components/pages/currentInstrumentPage';
 
 /**
@@ -24,18 +24,12 @@ function App() {
 
   return (
 
-    <CurrentInstrumentContextProvider initState={factoryInitialState({})}>
-      <CurrentInstrumentContext.Consumer>
-        {([ctx, reducer]) => {
-          return (
-            <PageLayout1Column>
-              <Loading context={ctx} dispatch={reducer}>
-                <CurrentInstrumentPage />
-              </Loading>
-            </PageLayout1Column>
-          )
-        }}
-      </CurrentInstrumentContext.Consumer>
+    <CurrentInstrumentContextProvider>
+      <PageLayout1Column>
+        <Loading>
+          <CurrentInstrumentPage />
+        </Loading>
+      </PageLayout1Column>
     </CurrentInstrumentContextProvider>
   );
 }
