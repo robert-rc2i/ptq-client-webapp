@@ -38,7 +38,7 @@ Here are the main features
 You have two options 
 
 1. Make use of the public website (Easiest)
-2. Or Install the web application locally onto the same computer as your running instance of Pianoteq
+2. Or Install the web application locally onto the same computer as your running instance of Pianoteq [Section for option 2](#option-2---deploy-localy)
 
 ## Option 1 - Public website 
 Simply click on the link below!  This option does not require any install, other than having a running instance of Pianoteq on a computer.
@@ -91,14 +91,15 @@ The diagram below depict where you should be performing the install.  We expect 
 
 ![Alt text](doc/local-deployment.png)
 
-[^A]: Mobile device with your prefered browser.  This will be use to access PTQ-Client-Webapp
-[^B]: Computer where Pianoteq is running and where we expect you to install all the required softwares
+[A]: Mobile device with your prefered browser.  This will be use to access PTQ-Client-Webapp
 
-Here are the overall steps requires for this option to work.  All these step must be performed on the same compute as the running instance of Pianoteq
+[B]: Computer where Pianoteq is running and where we expect you to install all the required softwares
 
-1. Step 1 - Have a running Pianoteq with JSONRPC enabled
-2. Step 2 - Install node on the same compute as Pianoteq
-3. Step 3 - Insall this project Ptq-Client-Webapp
+Here are the overall steps required for this option to work.  All these steps must be performed on the same computer as the running instance of Pianoteq
+
+1. Step 1 - Have a running instance of Pianoteq with JSONRPC enabled
+2. Step 2 - Install node on the same computer as Pianoteq
+3. Step 3 - Insall this project Ptq-Client-Webapp on the same computer as Pianoteq
 4. Step 4 - Run the HTTP server to serve Ptq-Client-Webapp to your local network
 5. Step 5 - Access the Ptq-Client-Webapp from your mobile device
 
