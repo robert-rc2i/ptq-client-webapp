@@ -13,7 +13,7 @@ import * as pqtApi from '../api/pqtApi';
  * @param {*} info 
  * @returns 
  */
-export const factoryInitialState = ({ presets = factoryPresets(), currPreset = {}, info = {}, currParams = [], isPresetModified = false, metronome = factoryMetronomeObject(), midiState = factoryMidiSequencerObject() }) => {
+export const factoryInitialState = ({ presets = factoryPresets(), currPreset = {}, info = {}, currParams = [], isPresetModified = false, metronome = factoryMetronomeObject(), midiState = factoryMidiSequencerObject(), viewMode = "compact" }) => {
     return {
         allInstruments: presets,
         currentPreset: currPreset,
@@ -21,7 +21,8 @@ export const factoryInitialState = ({ presets = factoryPresets(), currPreset = {
         ptqInfo: info,
         isPresetModified: isPresetModified,
         metronome: new Metronome(metronome),
-        midiState: midiState
+        midiState: midiState,
+        viewMode: viewMode
     }
 }
 
@@ -110,6 +111,12 @@ const defaultReducer = (currentState, action) => {
             return {
                 ...currentState,
                 isPresetModified: false
+            }
+        }
+        case "setViewMode": {
+            return {
+                ...currentState,
+                viewMode: action.value
             }
         }
         default:

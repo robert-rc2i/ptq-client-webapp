@@ -2,7 +2,7 @@ import React from 'react';
 import { Loading } from './components/utils/loading';
 import { PageLayout1Column } from './components/ui/Layouts';
 import { CurrentInstrumentContextProvider } from './components/utils/instrumentContext';
-import { CurrentInstrumentPage } from './components/pages/currentInstrumentPage';
+import { PageRoute } from './components/pages/pageRouter';
 
 /**
  * Helper function to scroll to the top of the page.  Usefull when reloading a page
@@ -27,7 +27,7 @@ function App() {
     <CurrentInstrumentContextProvider>
       <PageLayout1Column>
         <Loading>
-          <CurrentInstrumentPage />
+          <PageRoute />
         </Loading>
       </PageLayout1Column>
     </CurrentInstrumentContextProvider>
