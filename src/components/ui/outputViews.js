@@ -31,12 +31,15 @@ export const OutputCardView = () => {
                     <PianoConditionCardView ctx={ctx} reducer={reducer} />
                 </Accordion.Body>
             </Accordion.Item>
-            <Accordion.Item eventKey="lid">
-                <Accordion.Header>Piano Lid</Accordion.Header>
-                <Accordion.Body>
-                    <LidCardView ctx={ctx} reducer={reducer} />
-                </Accordion.Body>
-            </Accordion.Item>
+            {ctx.instrumentParameters.lid && (
+                <Accordion.Item eventKey="lid">
+                    <Accordion.Header>Piano Lid</Accordion.Header>
+                    <Accordion.Body>
+                        <LidCardView ctx={ctx} reducer={reducer} />
+                    </Accordion.Body>
+                </Accordion.Item>)
+            }
+
         </Accordion>
     );
 }
@@ -47,7 +50,7 @@ export const PianoAction = ({ ctx, reducer }) => {
             <FractionRangeParameterViewController label="Damper position" name="dpos" min={2} max={64} step={0.1} param={ctx.instrumentParameters.damperPosition} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <RangeParameterViewController label="Damper duration" name="ddur" min={.03} max={10.00} step={0.01} param={ctx.instrumentParameters.damperDuration} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <RangeParameterViewController label="Last damper" name="lndamper" min={0} max={128} step={1} param={ctx.instrumentParameters.lastDamperNote} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
-            <hr />
+            {ctx.instrumentParameters.damperPosition && (<hr />)}
             <NegativeRangeParameterViewController label="Damper noise" name="dnoise" min={-75} max={25} step={1} param={ctx.instrumentParameters.damperNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <NegativeRangeParameterViewController label="Key release noise" name="krnoise" min={-75} max={25} step={1} param={ctx.instrumentParameters.keyReleaseNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
             <NegativeRangeParameterViewController label="Sustain pedal noise" name="spnoise" min={-75} max={25} step={1} param={ctx.instrumentParameters.sustainPedalNoise} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
@@ -55,15 +58,18 @@ export const PianoAction = ({ ctx, reducer }) => {
     );
 }
 export const LidCardView = ({ ctx, reducer }) => {
-    return (
-        <>
-            <div className="ms-5 mb-2">
-                <InputSwitch name="lidSwitch" label={(<span>Enable piano lid modelisation</span>)} isChecked={getSwitchToBooleanValue(ctx.instrumentParameters.lid.text)} onClick={(v) => { PtqApi.setParameterSwitchValue(v, ctx.instrumentParameters.lid, reducer) }} />
-            </div>
-            <RangeParameterViewController disabled={ctx.instrumentParameters.isLidOff} label="Lid position" name="condition" min={0} max={1} step={0.01} param={ctx.instrumentParameters.lidPosition} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
-            <div className="text-muted text-center"><p>From a closed lid (0) to wide open lid (1)</p></div>
-        </>
-    )
+    if (ctx.instrumentParameters.lid && ctx.instrumentParameters.lid.text) {
+        return (
+            <>
+                <div className="ms-5 mb-2">
+                    <InputSwitch name="lidSwitch" label={(<span>Enable piano lid modelisation</span>)} isChecked={getSwitchToBooleanValue(ctx.instrumentParameters.lid.text)} onClick={(v) => { PtqApi.setParameterSwitchValue(v, ctx.instrumentParameters.lid, reducer) }} />
+                </div>
+                <RangeParameterViewController disabled={ctx.instrumentParameters.isLidOff} label="Lid position" name="condition" min={0} max={1} step={0.01} param={ctx.instrumentParameters.lidPosition} dispatch={reducer} apiCallback={PtqApi.setParameterAsText} />
+                <div className="text-muted text-center"><p>From a closed lid (0) to wide open lid (1)</p></div>
+            </>
+        );
+    }
+    return null;
 }
 export const PianoConditionCardView = ({ ctx, reducer }) => {
     return (

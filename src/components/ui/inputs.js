@@ -40,12 +40,16 @@ export const InputRange = ({ onChange, onSetRangeValue, value, ...others }) => {
 }
 
 export const InputSwitch = ({ name = "none", label, isChecked = false, onClick, ...others }) => {
-    return (
-        <div className="form-check form-switch">
-            <input {...others} className="form-check-input" type="checkbox" role="switch" id={name} checked={isChecked} onClick={(e) => e.stopPropagation()} onChange={(e) => onClick(e.target.checked, e)} />
-            <label className="form-check-label" htmlFor={name}>{label}</label>
-        </div>
-    )
+    if (name && name !== "none") {
+        return (
+            <div className="form-check form-switch">
+                <input {...others} className="form-check-input" type="checkbox" role="switch" id={name} checked={isChecked} onClick={(e) => e.stopPropagation()} onChange={(e) => onClick(e.target.checked, e)} />
+                <label className="form-check-label" htmlFor={name}>{label}</label>
+            </div>
+        );
+    }
+
+    return null;
 }
 
 const defaultLabelRenderer = (label, lblValue) => {
@@ -65,26 +69,37 @@ export const RangeViewController = ({ value, dispatch, labelCallback = undefined
 }
 
 export const RangeParameterViewController = ({ param = {}, apiCallback, ...others }) => {
-    const setParamCallback = (value, dispatch) => { apiCallback(value, param, dispatch) };
-    return (
-        <RangeViewController {...others} value={param.text} paramIdx={param.index} apiCallback={setParamCallback} />
-    )
+    if (param && param.id) {
+        const setParamCallback = (value, dispatch) => { apiCallback(value, param, dispatch) };
+        return (
+            <RangeViewController {...others} value={param.text} paramIdx={param.index} apiCallback={setParamCallback} />
+        );
+    }
+    return null;
 }
 
 const fractionLabelRenderer = (lbl, v) => { return `${lbl} (1/${v})` };
 
 export const FractionRangeParameterViewController = ({ param = {}, apiCallback, label, ...others }) => {
-    const setParamCallback = (v, dispatch) => { apiCallback("1/" + v, param, dispatch) };
-    const splitedValues = param?.text.split('/');
-    const val = splitedValues.length > 1 ? splitedValues[1] : param.text;
-    return (
-        <RangeViewController {...others} rangeReversed={true} value={val} labelCallback={fractionLabelRenderer} label={label} labelValue={false} paramIdx={param.index} apiCallback={setParamCallback} />
-    )
+    if (param && param.id) {
+        const setParamCallback = (v, dispatch) => { apiCallback("1/" + v, param, dispatch) };
+        const splitedValues = param?.text.split('/');
+        const val = splitedValues.length > 1 ? splitedValues[1] : param.text;
+        return (
+            <RangeViewController {...others} rangeReversed={true} value={val} labelCallback={fractionLabelRenderer} label={label} labelValue={false} paramIdx={param.index} apiCallback={setParamCallback} />
+        )
+    }
+    return null;
 }
 
 export const NegativeRangeParameterViewController = ({ param = {}, apiCallback, ...others }) => {
     const setParamCallback = (value, dispatch) => { apiCallback(value, param, dispatch) };
-    return (
-        <RangeViewController {...others} value={Number.parseFloat(param.text)} paramIdx={param.index} apiCallback={setParamCallback} />
-    )
+
+    if (param && param.id) {
+        return (
+            <RangeViewController {...others} value={Number.parseFloat(param.text)} paramIdx={param.index} apiCallback={setParamCallback} />
+        );
+    }
+
+    return null;
 } 

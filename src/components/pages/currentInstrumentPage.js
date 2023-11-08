@@ -18,12 +18,16 @@ export const CurrentInstrumentPage = () => {
                 <Tab eventKey="output" title="Piano">
                     <OutputCardView />
                 </Tab>
-                <Tab eventKey="voicing" title="Voicing" >
-                    <VoicingTabView />
-                </Tab>
-                <Tab eventKey="design" title="Design" >
-                    <DesignCardsView />
-                </Tab>
+                {ctx.instrumentParameters.hammerHardnessPiano && (
+                    <Tab eventKey="voicing" title="Voicing" >
+                        <VoicingTabView />
+                    </Tab>
+                )}
+                {ctx.instrumentParameters.sbImpedance && (
+                    <Tab eventKey="design" title="Design" >
+                        <DesignCardsView />
+                    </Tab>
+                )}
                 <Tab eventKey="effects" title="Effects" >
                     <EffectsTabView />
                 </Tab>
