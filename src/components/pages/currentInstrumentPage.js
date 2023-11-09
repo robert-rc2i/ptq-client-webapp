@@ -23,11 +23,9 @@ export const CurrentInstrumentPage = () => {
                         <VoicingTabView />
                     </Tab>
                 )}
-                {ctx.instrumentParameters.sbImpedance && (
-                    <Tab eventKey="design" title="Design" >
-                        <DesignCardsView />
-                    </Tab>
-                )}
+                <Tab eventKey="design" title="Design" >
+                    <DesignCardsView />
+                </Tab>
                 <Tab eventKey="effects" title="Effects" >
                     <EffectsTabView />
                 </Tab>

@@ -300,4 +300,37 @@ export class InstrumentParameters {
     get damperDuration() {
         return this.paramsByIds.get("Damping Duration");
     }
+
+    get mute() {
+        return this.paramsByIds.get("Mute");
+    }
+
+    //Mallet bounce
+    get bounceSwitch() {
+        return this.paramsByIds.get("Bounce Switch");
+    }
+        
+    get bounceSync() {
+        return this.paramsByIds.get("Bounce Sync");
+    }
+
+    get bounceDelay() {
+        return this.paramsByIds.get("Bounce Delay");
+    }
+
+    get bounceDelayLoss() {
+        return this.paramsByIds.get("Bounce Delay Loss");
+    }
+
+    get bounceVelocity() {
+        return this.paramsByIds.get("Bounce Velocity Sensitivity");
+    }
+
+    get bounceVelocityLoss() {
+        return this.paramsByIds.get("Bounce Velocity Loss");
+    }
+
+    get bounceHumanization() {
+        return this.paramsByIds.get("Bounce Humanization");
+    }
 }
