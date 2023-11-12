@@ -107,10 +107,17 @@ export const InstrumentCardView = ({ instrument, dispatch }) => {
                     <Card.Title><div className="d-flex justify-content-between"><div>{instrument.name}</div><SavePresetController /></div></Card.Title>
                     <Card.Subtitle>{instrument.collection} <i onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShow(!show) }} className={iconClassName} /></Card.Subtitle>
                     <Collapse in={show}>
-                        <Card.Text>{instrument.comment}<br /><InstrumentRegistrationView instrument={instrument} /></Card.Text>
+                        <span>
+                            <Card.Text><span>{instrument.comment}</span></Card.Text>
+                            <Card.Text>
+                                <InstrumentRegistrationView instrument={instrument} />
+                                <br />
+                                <strong>Bank</strong>: {instrument.bank}
+                            </Card.Text>
+                        </span>
                     </Collapse>
                 </Card.Body>
-            </Card>
+            </Card >
         );
     }
 
@@ -152,7 +159,7 @@ export const SavePresetController = () => {
 
 export const SavePresetControlView = ({ preset = {}, reducer }) => {
     const [hasClicked, setHasClicked] = useState(false);
-    
+
     const onSave = (name, bank) => { setHasClicked(false); pqtApi.savePreset({ name: name, bank: bank, dispatch: reducer }) }
 
     return (
@@ -166,9 +173,9 @@ export const SavePresetControlView = ({ preset = {}, reducer }) => {
 
 export const ModalSaveView = ({ show, handleClose, handleSave, presetName = "Not set", presetBank = "My Preset" }) => {
     const [form, setForm] = useState({ pn: presetName, bank: presetBank });
-    const [ctx, ] = useInstrumentContext();
+    const [ctx,] = useInstrumentContext();
     const handleBankSelection = (val) => setForm({ pn: form.pn, bank: val });
-    
+
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -181,7 +188,7 @@ export const ModalSaveView = ({ show, handleClose, handleSave, presetName = "Not
                 </Form.Group>
                 <InputGroup className="mb-3">
                     <DropdownButton variant="outline-secondary" title="Bank name" id="input-group-dropdown-1" onSelect={handleBankSelection}>
-                        <ItemListView banks={ctx.allInstruments.banks}/>
+                        <ItemListView banks={ctx.allInstruments.banks} />
                     </DropdownButton>
                     <Form.Control type="text" value={form.bank} placeholder="Provide a bank name" onChange={(e) => setForm({ pn: form.pn, bank: e.target.value })} />
                 </InputGroup>
