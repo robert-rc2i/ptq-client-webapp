@@ -184,13 +184,15 @@ export const ModalSaveView = ({ show, handleClose, handleSave, presetName = "Not
             <Modal.Body>
                 <Form.Group className="mb-3" controlId="pnId1">
                     <Form.Label>Preset name</Form.Label>
-                    <Form.Control type="text" value={form.pn} placeholder="Name of your preset" onChange={(e) => setForm({ pn: e.target.value, bank: form.bank })} />
+                    <Form.Control type="text" value={form.pn} placeholder="Enter a unique name" onChange={(e) => setForm({ pn: e.target.value, bank: form.bank })} />
+                    <Form.Text id="bankName" muted>Enter a unique name to avoid issues</Form.Text>
                 </Form.Group>
                 <InputGroup className="mb-3">
                     <DropdownButton variant="outline-secondary" title="Bank name" id="input-group-dropdown-1" onSelect={handleBankSelection}>
                         <ItemListView banks={ctx.allInstruments.banks} />
                     </DropdownButton>
                     <Form.Control type="text" value={form.bank} placeholder="Provide a bank name" onChange={(e) => setForm({ pn: form.pn, bank: e.target.value })} />
+                    <Form.Text id="bankName" muted>Changing a bank name will not move this preset but simply create a new on in that specified bank</Form.Text>
                 </InputGroup>
             </Modal.Body>
             <Modal.Footer>
