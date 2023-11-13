@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Accordion, Button, Card, Collapse, Form, ListGroup, Modal } from "react-bootstrap";
+import { Accordion, Button, Card, Collapse, Dropdown, DropdownButton, Form, InputGroup, ListGroup, Modal } from "react-bootstrap";
 import { listPresetsForBank, listInstrumentsForClass, listPresetsForInstruments } from "../domain/presets";
 import { useInstrumentContext } from "../utils/instrumentContext";
 import * as pqtApi from '../api/pqtApi';
 
 export const InstrumentSelectionPaneView = ({ toggleFunction }) => {
     const [ctx] = useInstrumentContext();
-    const instrumentItems = ctx.allInstruments.classes.map((c) => {
+    const allPresetsByClasses = ctx.allInstruments.classes.map((c) => {
         return (
             <Accordion.Item key={c} eventKey={c}>
                 <Accordion.Header>{c}</Accordion.Header>
@@ -17,15 +17,23 @@ export const InstrumentSelectionPaneView = ({ toggleFunction }) => {
         );
     });
 
+    const allPresetsByBanks = ctx.allInstruments.banks.map((b) => {
+        if (b) {
+            return (
+                <Accordion.Item key={b} eventKey={b}>
+                    <Accordion.Header>Bank - {b}</Accordion.Header>
+                    <Accordion.Body>
+                        <AccordionInstrumentsForBank bank={b} presets={ctx.allInstruments.presets} toggleView={toggleFunction} />
+                    </Accordion.Body>
+                </Accordion.Item>
+            );
+        }
+    });
+
     return (
         <Accordion>
-            <Accordion.Item eventKey="0">
-                <Accordion.Header>My presets</Accordion.Header>
-                <Accordion.Body>
-                    <AccordionInstrumentsForBank presets={ctx.allInstruments.presets} toggleView={toggleFunction} />
-                </Accordion.Body>
-            </Accordion.Item>
-            {instrumentItems}
+            {allPresetsByBanks}
+            {allPresetsByClasses}
         </Accordion>
     );
 }
@@ -99,10 +107,17 @@ export const InstrumentCardView = ({ instrument, dispatch }) => {
                     <Card.Title><div className="d-flex justify-content-between"><div>{instrument.name}</div><SavePresetController /></div></Card.Title>
                     <Card.Subtitle>{instrument.collection} <i onClick={(e) => { e.preventDefault(); e.stopPropagation(); setShow(!show) }} className={iconClassName} /></Card.Subtitle>
                     <Collapse in={show}>
-                        <Card.Text>{instrument.comment}<br /><InstrumentRegistrationView instrument={instrument} /></Card.Text>
+                        <span>
+                            <Card.Text><span>{instrument.comment}</span></Card.Text>
+                            <Card.Text>
+                                <InstrumentRegistrationView instrument={instrument} />
+                                <br />
+                                <strong>Bank</strong>: {instrument.bank}
+                            </Card.Text>
+                        </span>
                     </Collapse>
                 </Card.Body>
-            </Card>
+            </Card >
         );
     }
 
@@ -145,19 +160,22 @@ export const SavePresetController = () => {
 export const SavePresetControlView = ({ preset = {}, reducer }) => {
     const [hasClicked, setHasClicked] = useState(false);
 
-    const onSave = (name) => { setHasClicked(false); pqtApi.savePreset({ name: name, dispatch: reducer }) }
+    const onSave = (name, bank) => { setHasClicked(false); pqtApi.savePreset({ name: name, bank: bank, dispatch: reducer }) }
 
     return (
         <>
             {!hasClicked && (<Button className="me-2" onClick={(e) => { e.preventDefault(); e.stopPropagation(); setHasClicked(true); }}>Save</Button>)}
-            {hasClicked && (<ModalSaveView presetName={preset.name} show={hasClicked} handleClose={() => setHasClicked(false)} handleSave={onSave} />)}
+            {hasClicked && (<ModalSaveView presetName={preset.name} presetBank={preset.bank} show={hasClicked} handleClose={() => setHasClicked(false)} handleSave={onSave} />)}
         </>
 
     );
 }
 
-export const ModalSaveView = ({ show, handleClose, handleSave, presetName = "Not set" }) => {
-    const [pn, setPresetName] = useState(presetName)
+export const ModalSaveView = ({ show, handleClose, handleSave, presetName = "Not set", presetBank = "My Preset" }) => {
+    const [form, setForm] = useState({ pn: presetName, bank: presetBank });
+    const [ctx,] = useInstrumentContext();
+    const handleBankSelection = (val) => setForm({ pn: form.pn, bank: val });
+
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -166,18 +184,32 @@ export const ModalSaveView = ({ show, handleClose, handleSave, presetName = "Not
             <Modal.Body>
                 <Form.Group className="mb-3" controlId="pnId1">
                     <Form.Label>Preset name</Form.Label>
-                    <Form.Control type="text" value={pn} placeholder={presetName} onChange={(e) => setPresetName(e.target.value)} />
+                    <Form.Control type="text" value={form.pn} placeholder="Name of your preset" onChange={(e) => setForm({ pn: e.target.value, bank: form.bank })} />
                 </Form.Group>
+                <InputGroup className="mb-3">
+                    <DropdownButton variant="outline-secondary" title="Bank name" id="input-group-dropdown-1" onSelect={handleBankSelection}>
+                        <ItemListView banks={ctx.allInstruments.banks} />
+                    </DropdownButton>
+                    <Form.Control type="text" value={form.bank} placeholder="Provide a bank name" onChange={(e) => setForm({ pn: form.pn, bank: e.target.value })} />
+                </InputGroup>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
-                <Button variant="primary" onClick={() => handleSave(pn)}>
+                <Button variant="primary" onClick={() => handleSave(form.pn, form.bank)}>
                     Save Changes
                 </Button>
             </Modal.Footer>
         </Modal>
     );
 
+}
+
+const ItemListView = ({ banks = [] }) => {
+    return (
+        <>
+            {banks.map((b) => b ? (<Dropdown.Item eventKey={b} key={b}>{b}</Dropdown.Item>) : null)}
+        </>
+    );
 }

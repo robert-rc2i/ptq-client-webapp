@@ -18,7 +18,8 @@ export function factoryPresets(value=[]) {
     return {
         presets: value,
         classes: initArray(value, "class"),
-        collections: initArray(value, "collection")
+        collections: initArray(value, "collection"),
+        banks: initArray(value, "bank")
     }
 }
 
