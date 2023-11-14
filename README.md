@@ -1,6 +1,6 @@
 # Pianoteq client [![CodeQL](https://github.com/robert-rc2i/ptq-client-webapp/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/robert-rc2i/ptq-client-webapp/actions/workflows/codeql-analysis.yml)
 
-This project allows you to control your Pianoteq instance from any browser (Safari, Chrome and Firefox).
+This project allows you to control your Pianoteq instance from any browser (Safari, Chrome and Firefox).  It now supports Pianoteq Stage and Standard.  Also works for Pro users, but does not cover all the parameters available in PRO.
 
 Here are the main features
 
@@ -52,10 +52,10 @@ Once the page opens, you'll need to set the URL of the running instance of Piano
 ### Option 1 - Step 1: Running Pianoteq to enable JSONRPC
 For our application to work, you need to make sure that you have enabled JSONRPC when launching Pianoteq.  Here are some examples of how to do it below.
 
-* On Mac - `open /Applications/Pianoteq\ 8/Pianoteq\ 8.app --args --serve ip.address.of.device:8081`
-* On PC - `C:\Program Files\Modartt\Pianoteq 8>"Pianoteq 8.exe" --serve ip.address.of.device:8081`
+* On Mac - `open /Applications/Pianoteq\ 8/Pianoteq\ 8.app --args --serve 0.0.0.0:8081`
+* On PC - `C:\Program Files\Modartt\Pianoteq 8>"Pianoteq 8.exe" --serve 0.0.0.0:8081`
 
-> **Note** You need to replace the `ip.address.of.device` with the ip address of your device.  We need to specify the ip address, otherwise it will cause CORS issues with the application.  If you want a different port, simply change it on the command line to launch Pianoteq.
+> **Note** - The `0.0.0.0` is a TCP/IP trick that tells Pianoteq to bind to all network interfaces.
 
 ### Option 1 - Step 2: Initial setup of the app
 First launch the PTQ-client-webapp by clicking on the link 
@@ -106,10 +106,10 @@ Here are the overall steps required for this option to work.  All these steps mu
 ### Option 2 - Step 1: Running Pianoteq with JSONRPC enabled
 For our application to work, you need to make sure that you have enabled JSONRPC when launching Pianoteq.  Here are some examples of how to do it below.
 
-* On Mac - `open /Applications/Pianoteq\ 8/Pianoteq\ 8.app --args --serve ip.address.of.device:8081`
-* On PC - `C:\Program Files\Modartt\Pianoteq 8>"Pianoteq 8.exe" --serve ip.address.of.device:8081`
+* On Mac - `open /Applications/Pianoteq\ 8/Pianoteq\ 8.app --args --serve 0.0.0.0:8081`
+* On PC - `C:\Program Files\Modartt\Pianoteq 8>"Pianoteq 8.exe" --serve 0.0.0.0:8081`
 
-> **Note** You need to replace the `ip.address.of.device` with the ip address of your device.  We need to specify the ip address, otherwise it will cause CORS issues with the application.  If you want a different port, simply change it on the command line to launch Pianoteq.
+> **Note** - The `0.0.0.0` is a TCP/IP trick that tells Pianoteq to bind to all network interfaces.
 
 ### Option 2 - Step 2: Install node
 You need to make sure that you have node installed on your computer where Pianoteq is running.  See how to install it below.
@@ -170,7 +170,7 @@ Open a browser on your phone/tablet and enter the URL that was provided in Step 
 
 That's it!  You should now see the application on your mobile device.
 
-## Final note
+# Final note
 I am not affiliated with Modartt.  All references to Modartt are governed by their trademark and licenses.
 
 Hope it helps in your Pianoteq setup and happy playing!
