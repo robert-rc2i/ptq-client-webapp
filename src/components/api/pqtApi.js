@@ -79,11 +79,13 @@ export async function getMetronomeState(dispatch) {
 }
 
 export async function getAllPresets(dispatch) {
-    return postCommand("getListOfPresets").then((response) => {
+    return postCommand("getListOfPresets")
+    .then(response => response.result.filter(preset => preset.license_status === "ok"))
+    .then((result) => {
         if (dispatch) {
-            dispatch({ type: "loadedAllPresets", presets: factoryPresets(response.result) });
+            dispatch({ type: "loadedAllPresets", presets: factoryPresets(result) });
         }
-        return Promise.resolve(factoryPresets(response.result));
+        return Promise.resolve(factoryPresets(result));
     });
 }
 
