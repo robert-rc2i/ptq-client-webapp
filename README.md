@@ -170,6 +170,11 @@ Open a browser on your phone/tablet and enter the URL that was provided in Step 
 
 That's it!  You should now see the application on your mobile device.
 
+# Progressive Web App (PWA)
+This app is a PWA, so when you add it to your home screen (see [Option 1 - Step 3](#option-1---step-3-install-a-shortcut-on-your-mobile-device-optional)) it launches **full-screen in standalone mode** — no browser address bar — with its own icon and the name "Pianoteq". This works out of the box when you serve the built app (`npm run build` + `npx serve -s build`, as in Option 2).
+
+> **Note - offline caching requires HTTPS.** The app ships a service worker that precaches the app shell so it loads instantly and even without the CDN. However, browsers only run service workers in a *secure context* (HTTPS, or `localhost`). When you serve over plain `http://<host>:3000` on your local network the service worker is intentionally skipped — the standalone install still works, but the offline app-shell cache does not activate. To enable it, serve the `build` folder over HTTPS (e.g. with a locally-trusted certificate). No code changes are needed; the service worker activates automatically once served over HTTPS.
+
 # Final note
 I am not affiliated with Modartt.  All references to Modartt are governed by their trademark and licenses.
 
