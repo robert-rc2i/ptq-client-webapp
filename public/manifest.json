@@ -1,10 +1,10 @@
 {
-  "short_name": "Pianoteq remote",
+  "short_name": "Pianoteq",
   "name": "Pianoteq remote web client",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "256x256 128x128 64x64 48x48 32x32",
+      "sizes": "256x256",
       "type": "image/x-icon"
     },
     {
@@ -16,9 +16,38 @@
       "src": "logo256.png",
       "type": "image/png",
       "sizes": "256x256"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "logo-maskable-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshots/wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Pianoteq remote on desktop"
+    },
+    {
+      "src": "screenshots/mobile.png",
+      "sizes": "300x650",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Pianoteq remote on mobile"
     }
   ],
   "start_url": ".",
+  "scope": ".",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
